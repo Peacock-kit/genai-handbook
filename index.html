@@ -1,0 +1,1420 @@
+<!doctype html><html lang="zh-Hant"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GenAI 影像生成 · 員工手冊 3.1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Noto+Sans+HK:wght@400;500;700;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBF7F0; --paper2:#F3EDE1; --ink:#1E2A44; --navy:#1E2A44;
+  --coral:#FF6B4A; --mint:#3BB58F; --yellow:#FFC247; --violet:#7C6BD6;
+  --pink:#F2789F; --sky:#5BC8E8; --line:#E5DCC9;
+  --shadow:0 6px 0 rgba(30,42,68,.10), 0 14px 30px rgba(30,42,68,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans HK','PingFang HK','Microsoft JhengHei',system-ui,sans-serif;
+  background:var(--paper);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:'Poppins','Noto Sans HK',sans-serif;font-weight:800;letter-spacing:-.01em}
+
+.topbar{position:sticky;top:0;z-index:50;background:rgba(251,247,240,.92);
+  backdrop-filter:blur(8px);border-bottom:3px solid var(--ink)}
+.topbar .wrap{display:flex;align-items:center;gap:14px;height:62px}
+.topbar .logo{font-weight:800;font-family:'Poppins',sans-serif;font-size:18px}
+.topbar .logo b{color:var(--coral)}
+.topbar nav{margin-left:auto;display:flex;gap:5px;flex-wrap:wrap}
+.topbar nav a{font-size:12px;font-weight:700;text-decoration:none;color:var(--ink);
+  padding:6px 10px;border-radius:20px;transition:.15s}
+.topbar nav a:hover{background:var(--ink);color:#fff}
+
+.hero{position:relative;padding:54px 0 40px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.3fr .9fr;gap:30px;align-items:center}
+.hero .eyebrow{display:inline-block;background:var(--yellow);font-weight:800;font-size:12.5px;
+  padding:5px 13px;border-radius:20px;border:2.5px solid var(--ink);box-shadow:3px 3px 0 var(--ink);margin-bottom:16px}
+.hero h1{font-size:clamp(32px,5.2vw,54px);line-height:1.04;margin-bottom:14px}
+.hero .pop{color:var(--coral)}.hero .pop2{color:var(--mint)}
+.hero p.lead{font-size:16px;max-width:46ch;color:#4a546b}
+.hero .tools{margin-top:22px;display:flex;gap:8px;flex-wrap:wrap}
+.mascot{width:240px;filter:drop-shadow(6px 10px 0 rgba(30,42,68,.10));justify-self:center}
+.blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.5;z-index:-1}
+.blob.b1{width:280px;height:280px;background:var(--sky);top:-80px;right:-60px}
+.blob.b2{width:200px;height:200px;background:var(--pink);bottom:-70px;left:-50px;opacity:.35}
+.tool-badge{display:inline-flex;align-items:center;font-weight:800;font-size:12.5px;
+  padding:6px 13px;border-radius:20px;color:#fff;background:var(--tb);
+  border:2.5px solid var(--ink);box-shadow:2px 2px 0 var(--ink)}
+
+section{padding:46px 0;border-top:2px dashed var(--line)}
+.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+.sec-num{font-family:'Poppins',sans-serif;font-weight:800;font-size:14px;color:#fff;
+  background:var(--ink);width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none}
+.sec-head h2{font-size:clamp(24px,3.6vw,34px)}
+.sec-sub{color:#6a7388;margin:2px 0 26px;font-size:15px}
+h3.mini{font-family:'Poppins','Noto Sans HK',sans-serif;font-size:18px;margin:26px 0 14px;display:flex;align-items:center;gap:10px}
+h3.mini .dot{width:12px;height:12px;border-radius:4px;background:var(--coral);flex:none}
+
+.ic{display:inline-grid;place-items:center;width:46px;height:46px;flex:none}
+.ic svg{width:100%;height:100%}
+.card{background:#fff;border:3px solid var(--ink);border-radius:18px;padding:20px 22px;box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card h3{font-size:17px;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.card p{font-size:14px;color:#4a546b}
+.card ul{list-style:none;margin-top:8px}
+.card ul li{font-size:13.5px;padding:4px 0 4px 22px;position:relative;color:#3c4658}
+.card ul li:before{content:"";position:absolute;left:0;top:11px;width:9px;height:9px;border-radius:50%;background:var(--coral)}
+
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:8px}
+.step{background:#fff;border:2.5px solid var(--ink);border-radius:16px;padding:16px 12px;text-align:center;position:relative}
+.step .n{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--coral);
+  color:#fff;font-weight:800;font-size:12px;width:26px;height:26px;border-radius:50%;
+  display:grid;place-items:center;border:2.5px solid var(--ink)}
+.step h4{font-size:13.5px;margin:8px 0 4px;font-family:'Poppins','Noto Sans HK',sans-serif}
+.step p{font-size:11.5px;color:#6a7388;line-height:1.5}
+.step .ic{width:38px;height:38px;margin:4px auto 0}
+
+.promptbox{background:var(--ink);color:#fff;border-radius:14px;padding:16px;
+  font-family:'Roboto Mono',monospace;font-size:12.5px;line-height:1.65;position:relative;margin-top:14px;border:3px solid var(--ink)}
+.promptbox .tag{position:absolute;top:-11px;left:14px;background:var(--mint);color:#fff;
+  font-family:'Noto Sans HK',sans-serif;font-weight:800;font-size:10.5px;padding:2px 9px;border-radius:10px;border:2px solid var(--ink)}
+.promptbox .zh-line{font-family:'Noto Sans HK',sans-serif;color:#FFD9A0;display:block;margin-bottom:8px;padding-bottom:8px;border-bottom:1px dashed rgba(255,255,255,.25)}
+.promptbox .en{color:#7fe3c4}
+.promptbox .hl{color:var(--yellow);font-weight:700}
+.zh-pill,.en-pill{display:inline-block;font-size:9.5px;font-weight:800;padding:1px 7px;border-radius:8px;margin-right:7px;font-family:'Noto Sans HK',sans-serif;vertical-align:1px}
+.zh-pill{background:var(--coral);color:#fff}
+.en-pill{background:var(--mint);color:#fff}
+
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}
+.chip{background:var(--paper2);border:2.5px solid var(--ink);border-radius:12px;padding:8px 13px;font-size:12.5px;font-weight:700}
+.chip b{color:var(--coral)}
+
+.dodont{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+.dobox{background:#EAF7F1;border:3px solid var(--mint);border-radius:16px;padding:16px 18px}
+.dontbox{background:#FDECEC;border:3px solid var(--coral);border-radius:16px;padding:16px 18px}
+.dobox h4,.dontbox h4{font-family:'Poppins','Noto Sans HK',sans-serif;font-size:15px;margin-bottom:8px;display:flex;gap:8px;align-items:center}
+.dobox li,.dontbox li{list-style:none;font-size:13.5px;padding:5px 0 5px 24px;position:relative}
+.dobox li:before{content:"\2714";position:absolute;left:0;color:var(--mint);font-weight:900}
+.dontbox li:before{content:"\2718";position:absolute;left:0;color:var(--coral);font-weight:900}
+
+/* ===== 動態示範卡 ===== */
+.demo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.demo-grid.three{grid-template-columns:repeat(3,1fr)}
+.demo{background:#fff;border:3px solid var(--ink);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+.d-frame{height:150px;position:relative;overflow:hidden;background:#BCE3F2}
+.d-scene{position:absolute;inset:-18% -22%;transform-origin:center}
+.d-sky{position:absolute;inset:0;background:linear-gradient(#BCE3F2,#E8F4E0 75%)}
+.d-sun{position:absolute;width:40px;height:40px;border-radius:50%;background:var(--yellow);top:16%;right:24%;box-shadow:0 0 0 12px rgba(255,194,71,.25)}
+.d-far{position:absolute;bottom:0;left:2%;width:54%;height:62%;background:#7FA98F;clip-path:polygon(0 100%,50% 0,100% 100%)}
+.d-near{position:absolute;bottom:0;right:-4%;width:62%;height:50%;background:#5B8A6E;clip-path:polygon(0 100%,46% 0,100% 100%)}
+.d-grd{position:absolute;bottom:0;left:0;right:0;height:14%;background:#8FB57E}
+.d-subj{position:absolute;bottom:12%;left:48%;width:24px;height:36px;background:var(--coral);border-radius:11px 11px 5px 5px;z-index:3}
+.d-subj:before{content:"";position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;background:var(--coral)}
+.d-label{padding:12px 14px}
+.d-label h4{font-size:14.5px;font-family:'Poppins','Noto Sans HK',sans-serif;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.d-label h4 .en-term{font-size:11px;background:var(--ink);color:#fff;padding:2px 8px;border-radius:8px;font-weight:700}
+.d-label p{font-size:12px;color:#5a647a;margin-top:4px}
+.d-label .use{font-family:'Roboto Mono',monospace;font-size:10.5px;background:var(--paper2);
+  border:1.5px solid var(--line);border-radius:8px;padding:5px 8px;margin-top:7px;color:#3c4658;word-break:break-word}
+.live{position:absolute;top:8px;left:8px;z-index:5;background:rgba(30,42,68,.85);color:#fff;
+  font-size:9px;font-weight:800;padding:2px 8px;border-radius:8px;letter-spacing:.08em;font-family:'Poppins',sans-serif}
+.live:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#FF5252;margin-right:5px;animation:blink 1.2s infinite}
+@keyframes blink{50%{opacity:.25}}
+
+/* 運鏡動畫 */
+@keyframes dollyIn{0%,12%{transform:scale(1)}88%,100%{transform:scale(1.4)}}
+@keyframes dollyOut{0%,12%{transform:scale(1.4)}88%,100%{transform:scale(1)}}
+@keyframes panLR{0%,10%{transform:translateX(-7%)}90%,100%{transform:translateX(7%)}}
+@keyframes tiltUD{0%,10%{transform:translateY(6%)}90%,100%{transform:translateY(-6%)}}
+@keyframes orbitY{0%{transform:perspective(700px) rotateY(-14deg)}100%{transform:perspective(700px) rotateY(14deg)}}
+@keyframes shake{0%,100%{transform:translate(0,0) rotate(0)}20%{transform:translate(-1.5%,1%) rotate(-.5deg)}40%{transform:translate(1.2%,-1%) rotate(.4deg)}60%{transform:translate(-1%, -1.2%) rotate(-.3deg)}80%{transform:translate(1.4%,.8%) rotate(.5deg)}}
+@keyframes zoomPunch{0%,20%{transform:scale(1)}55%,70%{transform:scale(1.55)}100%{transform:scale(1)}}
+@keyframes whip{0%,30%{transform:translateX(-10%);filter:blur(0)}45%{filter:blur(5px)}60%,100%{transform:translateX(10%);filter:blur(0)}}
+@keyframes droneUp{0%,10%{transform:scale(1.45) translateY(7%)}90%,100%{transform:scale(.92) translateY(-4%)}}
+@keyframes trackBG{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.an-dollyin .d-scene{animation:dollyIn 3.4s ease-in-out infinite alternate}
+.an-dollyout .d-scene{animation:dollyOut 3.4s ease-in-out infinite alternate}
+.an-pan .d-scene{animation:panLR 4s ease-in-out infinite alternate}
+.an-tilt .d-scene{animation:tiltUD 3.6s ease-in-out infinite alternate}
+.an-orbit .d-scene{animation:orbitY 3.2s ease-in-out infinite alternate}
+.an-hand .d-scene{animation:shake 1.1s linear infinite}
+.an-zoom .d-scene{animation:zoomPunch 2.6s cubic-bezier(.7,0,.3,1) infinite}
+.an-whip .d-scene{animation:whip 2.4s cubic-bezier(.8,0,.2,1) infinite}
+.an-drone .d-scene{animation:droneUp 4.2s ease-in-out infinite alternate}
+.track-strip{position:absolute;bottom:0;left:0;height:100%;width:200%;animation:trackBG 5s linear infinite}
+.track-strip .d-far{left:4%;width:26%}.track-strip .f2{left:54%}
+.track-strip .d-near{left:30%;width:24%;right:auto}.track-strip .n2{left:80%}
+.an-track .d-subj{animation:bob 1s ease-in-out infinite}
+
+/* 主體動作 */
+.actor{position:absolute;bottom:12%;left:44%;width:30px;height:44px;z-index:3}
+.actor .a-head{position:absolute;top:-18px;left:50%;transform:translateX(-50%);width:22px;height:22px;border-radius:50%;background:var(--coral)}
+.actor .a-body{position:absolute;inset:0;background:var(--coral);border-radius:12px 12px 6px 6px}
+.actor .a-arm{position:absolute;top:5px;right:-9px;width:9px;height:24px;background:var(--coral);border-radius:6px;transform-origin:top center}
+@keyframes walkX{0%{left:8%}100%{left:78%}}
+@keyframes turnY{0%,35%{transform:rotateY(0)}65%,100%{transform:rotateY(180deg)}}
+@keyframes raiseArm{0%,30%{transform:rotate(8deg)}60%,100%{transform:rotate(-130deg)}}
+@keyframes leanIn{0%,20%{transform:scale(1) translateY(0)}80%,100%{transform:scale(1.35) translateY(6%)}}
+.an-walk .actor{animation:walkX 4s linear infinite alternate}
+.an-walk .actor .a-body,.an-walk .actor .a-head{animation:bob .55s ease-in-out infinite}
+.an-turn .actor{animation:turnY 3s ease-in-out infinite alternate;perspective:300px}
+.an-raise .actor .a-arm{animation:raiseArm 2.6s ease-in-out infinite alternate}
+.an-lean .actor{animation:leanIn 3s ease-in-out infinite alternate;transform-origin:bottom center}
+
+/* 色調卡 */
+.tone-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tone-card{background:#fff;border:3px solid var(--ink);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.tone-thumb{height:96px;position:relative}
+.tone-thumb svg{width:100%;height:100%;display:block}
+.ts-sky{fill:var(--s1)}.ts-sun{fill:var(--s2)}.ts-far{fill:var(--s3)}.ts-near{fill:var(--s4)}.ts-subj{fill:var(--s5)}
+.tone-info{padding:9px 12px}
+.tone-info h4{font-size:13px;font-family:'Poppins','Noto Sans HK',sans-serif}
+.tone-info p{font-family:'Roboto Mono',monospace;font-size:9.5px;color:#5a647a;margin-top:2px;word-break:break-word}
+.swatches{display:flex;gap:4px;margin-top:6px}
+.swatches i{width:16px;height:16px;border-radius:5px;border:1.5px solid var(--ink)}
+
+/* film style 卡 */
+.film-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.film-card{background:#fff;border:3px solid var(--ink);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.film-thumb{height:110px;position:relative;overflow:hidden}
+.film-thumb svg.tone-scene{width:100%;height:100%;display:block;--s1:#BCE3F2;--s2:#FFC247;--s3:#7FA98F;--s4:#5B8A6E;--s5:#FF6B4A}
+.fx{position:absolute;inset:0;pointer-events:none}
+.f-grain svg.tone-scene{filter:contrast(1.05) saturate(1.05)}
+.f-anam svg.tone-scene{filter:saturate(1.15) contrast(1.1) hue-rotate(-8deg)}
+.f-anam .bars:before,.f-anam .bars:after{content:"";position:absolute;left:0;right:0;height:14%;background:#0c1320}
+.f-anam .bars:before{top:0}.f-anam .bars:after{bottom:0}
+.f-anam .flare{position:absolute;top:46%;left:-10%;right:-10%;height:3px;background:linear-gradient(90deg,transparent,#6fd9ff 35%,#fff 50%,#6fd9ff 65%,transparent);opacity:.85;filter:blur(.6px)}
+.f-noir svg.tone-scene{filter:grayscale(1) contrast(1.6) brightness(.92)}
+.f-noir .vig{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,.65))}
+.f-vhs svg.tone-scene{filter:saturate(1.3) contrast(1.05) hue-rotate(6deg)}
+.f-vhs .scan{position:absolute;inset:0;background:repeating-linear-gradient(transparent 0 2px,rgba(0,0,0,.16) 2px 3px)}
+.f-vhs .band{position:absolute;left:0;right:0;height:9px;background:rgba(255,255,255,.35);mix-blend-mode:overlay;animation:vhsband 2.8s linear infinite}
+@keyframes vhsband{0%{top:-10%}100%{top:110%}}
+.f-faded svg.tone-scene{filter:sepia(.4) saturate(.72) contrast(.9) brightness(1.05)}
+.f-faded .leak{position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,140,60,.4),transparent 42%)}
+.f-dream svg.tone-scene{filter:blur(1.1px) brightness(1.1) saturate(1.15)}
+.f-dream .glow{position:absolute;inset:0;background:radial-gradient(ellipse at 64% 30%,rgba(255,255,255,.5),transparent 55%)}
+.film-info{padding:10px 13px}
+.film-info h4{font-size:13.5px;font-family:'Poppins','Noto Sans HK',sans-serif;display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.film-info h4 .en-term{font-size:10px;background:var(--ink);color:#fff;padding:1px 7px;border-radius:7px}
+.film-info p{font-size:11.5px;color:#5a647a;margin-top:3px}
+.film-info .use{font-family:'Roboto Mono',monospace;font-size:9.5px;background:var(--paper2);border:1.5px solid var(--line);border-radius:7px;padding:4px 7px;margin-top:6px;color:#3c4658;word-break:break-word}
+
+/* 風格庫 */
+.cat-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 22px}
+.cat-tab{font-weight:800;font-size:12.5px;padding:7px 14px;border-radius:20px;border:2.5px solid var(--ink);
+  background:#fff;cursor:pointer;box-shadow:2px 2px 0 var(--ink);transition:.12s;font-family:'Noto Sans HK',sans-serif}
+.cat-tab:active{transform:translate(2px,2px);box-shadow:none}
+.style-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.style-card{background:#fff;border:3px solid var(--ink);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.style-thumb{height:138px;position:relative}
+.style-thumb svg{width:100%;height:100%;display:block}
+.style-body{padding:13px 15px}
+.cat-pill{font-size:10px;font-weight:800;color:#fff;padding:2px 9px;border-radius:10px}
+.style-body h4{font-size:15px;margin:7px 0 3px;font-family:'Poppins','Noto Sans HK',sans-serif}
+.style-body .desc{font-size:12.5px;color:#5a647a;margin-bottom:9px}
+.sp{border-radius:9px;padding:8px 10px;font-size:10.5px;line-height:1.55;word-break:break-word;margin-top:6px}
+.sp.zh{background:#33405E;color:#FFE3C0;font-family:'Noto Sans HK',sans-serif}
+.sp.en{background:var(--ink);color:#9fe9d0;font-family:'Roboto Mono',monospace}
+.hidden{display:none}
+
+.fontrow{display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.fontrow:last-child{border-bottom:none}
+.fontrow .spec{font-size:30px;flex:none;width:120px}
+.fontrow .meta b{font-family:'Poppins','Noto Sans HK',sans-serif}
+.fontrow .meta p{font-size:13px;color:#5a647a}
+
+footer{background:var(--ink);color:#cdd5e6;padding:38px 0;margin-top:30px;text-align:center}
+footer .mascot{width:90px;margin:0 auto 12px}
+footer b{color:#fff;font-family:'Poppins',sans-serif}
+
+@media(max-width:820px){
+  .hero .wrap{grid-template-columns:1fr;text-align:center}
+  .mascot{width:180px}.blob{display:none}
+  .grid2,.grid3,.dodont,.style-grid,.demo-grid,.demo-grid.three,.film-grid{grid-template-columns:1fr}
+  .tone-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .topbar nav{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .d-scene,.actor,.actor *,.track-strip,.f-vhs .band,.live:before{animation:none!important}
+}
+@media(prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(16px);transition:.6s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+}
+
+.style-thumb img.real,.d-frame video.real{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:4}
+.style-body h4 .sn{font-size:10.5px;background:var(--paper2);border:1.5px solid var(--line);border-radius:8px;padding:1px 7px;color:#6a7388;vertical-align:2px;font-family:'Roboto Mono',monospace}
+</style></head><body>
+
+<div class="topbar"><div class="wrap">
+<span class="logo"><b>●</b> GenAI 手冊 <span style="font-size:11px;background:var(--coral);color:#fff;padding:1px 8px;border-radius:8px;vertical-align:2px">3.1</span></span>
+<nav><a href="#rules">規則流程</a><a href="#prompt">落 Prompt</a><a href="#people">人物圖</a>
+<a href="#cam">運鏡</a><a href="#i2v">先圖後片</a><a href="#act">主體動作</a><a href="#tone">色調</a><a href="#film">Film Style</a>
+<a href="#shots">多鏡頭</a><a href="#styles">風格庫</a><a href="#emotion">情緒背景</a><a href="#type">字體</a><a href="#design">轉設計</a><a href="#cost">成本</a><a href="#warn">注意</a></nav>
+</div></div>
+
+<header class="hero"><div class="blob b1"></div><div class="blob b2"></div><div class="wrap">
+<div><span class="eyebrow">🎬 影片製作公司 · 內部使用 · 3.0 真實素材就緒版</span>
+<h1>用 AI <span class="pop">生影片</span><br>同 <span class="pop2">圖象</span>嘅<br>員工手冊</h1>
+<p class="lead">全部 prompt 中英對照、40 個風格附示意圖、運鏡同動作有得郁嘅 LIVE 示範、色調同 film style 直接視覺對比。</p>
+<div class="tools"><span class="tool-badge" style="--tb:var(--navy)">Claude</span><span class="tool-badge" style="--tb:var(--mint)">ChatGPT</span><span class="tool-badge" style="--tb:var(--violet)">Higgsfield</span><span class="tool-badge" style="--tb:var(--coral)">Artlist</span><span class="tool-badge" style="--tb:var(--pink)">HeyGen</span></div></div>
+<svg viewBox="0 0 200 200" class="mascot" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="100" cy="185" rx="55" ry="8" fill="rgba(30,42,68,.12)"/>
+<rect x="48" y="70" width="104" height="74" rx="18" fill="var(--coral)"/>
+<rect x="150" y="88" width="34" height="38" rx="8" fill="var(--navy)"/>
+<circle cx="96" cy="107" r="26" fill="#fff"/>
+<circle cx="96" cy="107" r="19" fill="var(--navy)"/>
+<circle cx="96" cy="107" r="9" fill="var(--sky)"/>
+<circle cx="89" cy="100" r="4" fill="#fff"/>
+<rect x="60" y="56" width="26" height="16" rx="5" fill="var(--navy)"/>
+<circle cx="140" cy="62" r="8" fill="var(--yellow)"/>
+<path d="M140 54v-9" stroke="var(--yellow)" stroke-width="4" stroke-linecap="round"/>
+<rect x="64" y="144" width="14" height="26" rx="7" fill="var(--navy)"/>
+<rect x="122" y="144" width="14" height="26" rx="7" fill="var(--navy)"/>
+<path d="M48 96c-14 2-20 12-18 24" stroke="var(--coral)" stroke-width="11" fill="none" stroke-linecap="round"/>
+<path d="M152 132c12 4 15 14 11 24" stroke="var(--coral)" stroke-width="11" fill="none" stroke-linecap="round"/>
+</svg></div></header>
+
+<main class="wrap">
+
+<section id="rules" class="reveal">
+<div class="sec-head"><span class="sec-num">01</span><h2>生成規則・流程・工具</h2></div>
+<p class="sec-sub">開始之前:用啱工具、跟足流程、守住規則。每一步都有原因。</p>
+<div class="grid3" style="margin-bottom:20px">
+<div class="card"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="14" y="8" width="36" height="48" rx="6" fill="var(--c1)"/><rect x="20" y="18" width="24" height="4" rx="2" fill="#fff"/><rect x="20" y="28" width="24" height="4" rx="2" fill="#fff"/><rect x="20" y="38" width="16" height="4" rx="2" fill="#fff"/><circle cx="46" cy="46" r="12" fill="var(--c2)"/><path d="M41 46l3 3 6-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>三條鐵則</h3><ul>
+<li><b>人手把關</b>:對外作品必須經人 review 先出街。AI 係草稿引擎,唔係終審</li>
+<li><b>授權先行</b>:客戶人像、品牌素材、第三方圖未攞授權,一律唔可以餵入 AI 工具</li>
+<li><b>留底可溯</b>:每個 final 交付記低「工具 + 模型版本 + 完整 prompt + seed」,客戶要改可以重現</li></ul></div>
+<div class="card"><h3><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><path d="M24 16l-8 8 6 6 8-8z" fill="var(--c1)"/><rect x="30" y="30" width="20" height="6" rx="3" transform="rotate(45 40 33)" fill="var(--c2)"/><circle cx="44" cy="20" r="8" fill="var(--c1)"/></svg></span>工具分工</h3><ul>
+<li><b>Claude / ChatGPT</b>:諗 concept、把中文需求擴寫成詳細英文 prompt、寫文案</li>
+<li><b>Higgsfield</b>:AI 影片生成、運鏡控制、image-to-video 動態化</li>
+<li><b>Artlist</b>:授權素材、配樂音效、AI 圖像生成</li>
+<li><b>HeyGen</b>:AI 數字人、口播影片、多語配音翻譯</li></ul></div>
+<div class="card"><h3><span class="ic" style="--c1:var(--violet);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="22" cy="32" r="13" fill="var(--c1)"/><circle cx="42" cy="32" r="13" fill="var(--c2)" opacity=".85"/><path d="M32 24v16" stroke="#fff" stroke-width="2" stroke-dasharray="3 3"/></svg></span>品質底線</h3><ul>
+<li>人樣一致、膚色自然、唔變形變色</li>
+<li>手指肢體正常、動作自然流暢</li>
+<li>解析度達交付規格(社群至少 1080p,廣告 4K)</li>
+<li>構圖乾淨、無 AI 浮水印殘留</li></ul></div></div>
+<h3 class="mini"><span class="dot"></span>標準生成流程(每單 job 行一次)</h3>
+<div class="steps">
+<div class="step"><span class="n">1</span><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="14" width="44" height="32" rx="6" fill="var(--c1)"/><path d="M24 46l-4 8 12-8z" fill="var(--c1)"/><rect x="18" y="24" width="16" height="3" rx="1.5" fill="#fff"/><rect x="18" y="32" width="24" height="3" rx="1.5" fill="#fff"/><circle cx="46" cy="18" r="7" fill="var(--c2)"/><path d="M46 15v6M43 18h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span><h4>定需求</h4><p>用途、平台、比例(16:9/9:16/1:1)、秒數、風格、情緒</p></div>
+<div class="step"><span class="n">2</span><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="14" cy="32" r="9" fill="var(--c1)"/><circle cx="50" cy="32" r="9" fill="var(--c2)"/><rect x="28" y="28" width="8" height="8" rx="2" fill="var(--c1)"/><path d="M23 32h5M36 32h5" stroke="var(--c2)" stroke-width="3" stroke-linecap="round"/></svg></span><h4>寫 Prompt</h4><p>用 Claude/GPT 按六元素公式擴寫,中英都留底</p></div>
+<div class="step"><span class="n">3</span><span class="ic" style="--c1:var(--violet);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="22" width="36" height="26" rx="5" fill="var(--c1)"/><path d="M46 30l10-6v22l-10-6z" fill="var(--c2)"/><circle cx="24" cy="35" r="7" fill="#fff"/><circle cx="24" cy="35" r="3.5" fill="var(--c2)"/><rect x="16" y="16" width="12" height="8" rx="2" fill="var(--c1)"/></svg></span><h4>生成</h4><p>先低解析度/短秒數試 3-4 版,慳 credit</p></div>
+<div class="step"><span class="n">4</span><span class="ic" style="--c1:var(--yellow);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="22" cy="32" r="13" fill="var(--c1)"/><circle cx="42" cy="32" r="13" fill="var(--c2)" opacity=".85"/><path d="M32 24v16" stroke="#fff" stroke-width="2" stroke-dasharray="3 3"/></svg></span><h4>篩選修正</h4><p>對住 §10 checklist 逐項驗,微調 prompt 再生成</p></div>
+<div class="step"><span class="n">5</span><span class="ic" style="--c1:var(--pink);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="14" width="20" height="20" rx="4" fill="var(--c1)"/><rect x="34" y="30" width="20" height="20" rx="4" fill="var(--c2)"/><path d="M30 24h6v6" stroke="var(--c2)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h4>交付</h4><p>升 4K、轉可編輯設計、prompt 連成品入檔案庫</p></div></div>
+</section>
+
+<section id="prompt" class="reveal">
+<div class="sec-head"><span class="sec-num">02</span><h2>落 Prompt 嘅方法</h2></div>
+<p class="sec-sub">AI 唔會讀心。一條好 prompt = 講清楚六件事,順序講,唔好亂。</p>
+<div class="card"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="14" width="44" height="32" rx="6" fill="var(--c1)"/><path d="M24 46l-4 8 12-8z" fill="var(--c1)"/><rect x="18" y="24" width="16" height="3" rx="1.5" fill="#fff"/><rect x="18" y="32" width="24" height="3" rx="1.5" fill="#fff"/><circle cx="46" cy="18" r="7" fill="var(--c2)"/><path d="M46 15v6M43 18h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>萬用六元素公式</h3>
+<p>逐個元素填,缺一樣 AI 就自己腦補一樣——腦補就係走樣嘅開始:</p>
+<div class="chips">
+<span class="chip"><b>① 主體</b> 邊個/咩嘢(年齡、性別、特徵)</span>
+<span class="chip"><b>② 動作/姿態</b> 做緊咩、點做(速度、幅度)</span>
+<span class="chip"><b>③ 環境</b> 邊度、時間、前中後景有咩</span>
+<span class="chip"><b>④ 鏡頭</b> 景別、角度、運鏡、焦距</span>
+<span class="chip"><b>⑤ 光線</b> 方向、軟硬、色溫、光源</span>
+<span class="chip"><b>⑥ 風格</b> 色調、film style、情緒、參考</span></div>
+<div class="promptbox"><span class="tag">圖像完整範例</span>
+<span class="zh-line"><span class="zh-pill">中</span>一位 30 歲女咖啡師(主體),微笑緩慢手沖咖啡、蒸氣升起(動作),溫暖木質咖啡店、背景書架虛化(環境),中近景、85mm、輕微俯角、淺景深(鏡頭),柔和側窗光、暖色溫 5600K(光線),電影感、35mm 膠片顆粒、橙啡色調、寧靜療癒(風格)</span>
+<span class="en-pill">EN</span><span class="en">a 30yo female barista <span class="hl">smiling, slowly hand-brewing coffee, steam rising</span>, warm wooden cafe with <span class="hl">blurred bookshelf background</span>, medium close-up, <span class="hl">85mm, slight high angle, shallow depth of field</span>, soft window side light, warm 5600K, cinematic, <span class="hl">35mm film grain, warm brown tones</span>, calm soothing mood</span></div>
+<div class="promptbox"><span class="tag">影片要加多三樣</span>
+<span class="zh-line"><span class="zh-pill">中</span>影片 prompt 喺六元素之上,再講埋:⑦ 鏡頭點郁(運鏡,見 §04) ⑧ 主體點郁(動作節奏,見 §05) ⑨ 秒數同節奏(5 秒一個動作最穩)</span>
+<span class="en-pill">EN</span><span class="en">...all six elements above + <span class="hl">camera: slow dolly in</span> + <span class="hl">subject motion: pouring in circular motion</span> + <span class="hl">5s, calm pacing, 24fps</span></span></div></div>
+<div class="card" style="margin-top:18px"><h3><span class="ic" style="--c1:var(--sky);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="14" width="20" height="20" rx="4" fill="var(--c1)"/><rect x="34" y="30" width="20" height="20" rx="4" fill="var(--c2)"/><path d="M30 24h6v6" stroke="var(--c2)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>平台比例速查(生成前第一件事決定)</h3>
+<div class="chips">
+<span class="chip"><b>YouTube / 橫片</b> 16:9</span>
+<span class="chip"><b>Reels / TikTok / Shorts</b> 9:16</span>
+<span class="chip"><b>IG Feed</b> 1:1 或 4:5</span>
+<span class="chip"><b>電影感橫額</b> 21:9</span>
+<span class="chip"><b>Stories 安全區</b> 上下各留 ~15% 俾 UI 遮</span>
+</div>
+<ul style="margin-top:10px">
+<li>同一條片要出多個平台 → 生成時<b>主體放中間</b>,後製裁切最慳</li>
+<li>9:16 直片唔好用 16:9 裁——構圖會散;直片要直接用 9:16 生成</li>
+<li>字幕位、logo 位喺 prompt 預留白,跟返安全區</li></ul></div>
+<div class="dodont">
+<div class="dobox"><h4><span class="ic" style="--c1:var(--mint);--c2:var(--mint)"><svg viewBox="0 0 64 64"><rect x="14" y="8" width="36" height="48" rx="6" fill="var(--c1)"/><rect x="20" y="18" width="24" height="4" rx="2" fill="#fff"/><rect x="20" y="28" width="24" height="4" rx="2" fill="#fff"/><rect x="20" y="38" width="16" height="4" rx="2" fill="#fff"/><circle cx="46" cy="46" r="12" fill="var(--c2)"/><path d="M41 46l3 3 6-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 好習慣</h4><ul>
+<li><b>具體量化</b>:寫「日落金光由右側打入」,唔好寫「靚光」</li>
+<li><b>順序分層</b>:主體→動作→環境→鏡頭→光→風格,AI 讀得清</li>
+<li><b>俾參考錨點</b>:指明 film style、年代、「documentary style」呢類 AI 識嘅詞</li>
+<li><b>中轉英</b>:用 Claude/GPT 把中文需求擴寫成英文 prompt,生成工具普遍英文準啲</li>
+<li><b>一次改一樣</b>:迭代時只動一個元素,先知邊樣造成分別</li>
+<li><b>留底</b>:成功 prompt 即刻入公司 prompt 庫,連 seed 一齊記</li></ul></div>
+<div class="dontbox"><h4><span class="ic" style="--c1:var(--coral);--c2:var(--coral)"><svg viewBox="0 0 64 64"><path d="M32 10l24 42H8z" fill="var(--c1)"/><rect x="29" y="26" width="6" height="14" rx="3" fill="#fff"/><circle cx="32" cy="45" r="3.5" fill="#fff"/></svg></span> 易踩雷</h4><ul>
+<li>一句塞兩種互相矛盾風格(極簡 + 巴洛克)</li>
+<li>淨係堆形容詞,冇主體冇動作</li>
+<li>忽略比例:IG Reels 係 9:16,YouTube 係 16:9,生錯要重做</li>
+<li>「唔要」嘅嘢寫埋落正面描述度——負面要求一律放 negative prompt</li>
+<li>一個 5 秒鏡頭要求三個動作,AI 實做爛</li></ul></div></div>
+</section>
+
+<section id="people" class="reveal">
+<div class="sec-head"><span class="sec-num">03</span><h2>人物圖 · 確保唔走樣</h2></div>
+<p class="sec-sub">人物最易崩:換臉、變色、多手指、怪姿勢。以下係保命四步 + 中英 prompt。</p>
+<div class="grid2">
+<div class="card"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="32" cy="26" r="14" fill="var(--c1)"/><circle cx="27" cy="24" r="2.5" fill="#fff"/><circle cx="37" cy="24" r="2.5" fill="#fff"/><path d="M27 32q5 4 10 0" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M14 56c0-12 8-18 18-18s18 6 18 18" fill="var(--c2)"/></svg></span>人樣一致(唔換臉)</h3><ul>
+<li><b>圖鎖樣</b>:必須用 reference image / 角色參考圖,唔好淨靠文字描述個樣</li>
+<li><b>Seed 鎖定</b>:同一角色固定 seed + 一字不改嘅外貌描述段落,跨張先一致</li>
+<li><b>描述寫死</b>:年齡、髮型髮色、臉型、膚色、標誌特徵(眼鏡/鬚/痣)逐樣寫</li>
+<li><b>多角度</b>:要側面背面 → 一次過用 character sheet 方式生成全套</li>
+<li><b>HeyGen</b>:數字人由頭到尾用同一個 avatar ID,中途唔好換</li></ul></div>
+<div class="card"><h3><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="22" cy="32" r="13" fill="var(--c1)"/><circle cx="42" cy="32" r="13" fill="var(--c2)" opacity=".85"/><path d="M32 24v16" stroke="#fff" stroke-width="2" stroke-dasharray="3 3"/></svg></span>唔變色 · 唔變形</h3><ul>
+<li><b>顏色寫死</b>:膚色、髮色、衫色每次 prompt 都重複寫一次</li>
+<li><b>色溫鎖定</b>:指定 warm 5600K / neutral daylight,唔好俾 AI 自由發揮</li>
+<li><b>膚色保護</b>:極端光環境(霓虹/夕陽)加「natural accurate skin tone」</li>
+<li><b>連續鏡頭</b>:同場戲全部用同一段光線描述,後製再統一 grade</li></ul></div></div>
+<div class="card" style="margin-top:18px"><h3><span class="ic" style="--c1:var(--yellow);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="32" cy="26" r="14" fill="var(--c1)"/><circle cx="27" cy="24" r="2.5" fill="#fff"/><circle cx="37" cy="24" r="2.5" fill="#fff"/><path d="M27 32q5 4 10 0" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M14 56c0-12 8-18 18-18s18 6 18 18" fill="var(--c2)"/></svg></span>角色一致性三級制(按需要揀)</h3>
+<div class="grid3" style="margin-top:10px">
+<div class="card" style="box-shadow:none;border-width:2px"><h3 style="font-size:14.5px">Lv.1 文字鎖</h3><ul>
+<li>外貌描述寫死 + 固定 seed</li><li>零成本、即用</li><li>人樣仍會跳,單張可以,連戲唔夠</li></ul></div>
+<div class="card" style="box-shadow:none;border-width:2px;background:#FFF6EC"><h3 style="font-size:14.5px">Lv.2 定裝圖 + 角色庫 ★推薦</h3><ul>
+<li>先生成一張<b>定裝圖</b>(中景、面容清晰、定裝定髮型)</li>
+<li>儲存做<b>可重用角色</b>,之後每次生成直接引用呢個角色</li>
+<li>即時生效、可以幾個角色同場;本手冊嘅示範片就係咁做</li></ul></div>
+<div class="card" style="box-shadow:none;border-width:2px"><h3 style="font-size:14.5px">Lv.3 模型訓練</h3><ul>
+<li>用 5–20 張同一人相片訓練專屬角色模型(約 10 分鐘)</li>
+<li>保真度最高,適合品牌長期代言人、老闆數字分身</li><li>一人一模型,啟動成本高啲</li></ul></div></div>
+<p style="margin-top:10px;font-size:13px;color:#5a647a"><b>實戰心法:</b>單張海報用 Lv.1;一條片/一個 campaign 用 Lv.2;成個品牌長期用同一個面孔先升級 Lv.3。</p></div>
+
+<div class="card" style="margin-top:18px"><h3><span class="ic" style="--c1:var(--violet);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="40" cy="16" r="6" fill="var(--c1)"/><path d="M40 22v14l-8 12M40 30l10 6M40 30l-12 4" stroke="var(--c1)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M12 30h8M10 40h10" stroke="var(--c2)" stroke-width="3" stroke-linecap="round"/></svg></span>唔會有奇怪動作 / 多餘肢體</h3>
+<div class="dodont">
+<div class="dobox"><h4>正面 prompt 要寫</h4><ul>
+<li>natural relaxed pose / 自然放鬆姿勢</li>
+<li>anatomically correct / 解剖結構正確</li>
+<li>five fingers each hand, both hands visible / 每手五指清晰可見</li>
+<li>smooth natural movement / 動作流暢自然(影片)</li></ul></div>
+<div class="dontbox"><h4>Negative prompt 放呢啲</h4><ul>
+<li>extra fingers, extra limbs / 多手指、多肢體</li>
+<li>deformed hands, fused fingers / 變形手、黏連手指</li>
+<li>distorted face, asymmetric eyes / 扭曲臉、大細眼</li>
+<li>twisted body, unnatural pose / 扭曲身體、怪姿勢</li>
+<li>color shift, plastic skin / 變色、膠皮膚</li></ul></div></div>
+<div class="promptbox"><span class="tag">人物保命 prompt(成段照抄)</span>
+<span class="zh-line"><span class="zh-pill">中</span>同參考圖一致嘅角色,面容一致,自然準確膚色,每手五指正常,放鬆自然姿勢 ‖ 負面:多手指、變形手、扭曲臉、變色、膠感皮膚</span>
+<span class="en-pill">EN</span><span class="en">same character as reference image, <span class="hl">consistent face</span>, natural accurate skin tone, <span class="hl">five fingers each hand</span>, relaxed natural pose ‖ negative: <span class="hl">extra fingers, deformed hands, distorted face, color shift, plastic skin</span></span></div></div>
+</section>
+
+<section id="cam" class="reveal">
+<div class="sec-head"><span class="sec-num">04</span><h2>運鏡 Camera Movement</h2></div>
+<p class="sec-sub">每格都係 LIVE 動態示範——個鏡頭真係咁郁。揀啱運鏡,半條片嘅情緒已經對咗。</p>
+<div class="demo-grid"><div class="demo an-dollyin"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"></div><div class="d-sun"></div>
+<div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div><div class="d-subj"></div></div>
+<video class="real" src="videos/dollyin.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<div class="d-label"><h4>推軌入 <span class="en-term">dolly in</span></h4><p>鏡頭慢慢推近主體。情緒聚焦、揭示重點、營造親密或壓迫感。商業片收結最常用。</p><div class="use">prompt 寫法:slow dolly in on subject / 鏡頭緩慢推近主體</div></div></div>
+<div class="demo an-dollyout"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"></div><div class="d-sun"></div>
+<div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div><div class="d-subj"></div></div>
+<video class="real" src="videos/dollyout.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<div class="d-label"><h4>推軌出 <span class="en-term">dolly out</span></h4><p>由近拉遠,揭示環境全貌。常用於開場交代場景,或結尾抽離留白。</p><div class="use">prompt 寫法:slow dolly out revealing the scene / 緩慢拉遠揭示全景</div></div></div>
+<div class="demo an-pan"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"></div><div class="d-sun"></div>
+<div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div><div class="d-subj"></div></div>
+<video class="real" src="videos/pan.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<div class="d-label"><h4>橫搖 <span class="en-term">pan</span></h4><p>機位不動,左右掃視。跟隨橫向移動、展示寬闊環境、兩個主體之間過渡。</p><div class="use">prompt 寫法:smooth pan left to right / 平滑由左至右橫搖</div></div></div>
+<div class="demo an-tilt"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"></div><div class="d-sun"></div>
+<div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div><div class="d-subj"></div></div>
+<video class="real" src="videos/tilt.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<div class="d-label"><h4>直搖 <span class="en-term">tilt</span></h4><p>機位不動,上下掃視。由腳到頭介紹人物、由地面搖上天空製造氣勢。</p><div class="use">prompt 寫法:tilt up from ground to sky / 由下而上直搖</div></div></div>
+<div class="demo an-orbit"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"></div><div class="d-sun"></div>
+<div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div><div class="d-subj"></div></div>
+<video class="real" src="videos/orbit.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<div class="d-label"><h4>環繞 <span class="en-term">orbit / arc</span></h4><p>鏡頭圍住主體轉。產品 360 展示、人物英雄感、空間立體感必備。</p><div class="use">prompt 寫法:camera orbiting around subject / 鏡頭環繞主體運動</div></div></div>
+<div class="demo an-track"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene" style="inset:0"><div class="d-sky"></div><div class="d-sun"></div>
+<div class="track-strip"><div class="d-far"></div><div class="d-far f2"></div><div class="d-near"></div><div class="d-near n2"></div></div>
+<div class="d-grd"></div><div class="d-subj" style="left:46%"></div></div>
+<video class="real" src="videos/track.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<div class="d-label"><h4>跟拍 <span class="en-term">tracking shot</span></h4><p>鏡頭跟住主體一齊移動,背景流動。行走訪談、追逐、沉浸式跟隨。</p><div class="use">prompt 寫法:tracking shot following subject / 跟隨主體移動拍攝</div></div></div>
+<div class="demo an-hand"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"></div><div class="d-sun"></div>
+<div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div><div class="d-subj"></div></div>
+<video class="real" src="videos/hand.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<div class="d-label"><h4>手持 <span class="en-term">handheld</span></h4><p>輕微晃動,真實紀錄感。Vlog、紀錄片、緊張追逐;商業精緻片避免。</p><div class="use">prompt 寫法:handheld camera, documentary feel / 手持鏡頭,紀實感</div></div></div>
+<div class="demo an-zoom"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"></div><div class="d-sun"></div>
+<div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div><div class="d-subj"></div></div>
+<video class="real" src="videos/zoom.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<div class="d-label"><h4>快速變焦 <span class="en-term">zoom / punch in</span></h4><p>焦距快速推入,節奏感強。社群短片 hook、強調反應、喜劇效果。</p><div class="use">prompt 寫法:fast zoom punch in / 快速變焦推入</div></div></div>
+<div class="demo an-whip"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"></div><div class="d-sun"></div>
+<div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div><div class="d-subj"></div></div>
+<video class="real" src="videos/whip.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<div class="d-label"><h4>甩鏡 <span class="en-term">whip pan</span></h4><p>極速橫甩帶動態模糊。轉場神器,連接兩個場景,energy 爆棚。</p><div class="use">prompt 寫法:whip pan transition / 快速甩鏡轉場</div></div></div>
+<div class="demo an-drone"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"></div><div class="d-sun"></div>
+<div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div><div class="d-subj"></div></div>
+<video class="real" src="videos/drone.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<div class="d-label"><h4>航拍升降 <span class="en-term">drone / aerial</span></h4><p>由高空俯瞰或拉升。開場立 scale、地理交代、史詩感結尾。</p><div class="use">prompt 寫法:aerial drone shot rising up / 航拍鏡頭緩緩拉升</div></div></div></div>
+<div class="promptbox"><span class="tag">運鏡組合範例</span>
+<span class="zh-line"><span class="zh-pill">中</span>開場航拍拉升交代環境 → 切跟拍主體行入咖啡店 → 結尾緩慢推軌入到面部特寫。一條 prompt 一個運鏡,分三條生成再剪埋。</span>
+<span class="en-pill">EN</span><span class="en">shot 1: <span class="hl">aerial drone rising</span> over city · shot 2: <span class="hl">tracking shot</span> following subject into cafe · shot 3: <span class="hl">slow dolly in</span> to close-up</span></div>
+<h3 class="mini"><span class="dot"></span>光圈・快門・焦距(影響畫面質感嘅三粒掣)</h3>
+<div class="grid3">
+<div class="card"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="20" fill="none" stroke="var(--c1)" stroke-width="4"/><path d="M32 12l10 18H22zM52 32l-10 18-8-18zM12 32l10-18 8 18z" fill="var(--c2)" opacity=".7"/><circle cx="32" cy="32" r="6" fill="var(--c1)"/></svg></span>光圈 / 景深</h3><ul>
+<li><b>f1.8 淺景深</b> shallow DOF:主體實、背景化開,人像產品必用</li>
+<li><b>f8-f11 深景深</b> deep focus:全景清晰,風景、團體、建築</li></ul></div>
+<div class="card"><h3><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="14" cy="32" r="9" fill="var(--c1)"/><circle cx="50" cy="32" r="9" fill="var(--c2)"/><rect x="28" y="28" width="8" height="8" rx="2" fill="var(--c1)"/><path d="M23 32h5M36 32h5" stroke="var(--c2)" stroke-width="3" stroke-linecap="round"/></svg></span>快門 / 動態</h3><ul>
+<li><b>慢快門</b> motion blur:車軌流光、動感拖影</li>
+<li><b>高速快門</b> frozen motion:凝結水花、定格跳躍</li></ul></div>
+<div class="card"><h3><span class="ic" style="--c1:var(--violet);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="22" width="36" height="26" rx="5" fill="var(--c1)"/><path d="M46 30l10-6v22l-10-6z" fill="var(--c2)"/><circle cx="24" cy="35" r="7" fill="#fff"/><circle cx="24" cy="35" r="3.5" fill="var(--c2)"/><rect x="16" y="16" width="12" height="8" rx="2" fill="var(--c1)"/></svg></span>焦距 / 透視</h3><ul>
+<li><b>24mm 廣角</b>:空間張力大、輕微誇張,環境交代</li>
+<li><b>50mm 標準</b>:似人眼,自然紀實</li>
+<li><b>85mm 長焦</b>:壓縮空間、人像最靚,背景化開</li></ul></div></div>
+</section>
+
+<section id="act" class="reveal">
+<div class="sec-head"><span class="sec-num">05</span><h2>主體動作設計</h2></div>
+<p class="sec-sub">影片 prompt 嘅主角係動詞。一個鏡頭一個清晰動作,寫埋速度同方向。</p>
+<div class="demo-grid"><div class="demo an-walk"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"><div class="actor"><span class="a-head"></span><span class="a-body"></span><span class="a-arm"></span></div></div><div class="d-sun"></div>
+<div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div></div>
+<video class="real" src="videos/walk.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<div class="d-label"><h4>行走 <span class="en-term">walking</span></h4><p>主體橫越畫面。寫明方向同速度:slowly walking left to right。配 tracking 跟拍更自然。</p><div class="use">prompt 寫法:subject slowly walking across / 主體緩慢橫越畫面</div></div></div>
+<div class="demo an-turn"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"><div class="actor"><span class="a-head"></span><span class="a-body"></span><span class="a-arm"></span></div></div><div class="d-sun"></div>
+<div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div></div>
+<video class="real" src="videos/turn.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<div class="d-label"><h4>轉身 <span class="en-term">turning around</span></h4><p>主體轉向鏡頭。揭示表情、回應呼喚、劇情轉折位。寫:turns to face camera。</p><div class="use">prompt 寫法:slowly turns to face the camera / 緩緩轉身面向鏡頭</div></div></div>
+<div class="demo an-raise"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"><div class="actor"><span class="a-head"></span><span class="a-body"></span><span class="a-arm"></span></div></div><div class="d-sun"></div>
+<div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div></div>
+<video class="real" src="videos/raise.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<div class="d-label"><h4>舉手動作 <span class="en-term">raising arm</span></h4><p>清晰單一手部動作:舉手、揮手、指向。一個鏡頭一個動作,避免 AI 出怪手。</p><div class="use">prompt 寫法:raises one hand to wave, five fingers / 舉起一隻手揮動,五指正常</div></div></div>
+<div class="demo an-lean"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"><div class="actor"><span class="a-head"></span><span class="a-body"></span><span class="a-arm"></span></div></div><div class="d-sun"></div>
+<div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div></div>
+<video class="real" src="videos/lean.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<div class="d-label"><h4>前傾靠近 <span class="en-term">leaning in</span></h4><p>主體向鏡頭傾前。製造親密、秘密、邀請感。配 dolly in 雙重推進更強。</p><div class="use">prompt 寫法:leans in toward camera / 向鏡頭前傾靠近</div></div></div></div>
+<div class="grid3" style="margin-top:18px">
+<div class="card"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="40" cy="16" r="6" fill="var(--c1)"/><path d="M40 22v14l-8 12M40 30l10 6M40 30l-12 4" stroke="var(--c1)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M12 30h8M10 40h10" stroke="var(--c2)" stroke-width="3" stroke-linecap="round"/></svg></span>動作三要素</h3><ul>
+<li><b>動詞</b>:行、轉身、伸手、舉杯、微笑漸開</li>
+<li><b>速度</b>:slowly / gently / briskly / energetically</li>
+<li><b>方向</b>:left to right / toward camera / upward</li></ul></div>
+<div class="card"><h3><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="22" width="36" height="26" rx="5" fill="var(--c1)"/><path d="M46 30l10-6v22l-10-6z" fill="var(--c2)"/><circle cx="24" cy="35" r="7" fill="#fff"/><circle cx="24" cy="35" r="3.5" fill="var(--c2)"/><rect x="16" y="16" width="12" height="8" rx="2" fill="var(--c1)"/></svg></span>同運鏡夾埋</h3><ul>
+<li>主體靜 → 鏡頭動(orbit / dolly 營造氛圍)</li>
+<li>主體動 → 鏡頭跟(tracking 保持構圖)</li>
+<li>情緒爆發位 → 雙重推進(主體 lean in + dolly in)</li></ul></div>
+<div class="card"><h3><span class="ic" style="--c1:var(--violet);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="14" cy="32" r="9" fill="var(--c1)"/><circle cx="50" cy="32" r="9" fill="var(--c2)"/><rect x="28" y="28" width="8" height="8" rx="2" fill="var(--c1)"/><path d="M23 32h5M36 32h5" stroke="var(--c2)" stroke-width="3" stroke-linecap="round"/></svg></span>節奏 Pacing</h3><ul>
+<li><b>商業片</b>:慢、穩、優雅,5 秒一個動作</li>
+<li><b>社群片</b>:首 2 秒要有 hook 動作,快而跳</li>
+<li><b>故事片</b>:張弛交替,動作之間留呼吸位</li></ul></div></div>
+</section>
+
+<section id="i2v" class="reveal">
+<div class="sec-head"><span class="sec-num">·</span><h2>先圖後片 · Image-to-Video 工作流</h2></div>
+<p class="sec-sub">製作公司最重要嘅一條流程紀律:畫面喺「圖」階段執到完美,先俾佢「郁」。</p>
+<div class="grid3">
+<div class="card"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="20" fill="none" stroke="var(--c1)" stroke-width="4"/><path d="M32 12l10 18H22zM52 32l-10 18-8-18zM12 32l10-18 8 18z" fill="var(--c2)" opacity=".7"/><circle cx="32" cy="32" r="6" fill="var(--c1)"/></svg></span>點解先圖後片</h3><ul>
+<li><b>價差巨大</b>:一張圖大約 0.1–1.3 credit,一條 5 秒片 7.5+ ——差成 6 至 60 倍</li>
+<li>圖階段可以平價迭代 5–10 個版本揀最好;片階段先迭代 = 燒錢</li>
+<li>構圖、人物、光線、色調全部喺圖度鎖死,片只負責「郁」</li></ul></div>
+<div class="card"><h3><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="14" cy="32" r="9" fill="var(--c1)"/><circle cx="50" cy="32" r="9" fill="var(--c2)"/><rect x="28" y="28" width="8" height="8" rx="2" fill="var(--c1)"/><path d="M23 32h5M36 32h5" stroke="var(--c2)" stroke-width="3" stroke-linecap="round"/></svg></span>三步流程</h3><ul>
+<li><b>① 出圖</b>:照六元素公式生 3–5 版,揀構圖最啱嗰張</li>
+<li><b>② 設定首尾格</b>:揀好嘅圖做 start frame(起始畫面);要控制運動終點可以再俾埋 end frame(結尾畫面)</li>
+<li><b>③ 動態化</b>:image-to-video,prompt 淨係寫「點郁」——運鏡 + 主體動作 + 節奏</li></ul></div>
+<div class="card"><h3><span class="ic" style="--c1:var(--violet);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="14" width="44" height="32" rx="6" fill="var(--c1)"/><path d="M24 46l-4 8 12-8z" fill="var(--c1)"/><rect x="18" y="24" width="16" height="3" rx="1.5" fill="#fff"/><rect x="18" y="32" width="24" height="3" rx="1.5" fill="#fff"/><circle cx="46" cy="18" r="7" fill="var(--c2)"/><path d="M46 15v6M43 18h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>I2V prompt 重點</h3><ul>
+<li>畫面已經喺圖度定咗,<b>唔好再重複描述場景</b>——重複會令 AI 想改畫面</li>
+<li>只寫動態:「slow dolly in, she turns to face camera, calm pacing」</li>
+<li>想畫面盡量唔變形 → 加「maintain composition / 保持構圖」</li></ul></div></div>
+<div class="promptbox"><span class="tag">I2V 完整範例</span>
+<span class="zh-line"><span class="zh-pill">中</span>(已上載起始圖)鏡頭緩慢推近,主體緩緩望向鏡頭微笑,保持構圖同光線,平靜節奏,5 秒</span>
+<span class="en-pill">EN</span><span class="en">(start frame attached) <span class="hl">slow dolly in</span>, she slowly looks toward camera and smiles, <span class="hl">maintain composition and lighting</span>, calm pacing, 5s</span></div>
+</section>
+
+<section id="tone" class="reveal">
+<div class="sec-head"><span class="sec-num">06</span><h2>色調 Color</h2></div>
+<p class="sec-sub">同一個場景、八種色調——直接見到色調點改情緒。揀一個,抄低 prompt 寫法。</p>
+<div class="tone-grid"><div class="tone-card"><div class="tone-thumb" style="--s1:#1A4A56;--s2:#FF8A4A;--s3:#15535E;--s4:#0E3A42;--s5:#FF8A4A"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
+<rect width="320" height="180" class="ts-sky"/>
+<circle cx="226" cy="54" r="24" class="ts-sun"/>
+<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
+<path d="M-10 180L90 70l78 110z" class="ts-far"/>
+<path d="M128 180l90-88 112 88z" class="ts-near"/>
+<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
+<circle cx="76" cy="110" r="10" class="ts-subj"/>
+</svg></div>
+<div class="tone-info"><h4>橙藍 Teal & Orange</h4><div class="swatches"><i style="background:#1A4A56"></i><i style="background:#15535E"></i><i style="background:#0E3A42"></i><i style="background:#FF8A4A"></i></div><p>teal and orange grade / 橙藍電影調色</p></div></div>
+<div class="tone-card"><div class="tone-thumb" style="--s1:#FFD9A0;--s2:#FF9A4A;--s3:#C97B3A;--s4:#A05A2B;--s5:#7A3A1E"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
+<rect width="320" height="180" class="ts-sky"/>
+<circle cx="226" cy="54" r="24" class="ts-sun"/>
+<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
+<path d="M-10 180L90 70l78 110z" class="ts-far"/>
+<path d="M128 180l90-88 112 88z" class="ts-near"/>
+<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
+<circle cx="76" cy="110" r="10" class="ts-subj"/>
+</svg></div>
+<div class="tone-info"><h4>暖金 Golden</h4><div class="swatches"><i style="background:#FFD9A0"></i><i style="background:#C97B3A"></i><i style="background:#A05A2B"></i><i style="background:#7A3A1E"></i></div><p>golden hour warm tones / 黃金時刻暖金色調</p></div></div>
+<div class="tone-card"><div class="tone-thumb" style="--s1:#A8C4D8;--s2:#D8E8F0;--s3:#4A6478;--s4:#2E4456;--s5:#1E3040"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
+<rect width="320" height="180" class="ts-sky"/>
+<circle cx="226" cy="54" r="24" class="ts-sun"/>
+<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
+<path d="M-10 180L90 70l78 110z" class="ts-far"/>
+<path d="M128 180l90-88 112 88z" class="ts-near"/>
+<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
+<circle cx="76" cy="110" r="10" class="ts-subj"/>
+</svg></div>
+<div class="tone-info"><h4>冷藍 Cold Blue</h4><div class="swatches"><i style="background:#A8C4D8"></i><i style="background:#4A6478"></i><i style="background:#2E4456"></i><i style="background:#1E3040"></i></div><p>cold desaturated blue / 冷峻低飽和藍調</p></div></div>
+<div class="tone-card"><div class="tone-thumb" style="--s1:#1A0830;--s2:#E83FA0;--s3:#3FC8D8;--s4:#7C3FE8;--s5:#FF4A8A"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
+<rect width="320" height="180" class="ts-sky"/>
+<circle cx="226" cy="54" r="24" class="ts-sun"/>
+<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
+<path d="M-10 180L90 70l78 110z" class="ts-far"/>
+<path d="M128 180l90-88 112 88z" class="ts-near"/>
+<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
+<circle cx="76" cy="110" r="10" class="ts-subj"/>
+</svg></div>
+<div class="tone-info"><h4>霓虹 Neon</h4><div class="swatches"><i style="background:#1A0830"></i><i style="background:#3FC8D8"></i><i style="background:#7C3FE8"></i><i style="background:#FF4A8A"></i></div><p>neon magenta and cyan glow / 霓虹紫紅青藍光</p></div></div>
+<div class="tone-card"><div class="tone-thumb" style="--s1:#D8CBB4;--s2:#E8D9B8;--s3:#A89878;--s4:#8A7A5E;--s5:#B0764E"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
+<rect width="320" height="180" class="ts-sky"/>
+<circle cx="226" cy="54" r="24" class="ts-sun"/>
+<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
+<path d="M-10 180L90 70l78 110z" class="ts-far"/>
+<path d="M128 180l90-88 112 88z" class="ts-near"/>
+<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
+<circle cx="76" cy="110" r="10" class="ts-subj"/>
+</svg></div>
+<div class="tone-info"><h4>褪色 Faded</h4><div class="swatches"><i style="background:#D8CBB4"></i><i style="background:#A89878"></i><i style="background:#8A7A5E"></i><i style="background:#B0764E"></i></div><p>faded vintage tones / 褪色復古色調</p></div></div>
+<div class="tone-card"><div class="tone-thumb" style="--s1:#E8E8E8;--s2:#FFFFFF;--s3:#3A3A3A;--s4:#141414;--s5:#FF4A3A"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
+<rect width="320" height="180" class="ts-sky"/>
+<circle cx="226" cy="54" r="24" class="ts-sun"/>
+<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
+<path d="M-10 180L90 70l78 110z" class="ts-far"/>
+<path d="M128 180l90-88 112 88z" class="ts-near"/>
+<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
+<circle cx="76" cy="110" r="10" class="ts-subj"/>
+</svg></div>
+<div class="tone-info"><h4>高反差 High Contrast</h4><div class="swatches"><i style="background:#E8E8E8"></i><i style="background:#3A3A3A"></i><i style="background:#141414"></i><i style="background:#FF4A3A"></i></div><p>high contrast punchy / 高反差有力</p></div></div>
+<div class="tone-card"><div class="tone-thumb" style="--s1:#F5E0EC;--s2:#FFF0D9;--s3:#C9D8E8;--s4:#A8C0D8;--s5:#E8A0B8"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
+<rect width="320" height="180" class="ts-sky"/>
+<circle cx="226" cy="54" r="24" class="ts-sun"/>
+<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
+<path d="M-10 180L90 70l78 110z" class="ts-far"/>
+<path d="M128 180l90-88 112 88z" class="ts-near"/>
+<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
+<circle cx="76" cy="110" r="10" class="ts-subj"/>
+</svg></div>
+<div class="tone-info"><h4>柔粉 Pastel</h4><div class="swatches"><i style="background:#F5E0EC"></i><i style="background:#C9D8E8"></i><i style="background:#A8C0D8"></i><i style="background:#E8A0B8"></i></div><p>soft pastel palette / 柔和粉彩色盤</p></div></div>
+<div class="tone-card"><div class="tone-thumb" style="--s1:#D8D8D8;--s2:#F0F0F0;--s3:#8A8A8A;--s4:#4A4A4A;--s5:#202020"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
+<rect width="320" height="180" class="ts-sky"/>
+<circle cx="226" cy="54" r="24" class="ts-sun"/>
+<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
+<path d="M-10 180L90 70l78 110z" class="ts-far"/>
+<path d="M128 180l90-88 112 88z" class="ts-near"/>
+<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
+<circle cx="76" cy="110" r="10" class="ts-subj"/>
+</svg></div>
+<div class="tone-info"><h4>單色 Monochrome</h4><div class="swatches"><i style="background:#D8D8D8"></i><i style="background:#8A8A8A"></i><i style="background:#4A4A4A"></i><i style="background:#202020"></i></div><p>black and white monochrome / 黑白單色</p></div></div></div>
+<div class="promptbox"><span class="tag">色調點落 prompt</span>
+<span class="zh-line"><span class="zh-pill">中</span>色調放喺 prompt 風格段:寫「色名 + grade/tones/palette」。同一條片所有鏡頭用同一段色調描述,先唔會跳色。</span>
+<span class="en-pill">EN</span><span class="en">...scene description, <span class="hl">teal and orange cinematic grade</span> — or — <span class="hl">soft pastel palette</span> — or — <span class="hl">cold desaturated blue tones</span></span></div>
+</section>
+
+<section id="film" class="reveal">
+<div class="sec-head"><span class="sec-num">07</span><h2>Film Style 質感</h2></div>
+<p class="sec-sub">同一場景、六種 film style 即時對比。質感係風格嘅最後一層皮。</p>
+<div class="film-grid"><div class="film-card f-grain"><div class="film-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
+<rect width="320" height="180" class="ts-sky"/>
+<circle cx="226" cy="54" r="24" class="ts-sun"/>
+<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
+<path d="M-10 180L90 70l78 110z" class="ts-far"/>
+<path d="M128 180l90-88 112 88z" class="ts-near"/>
+<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
+<circle cx="76" cy="110" r="10" class="ts-subj"/>
+</svg><svg class="fx" width="100%" height="100%"><filter id="grainF"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#grainF)" opacity="0.22"/></svg></div>
+<div class="film-info"><h4>35mm 膠片 <span class="en-term">35mm film grain</span></h4><p>細膩顆粒,溫潤質感。商業片加一層即刻高級,萬用安全牌。</p><div class="use">35mm film grain, kodak texture / 35mm 膠片顆粒質感</div></div></div>
+<div class="film-card f-anam"><div class="film-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
+<rect width="320" height="180" class="ts-sky"/>
+<circle cx="226" cy="54" r="24" class="ts-sun"/>
+<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
+<path d="M-10 180L90 70l78 110z" class="ts-far"/>
+<path d="M128 180l90-88 112 88z" class="ts-near"/>
+<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
+<circle cx="76" cy="110" r="10" class="ts-subj"/>
+</svg><div class="fx bars"></div><div class="fx"><div class="flare"></div></div><svg class="fx" width="100%" height="100%"><rect width="100%" height="100%" filter="url(#grainF)" opacity="0.22"/></svg></div>
+<div class="film-info"><h4>Anamorphic 寬幕 <span class="en-term">anamorphic</span></h4><p>上下黑邊 + 橫向藍色光斑,即刻電影院氣場。大片感、預告片必備。</p><div class="use">anamorphic widescreen, horizontal lens flare / 變形寬銀幕,橫向光暈</div></div></div>
+<div class="film-card f-noir"><div class="film-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
+<rect width="320" height="180" class="ts-sky"/>
+<circle cx="226" cy="54" r="24" class="ts-sun"/>
+<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
+<path d="M-10 180L90 70l78 110z" class="ts-far"/>
+<path d="M128 180l90-88 112 88z" class="ts-near"/>
+<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
+<circle cx="76" cy="110" r="10" class="ts-subj"/>
+</svg><div class="fx vig"></div></div>
+<div class="film-info"><h4>黑色電影 <span class="en-term">film noir</span></h4><p>高反差黑白 + 暗角。懸疑、復古偵探、強烈戲劇光影。</p><div class="use">film noir, high contrast b&w, vignette / 黑色電影,高反差黑白</div></div></div>
+<div class="film-card f-vhs"><div class="film-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
+<rect width="320" height="180" class="ts-sky"/>
+<circle cx="226" cy="54" r="24" class="ts-sun"/>
+<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
+<path d="M-10 180L90 70l78 110z" class="ts-far"/>
+<path d="M128 180l90-88 112 88z" class="ts-near"/>
+<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
+<circle cx="76" cy="110" r="10" class="ts-subj"/>
+</svg><div class="fx scan"></div><div class="band"></div></div>
+<div class="film-info"><h4>VHS 復古 <span class="en-term">vhs retro</span></h4><p>掃描線 + 訊號雜訊,90 年代錄影帶。懷舊主題、復古 MV、Y2K。</p><div class="use">vhs tape look, scanlines, analog noise / VHS 錄影帶質感,掃描線</div></div></div>
+<div class="film-card f-faded"><div class="film-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
+<rect width="320" height="180" class="ts-sky"/>
+<circle cx="226" cy="54" r="24" class="ts-sun"/>
+<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
+<path d="M-10 180L90 70l78 110z" class="ts-far"/>
+<path d="M128 180l90-88 112 88z" class="ts-near"/>
+<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
+<circle cx="76" cy="110" r="10" class="ts-subj"/>
+</svg><div class="fx leak"></div><svg class="fx" width="100%" height="100%"><rect width="100%" height="100%" filter="url(#grainF)" opacity="0.22"/></svg></div>
+<div class="film-info"><h4>復古菲林 70s <span class="en-term">faded vintage</span></h4><p>褪色暖調 + 漏光。舊相簿回憶感、情懷敘事、咖啡店品牌。</p><div class="use">vintage 70s faded film, light leaks / 70 年代褪色膠片,漏光</div></div></div>
+<div class="film-card f-dream"><div class="film-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
+<rect width="320" height="180" class="ts-sky"/>
+<circle cx="226" cy="54" r="24" class="ts-sun"/>
+<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
+<path d="M-10 180L90 70l78 110z" class="ts-far"/>
+<path d="M128 180l90-88 112 88z" class="ts-near"/>
+<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
+<circle cx="76" cy="110" r="10" class="ts-subj"/>
+</svg><div class="fx glow"></div></div>
+<div class="film-info"><h4>夢幻柔焦 <span class="en-term">dreamy soft</span></h4><p>輕微柔焦 + 高光泛光。婚禮、香水、浪漫回憶片段。</p><div class="use">dreamy soft focus, glowing halation / 夢幻柔焦,光暈泛光</div></div></div></div>
+<div class="promptbox"><span class="tag">Film style 點落 prompt</span>
+<span class="zh-line"><span class="zh-pill">中</span>Film style 放喺 prompt 最尾。一條片揀一種就夠,兩種質感疊埋會打架。要再穩陣可以加「shot on」句式。</span>
+<span class="en-pill">EN</span><span class="en">...mood description, <span class="hl">shot on 35mm film, fine grain</span> — or — <span class="hl">anamorphic widescreen, lens flare</span> — or — <span class="hl">vhs analog tape look</span></span></div>
+</section>
+
+<section id="shots" class="reveal">
+<div class="sec-head"><span class="sec-num">·</span><h2>多鏡頭敘事 · 由分鏡到成片</h2></div>
+<p class="sec-sub">AI 一條 prompt 出唔到 30 秒廣告。正確做法:拆 shot、逐條生成、剪埋——同傳統製作一樣,只係攝影機換咗。</p>
+<div class="grid3">
+<div class="card"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="14" cy="32" r="9" fill="var(--c1)"/><circle cx="50" cy="32" r="9" fill="var(--c2)"/><rect x="28" y="28" width="8" height="8" rx="2" fill="var(--c1)"/><path d="M23 32h5M36 32h5" stroke="var(--c2)" stroke-width="3" stroke-linecap="round"/></svg></span>拆 Shot 原則</h3><ul>
+<li>30 秒廣告 = <b>6 個 5 秒 shot</b>,每個 shot 一個動作一個運鏡</li>
+<li>跟住片種節奏:商業片 5 秒一拍;社群片首 2 秒落 hook</li>
+<li>每個 shot 寫一行 shot list:景別/運鏡/動作/秒數,先寫齊再生成</li></ul></div>
+<div class="card"><h3><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="22" cy="32" r="13" fill="var(--c1)"/><circle cx="42" cy="32" r="13" fill="var(--c2)" opacity=".85"/><path d="M32 24v16" stroke="#fff" stroke-width="2" stroke-dasharray="3 3"/></svg></span>跨鏡一致性三寶</h3><ul>
+<li><b>① 同一角色</b>:全部 shot 引用同一個定裝角色(Lv.2)</li>
+<li><b>② 色調原句照抄</b>:色調 + film style 嗰段文字,逐隻字唔好改</li>
+<li><b>③ 光向一致</b>:同場戲寫同一個光源方向同色溫</li></ul></div>
+<div class="card"><h3><span class="ic" style="--c1:var(--violet);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="22" width="36" height="26" rx="5" fill="var(--c1)"/><path d="M46 30l10-6v22l-10-6z" fill="var(--c2)"/><circle cx="24" cy="35" r="7" fill="#fff"/><circle cx="24" cy="35" r="3.5" fill="var(--c2)"/><rect x="16" y="16" width="12" height="8" rx="2" fill="var(--c1)"/></svg></span>剪輯與轉場</h3><ul>
+<li>whip pan 收尾嘅 shot 駁 whip pan 開頭 = 無縫轉場</li>
+<li>相似構圖 cut(match cut):兩個 shot 主體放同一位置</li>
+<li>生成時每條頭尾留半秒鬆位,剪接先有得修</li></ul></div></div>
+<div class="card" style="margin-top:18px"><h3><span class="ic" style="--c1:var(--pink);--c2:var(--navy)"><svg viewBox="0 0 64 64"><path d="M32 50c-12-8-22-16-22-28C10 14 18 10 24 14c4 2 6 6 8 8 2-2 4-6 8-8 6-4 14 0 14 8 0 12-10 20-22 28z" fill="var(--c1)"/><circle cx="26" cy="24" r="2" fill="#fff"/><circle cx="38" cy="24" r="2" fill="#fff"/></svg></span>聲音點處理</h3><ul>
+<li>影片模型嘅 <b>sound 開關</b>:示範片/會配樂嘅片<b>關聲</b>生成,慳 credit 又唔嘈</li>
+<li><b>口播/對白</b>:唔好叫生成模型出對白——交 HeyGen 數字人 + lipsync,口型先準</li>
+<li><b>配樂音效</b>:Artlist 授權庫揀,版權乾淨;AI 生成音樂商用授權要逐個工具查</li>
+<li>聲音都入 prompt:需要環境聲就寫明(雨聲、街道 ambience),唔需要就 sound off</li></ul></div>
+</section>
+
+<section id="styles" class="reveal">
+<div class="sec-head"><span class="sec-num">08</span><h2>常用風格參考庫 · 40 款</h2></div>
+<p class="sec-sub">每款有示意圖、中文 prompt、英文 prompt。撳分類篩選,直接複製嚟用。</p>
+<div class="cat-tabs"><button class="cat-tab" data-filter="all" style="background:var(--ink);color:#fff">全部 (40)</button>
+<button class="cat-tab" data-filter="commercial">商業・廣告 (8)</button>
+<button class="cat-tab" data-filter="cinematic">電影感・故事 (9)</button>
+<button class="cat-tab" data-filter="social">社群短片 (7)</button>
+<button class="cat-tab" data-filter="portrait">人物 (6)</button>
+<button class="cat-tab" data-filter="graphic">產品・圖象 (5)</button>
+<button class="cat-tab" data-filter="anime">動畫・風格化 (5)</button></div>
+<div class="style-grid" id="styleGrid"><div class="style-card" data-cat="commercial">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#F2F1ED"/>
+<ellipse cx="160" cy="150" rx="90" ry="12" fill="rgba(0,0,0,.14)"/>
+<rect x="60" y="128" width="200" height="14" rx="7" fill="#DDDAD2" opacity=".7"/>
+<rect x="128" y="52" width="64" height="84" rx="14" fill="#FF6B4A"/>
+<rect x="128" y="52" width="22" height="84" rx="11" fill="#fff" opacity=".22"/>
+<rect x="142" y="38" width="36" height="20" rx="6" fill="#DDDAD2"/>
+<circle cx="252" cy="40" r="26" fill="#DDDAD2" opacity=".35"/>
+<circle cx="48" cy="120" r="14" fill="#FF6B4A" opacity=".3"/></svg><img class="real" src="images/style_01.jpg" alt="商業淨白" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--coral)">商業・廣告</span>
+<h4><span class="sn">#01</span> 商業淨白</h4><p class="desc">極簡白底產品廣告,柔和影樓燈,乾淨。</p>
+<div class="sp zh"><span class="zh-pill">中</span>純白無縫背景,柔光箱影樓燈,極簡商業產品照,高調明亮,陰影乾淨利落</div>
+<div class="sp en"><span class="en-pill">EN</span>clean white seamless background, soft studio softbox lighting, minimal commercial product shot, high key, crisp shadows</div></div></div>
+<div class="style-card" data-cat="commercial">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#0E0E12"/>
+<ellipse cx="160" cy="150" rx="90" ry="12" fill="rgba(0,0,0,.14)"/>
+<rect x="60" y="128" width="200" height="14" rx="7" fill="#C9A14E" opacity=".7"/>
+<rect x="128" y="52" width="64" height="84" rx="14" fill="#3A3A44"/>
+<rect x="128" y="52" width="22" height="84" rx="11" fill="#fff" opacity=".22"/>
+<rect x="142" y="38" width="36" height="20" rx="6" fill="#C9A14E"/>
+<circle cx="252" cy="40" r="26" fill="#C9A14E" opacity=".35"/>
+<circle cx="48" cy="120" r="14" fill="#3A3A44" opacity=".3"/></svg><img class="real" src="images/style_02.jpg" alt="奢華質感" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--coral)">商業・廣告</span>
+<h4><span class="sn">#02</span> 奢華質感</h4><p class="desc">黑金高級感,聚光打在主體,戲劇陰影。</p>
+<div class="sp zh"><span class="zh-pill">中</span>黑金奢華氛圍,單一戲劇性聚光燈,深邃陰影,高級產品,光澤反射</div>
+<div class="sp en"><span class="en-pill">EN</span>luxury black and gold aesthetic, single dramatic spotlight, deep shadows, premium product, glossy reflection</div></div></div>
+<div class="style-card" data-cat="commercial">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#F0E3D0"/>
+<circle cx="236" cy="44" r="30" fill="#D9A05B" opacity=".4"/>
+<circle cx="160" cy="74" r="34" fill="#8FB57E"/>
+<path d="M160 44a30 30 0 0 1 26 16" stroke="#fff" stroke-width="5" fill="none" opacity=".5" stroke-linecap="round"/>
+<path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#D9A05B"/>
+<circle cx="148" cy="70" r="4" fill="#F0E3D0"/>
+<circle cx="172" cy="70" r="4" fill="#F0E3D0"/>
+<path d="M150 86q10 7 20 0" stroke="#F0E3D0" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_03.jpg" alt="生活風格" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--coral)">商業・廣告</span>
+<h4><span class="sn">#03</span> 生活風格</h4><p class="desc">自然光居家場景,溫暖隨性,真實生活感。</p>
+<div class="sp zh"><span class="zh-pill">中</span>生活化場景,溫暖自然窗光,隨性抓拍,溫馨家居室內,真實日常時刻</div>
+<div class="sp en"><span class="en-pill">EN</span>lifestyle scene, warm natural window light, candid, cozy home interior, authentic everyday moment</div></div></div>
+<div class="style-card" data-cat="commercial">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#0A1430"/>
+<ellipse cx="160" cy="150" rx="90" ry="12" fill="rgba(0,0,0,.14)"/>
+<rect x="60" y="128" width="200" height="14" rx="7" fill="#1FB6D8" opacity=".7"/>
+<rect x="128" y="52" width="64" height="84" rx="14" fill="#3A57E8"/>
+<rect x="128" y="52" width="22" height="84" rx="11" fill="#fff" opacity=".22"/>
+<rect x="142" y="38" width="36" height="20" rx="6" fill="#1FB6D8"/>
+<circle cx="252" cy="40" r="26" fill="#1FB6D8" opacity=".35"/>
+<circle cx="48" cy="120" r="14" fill="#3A57E8" opacity=".3"/></svg><img class="real" src="images/style_04.jpg" alt="科技未來" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--coral)">商業・廣告</span>
+<h4><span class="sn">#04</span> 科技未來</h4><p class="desc">藍青冷調,霓虹邊光,玻璃與金屬反射。</p>
+<div class="sp zh"><span class="zh-pill">中</span>未來科技感,藍青冷色調,霓虹邊緣光,玻璃金屬反射,流線俐落</div>
+<div class="sp en"><span class="en-pill">EN</span>futuristic tech aesthetic, cyan and blue tones, neon rim light, glass and metal reflections, sleek</div></div></div>
+<div class="style-card" data-cat="commercial">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#3A2415"/>
+<ellipse cx="160" cy="132" rx="104" ry="26" fill="#F5D9A8" opacity=".35"/>
+<ellipse cx="160" cy="124" rx="86" ry="22" fill="#fff" opacity=".85"/>
+<ellipse cx="160" cy="118" rx="62" ry="17" fill="#E8893A"/>
+<ellipse cx="142" cy="114" rx="14" ry="7" fill="#fff" opacity=".4"/>
+<path d="M132 86q-8-14 0-26M160 82q-8-14 0-26M188 86q-8-14 0-26" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" opacity=".7"/></svg><img class="real" src="images/style_05.jpg" alt="美食特寫" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--coral)">商業・廣告</span>
+<h4><span class="sn">#05</span> 美食特寫</h4><p class="desc">微距美食,蒸氣與水珠,淺景深垂涎欲滴。</p>
+<div class="sp zh"><span class="zh-pill">中</span>微距美食攝影,蒸氣升騰,水珠細節,淺景深,引人食慾,柔和側光</div>
+<div class="sp en"><span class="en-pill">EN</span>macro food photography, steam rising, water droplets, shallow depth of field, appetizing, soft side light</div></div></div>
+<div class="style-card" data-cat="commercial">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#FF4E8E"/>
+<circle cx="92" cy="70" r="46" fill="#FFC247"/>
+<circle cx="218" cy="110" r="58" fill="#27C0A8" opacity=".8"/>
+<rect x="150" y="28" width="56" height="56" rx="16" fill="#27C0A8" opacity=".5" transform="rotate(18 178 56)"/>
+<path d="M30 150q44-34 88 0t88 0" stroke="#fff" stroke-width="7" fill="none" opacity=".55" stroke-linecap="round"/>
+<circle cx="58" cy="140" r="10" fill="#fff" opacity=".5"/></svg><img class="real" src="images/style_06.jpg" alt="極繽紛" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--coral)">商業・廣告</span>
+<h4><span class="sn">#06</span> 極繽紛</h4><p class="desc">高飽和撞色,平面波普,活潑年輕。</p>
+<div class="sp zh"><span class="zh-pill">中</span>高飽和流行色,大膽撞色色塊,活潑俏皮,平面圖形背景,年輕氣息</div>
+<div class="sp en"><span class="en-pill">EN</span>vibrant pop colors, high saturation, bold color blocking, playful, flat graphic background, youthful</div></div></div>
+<div class="style-card" data-cat="commercial">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#EFE9DF"/>
+<ellipse cx="160" cy="150" rx="90" ry="12" fill="rgba(0,0,0,.14)"/>
+<rect x="60" y="128" width="200" height="14" rx="7" fill="#C9BFAE" opacity=".7"/>
+<rect x="128" y="52" width="64" height="84" rx="14" fill="#9DB5A8"/>
+<rect x="128" y="52" width="22" height="84" rx="11" fill="#fff" opacity=".22"/>
+<rect x="142" y="38" width="36" height="20" rx="6" fill="#C9BFAE"/>
+<circle cx="252" cy="40" r="26" fill="#C9BFAE" opacity=".35"/>
+<circle cx="48" cy="120" r="14" fill="#9DB5A8" opacity=".3"/></svg><img class="real" src="images/style_07.jpg" alt="北歐簡約" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--coral)">商業・廣告</span>
+<h4><span class="sn">#07</span> 北歐簡約</h4><p class="desc">低飽和原木米白,留白多,寧靜質感。</p>
+<div class="sp zh"><span class="zh-pill">中</span>北歐極簡,低飽和大地色,原木麻布質感,大量留白,寧靜柔和日光</div>
+<div class="sp en"><span class="en-pill">EN</span>scandinavian minimal, muted earth tones, wood and linen, lots of negative space, calm, soft daylight</div></div></div>
+<div class="style-card" data-cat="commercial">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#161616"/>
+<circle cx="236" cy="44" r="30" fill="#7A7A7A" opacity=".4"/>
+<circle cx="160" cy="74" r="34" fill="#EDEDED"/>
+<path d="M160 44a30 30 0 0 1 26 16" stroke="#fff" stroke-width="5" fill="none" opacity=".5" stroke-linecap="round"/>
+<path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#7A7A7A"/>
+<circle cx="148" cy="70" r="4" fill="#161616"/>
+<circle cx="172" cy="70" r="4" fill="#161616"/>
+<path d="M150 86q10 7 20 0" stroke="#161616" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_08.jpg" alt="黑白經典" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--coral)">商業・廣告</span>
+<h4><span class="sn">#08</span> 黑白經典</h4><p class="desc">高反差黑白,顆粒質感,永恆優雅。</p>
+<div class="sp zh"><span class="zh-pill">中</span>經典黑白,高反差單色,細膩膠片顆粒,永恆優雅</div>
+<div class="sp en"><span class="en-pill">EN</span>classic black and white, high contrast monochrome, fine film grain, timeless, elegant</div></div></div>
+<div class="style-card" data-cat="cinematic">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#0E2A33"/>
+<circle cx="232" cy="52" r="26" fill="#13414F"/>
+<circle cx="232" cy="52" r="38" fill="#13414F" opacity=".25"/>
+<path d="M-10 180L84 64l74 116z" fill="#E8762E"/>
+<path d="M120 180l92-94 118 94z" fill="#E8762E" opacity=".75"/>
+<path d="M-10 180h340v-26q-90-18-170 0t-170 0z" fill="#13414F" opacity=".3"/></svg><img class="real" src="images/style_09.jpg" alt="電影膠片" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--navy)">電影感・故事</span>
+<h4><span class="sn">#09</span> 電影膠片</h4><p class="desc">anamorphic 寬幕,橙藍色調,膠片顆粒。</p>
+<div class="sp zh"><span class="zh-pill">中</span>電影感寬銀幕,橙藍分級調色,35mm 膠片顆粒,鏡頭光暈,淺景深</div>
+<div class="sp en"><span class="en-pill">EN</span>cinematic anamorphic widescreen, teal and orange grade, 35mm film grain, lens flare, shallow depth</div></div></div>
+<div class="style-card" data-cat="cinematic">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#0B0B0F"/>
+<circle cx="236" cy="44" r="30" fill="#4A4A55" opacity=".4"/>
+<circle cx="160" cy="74" r="34" fill="#C9C9D2"/>
+<path d="M160 44a30 30 0 0 1 26 16" stroke="#fff" stroke-width="5" fill="none" opacity=".5" stroke-linecap="round"/>
+<path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#4A4A55"/>
+<circle cx="148" cy="70" r="4" fill="#0B0B0F"/>
+<circle cx="172" cy="70" r="4" fill="#0B0B0F"/>
+<path d="M150 86q10 7 20 0" stroke="#0B0B0F" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_10.jpg" alt="黑色電影" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--navy)">電影感・故事</span>
+<h4><span class="sn">#10</span> 黑色電影</h4><p class="desc">硬光百葉窗陰影,低調照明,神秘。</p>
+<div class="sp zh"><span class="zh-pill">中</span>黑色電影風,百葉窗硬光陰影,低調照明,陰鬱神秘,強烈明暗對比</div>
+<div class="sp en"><span class="en-pill">EN</span>film noir, hard venetian blind shadows, low-key lighting, moody, dramatic chiaroscuro, mystery</div></div></div>
+<div class="style-card" data-cat="cinematic">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#FFB347"/>
+<circle cx="232" cy="52" r="26" fill="#7A4A2B"/>
+<circle cx="232" cy="52" r="38" fill="#7A4A2B" opacity=".25"/>
+<path d="M-10 180L84 64l74 116z" fill="#FF7B54"/>
+<path d="M120 180l92-94 118 94z" fill="#FF7B54" opacity=".75"/>
+<path d="M-10 180h340v-26q-90-18-170 0t-170 0z" fill="#7A4A2B" opacity=".3"/></svg><img class="real" src="images/style_11.jpg" alt="黃金時刻" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--navy)">電影感・故事</span>
+<h4><span class="sn">#11</span> 黃金時刻</h4><p class="desc">日落逆光,金色霧氣,鏡頭光斑。</p>
+<div class="sp zh"><span class="zh-pill">中</span>黃金時刻逆光,溫暖朦朧光暈,太陽光斑,夢幻柔焦散景,浪漫</div>
+<div class="sp en"><span class="en-pill">EN</span>golden hour backlight, warm hazy glow, sun flare, dreamy, soft bokeh, romantic</div></div></div>
+<div class="style-card" data-cat="cinematic">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#12041F"/>
+<circle cx="64" cy="44" r="20" fill="#1FC8D8" opacity=".5"/>
+<rect x="36" y="84" width="42" height="96" fill="#E83FA0"/>
+<rect x="92" y="56" width="52" height="124" fill="#E83FA0" opacity=".85"/>
+<rect x="158" y="92" width="40" height="88" fill="#E83FA0" opacity=".7"/>
+<rect x="212" y="44" width="56" height="136" fill="#E83FA0"/>
+<g fill="#1FC8D8"><rect x="100" y="68" width="8" height="8"/><rect x="118" y="68" width="8" height="8"/>
+<rect x="100" y="88" width="8" height="8"/><rect x="118" y="108" width="8" height="8"/>
+<rect x="222" y="58" width="8" height="8"/><rect x="240" y="58" width="8" height="8"/>
+<rect x="240" y="80" width="8" height="8"/><rect x="222" y="102" width="8" height="8"/>
+<rect x="46" y="96" width="7" height="7"/><rect x="60" y="116" width="7" height="7"/>
+<rect x="168" y="104" width="7" height="7"/><rect x="180" y="124" width="7" height="7"/></g>
+<rect x="0" y="172" width="320" height="8" fill="#1FC8D8" opacity=".35"/></svg><img class="real" src="images/style_12.jpg" alt="賽博龐克" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--navy)">電影感・故事</span>
+<h4><span class="sn">#12</span> 賽博龐克</h4><p class="desc">霓虹雨夜,紫紅青藍,反射濕地面。</p>
+<div class="sp zh"><span class="zh-pill">中</span>賽博龐克霓虹都市,雨夜,紫紅青藍光暈,濕滑反光街道,銀翼殺手氛圍</div>
+<div class="sp en"><span class="en-pill">EN</span>cyberpunk neon city, rainy night, magenta and cyan glow, wet reflective streets, blade runner mood</div></div></div>
+<div class="style-card" data-cat="cinematic">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#1E3A4A"/>
+<circle cx="232" cy="52" r="26" fill="#E8C97A"/>
+<circle cx="232" cy="52" r="38" fill="#E8C97A" opacity=".25"/>
+<path d="M-10 180L84 64l74 116z" fill="#5B8AA0"/>
+<path d="M120 180l92-94 118 94z" fill="#5B8AA0" opacity=".75"/>
+<path d="M-10 180h340v-26q-90-18-170 0t-170 0z" fill="#E8C97A" opacity=".3"/></svg><img class="real" src="images/style_13.jpg" alt="史詩奇幻" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--navy)">電影感・故事</span>
+<h4><span class="sn">#13</span> 史詩奇幻</h4><p class="desc">壯闊風景,體積光,宏大冒險氣勢。</p>
+<div class="sp zh"><span class="zh-pill">中</span>史詩奇幻地景,體積光神聖光束,宏大尺度,壯闊冒險感,戲劇性天空</div>
+<div class="sp en"><span class="en-pill">EN</span>epic fantasy landscape, volumetric god rays, vast scale, sweeping adventure, dramatic sky</div></div></div>
+<div class="style-card" data-cat="cinematic">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#C9A87A"/>
+<circle cx="236" cy="44" r="30" fill="#A0764E" opacity=".4"/>
+<circle cx="160" cy="74" r="34" fill="#E8D9B8"/>
+<path d="M160 44a30 30 0 0 1 26 16" stroke="#fff" stroke-width="5" fill="none" opacity=".5" stroke-linecap="round"/>
+<path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#A0764E"/>
+<circle cx="148" cy="70" r="4" fill="#C9A87A"/>
+<circle cx="172" cy="70" r="4" fill="#C9A87A"/>
+<path d="M150 86q10 7 20 0" stroke="#C9A87A" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_14.jpg" alt="復古菲林" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--navy)">電影感・故事</span>
+<h4><span class="sn">#14</span> 復古菲林</h4><p class="desc">70 年代褪色暖調,漏光,懷舊。</p>
+<div class="sp zh"><span class="zh-pill">中</span>70 年代復古膠片,褪色暖調,漏光效果,柯達懷舊質感,顆粒感</div>
+<div class="sp en"><span class="en-pill">EN</span>vintage 70s film, faded warm tones, light leaks, nostalgic, kodak portra, grainy</div></div></div>
+<div class="style-card" data-cat="cinematic">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#16222E"/>
+<circle cx="64" cy="44" r="20" fill="#A8B8C0" opacity=".5"/>
+<rect x="36" y="84" width="42" height="96" fill="#3A5060"/>
+<rect x="92" y="56" width="52" height="124" fill="#3A5060" opacity=".85"/>
+<rect x="158" y="92" width="40" height="88" fill="#3A5060" opacity=".7"/>
+<rect x="212" y="44" width="56" height="136" fill="#3A5060"/>
+<g fill="#A8B8C0"><rect x="100" y="68" width="8" height="8"/><rect x="118" y="68" width="8" height="8"/>
+<rect x="100" y="88" width="8" height="8"/><rect x="118" y="108" width="8" height="8"/>
+<rect x="222" y="58" width="8" height="8"/><rect x="240" y="58" width="8" height="8"/>
+<rect x="240" y="80" width="8" height="8"/><rect x="222" y="102" width="8" height="8"/>
+<rect x="46" y="96" width="7" height="7"/><rect x="60" y="116" width="7" height="7"/>
+<rect x="168" y="104" width="7" height="7"/><rect x="180" y="124" width="7" height="7"/></g>
+<rect x="0" y="172" width="320" height="8" fill="#A8B8C0" opacity=".35"/></svg><img class="real" src="images/style_15.jpg" alt="懸疑驚悚" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--navy)">電影感・故事</span>
+<h4><span class="sn">#15</span> 懸疑驚悚</h4><p class="desc">冷藍暗調,霧氣,不安張力。</p>
+<div class="sp zh"><span class="zh-pill">中</span>懸疑驚悚氛圍,冷峻低飽和藍調,霧氣瀰漫,緊張不安,昏暗陰森</div>
+<div class="sp en"><span class="en-pill">EN</span>suspense thriller, cold desaturated blue, fog, tense atmosphere, dim, ominous</div></div></div>
+<div class="style-card" data-cat="cinematic">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#F5DEB8"/>
+<circle cx="236" cy="44" r="30" fill="#E8A86B" opacity=".4"/>
+<circle cx="160" cy="74" r="34" fill="#C97B4E"/>
+<path d="M160 44a30 30 0 0 1 26 16" stroke="#fff" stroke-width="5" fill="none" opacity=".5" stroke-linecap="round"/>
+<path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#E8A86B"/>
+<circle cx="148" cy="70" r="4" fill="#F5DEB8"/>
+<circle cx="172" cy="70" r="4" fill="#F5DEB8"/>
+<path d="M150 86q10 7 20 0" stroke="#F5DEB8" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_16.jpg" alt="溫馨家庭" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--navy)">電影感・故事</span>
+<h4><span class="sn">#16</span> 溫馨家庭</h4><p class="desc">柔焦暖光,淺金色調,親密溫情。</p>
+<div class="sp zh"><span class="zh-pill">中</span>溫馨家庭時刻,柔和暖光,淺金色調,親密溫情,舒適柔軟</div>
+<div class="sp en"><span class="en-pill">EN</span>heartwarming family, soft warm light, gentle golden tone, intimate, cozy, tender mood</div></div></div>
+<div class="style-card" data-cat="cinematic">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#14101E"/>
+<circle cx="64" cy="44" r="20" fill="#C9A14E" opacity=".5"/>
+<rect x="36" y="84" width="42" height="96" fill="#3D2E50"/>
+<rect x="92" y="56" width="52" height="124" fill="#3D2E50" opacity=".85"/>
+<rect x="158" y="92" width="40" height="88" fill="#3D2E50" opacity=".7"/>
+<rect x="212" y="44" width="56" height="136" fill="#3D2E50"/>
+<g fill="#C9A14E"><rect x="100" y="68" width="8" height="8"/><rect x="118" y="68" width="8" height="8"/>
+<rect x="100" y="88" width="8" height="8"/><rect x="118" y="108" width="8" height="8"/>
+<rect x="222" y="58" width="8" height="8"/><rect x="240" y="58" width="8" height="8"/>
+<rect x="240" y="80" width="8" height="8"/><rect x="222" y="102" width="8" height="8"/>
+<rect x="46" y="96" width="7" height="7"/><rect x="60" y="116" width="7" height="7"/>
+<rect x="168" y="104" width="7" height="7"/><rect x="180" y="124" width="7" height="7"/></g>
+<rect x="0" y="172" width="320" height="8" fill="#C9A14E" opacity=".35"/></svg><img class="real" src="images/style_17.jpg" alt="黑暗哥德" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--navy)">電影感・故事</span>
+<h4><span class="sn">#17</span> 黑暗哥德</h4><p class="desc">深沉陰影,燭光,巴洛克華麗陰鬱。</p>
+<div class="sp zh"><span class="zh-pill">中</span>黑暗哥德風,深沉陰影,搖曳燭光,巴洛克華麗陰鬱,戲劇張力</div>
+<div class="sp en"><span class="en-pill">EN</span>dark gothic, deep shadows, candlelight, baroque ornate, brooding, dramatic</div></div></div>
+<div class="style-card" data-cat="social">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#FFE9C9"/>
+<circle cx="236" cy="44" r="30" fill="#FFB47A" opacity=".4"/>
+<circle cx="160" cy="74" r="34" fill="#7AC9E8"/>
+<path d="M160 44a30 30 0 0 1 26 16" stroke="#fff" stroke-width="5" fill="none" opacity=".5" stroke-linecap="round"/>
+<path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#FFB47A"/>
+<circle cx="148" cy="70" r="4" fill="#FFE9C9"/>
+<circle cx="172" cy="70" r="4" fill="#FFE9C9"/>
+<path d="M150 86q10 7 20 0" stroke="#FFE9C9" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_18.jpg" alt="Vlog 自然" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--mint)">社群短片</span>
+<h4><span class="sn">#18</span> Vlog 自然</h4><p class="desc">手持自然光,真實隨性,直拍親近感。</p>
+<div class="sp zh"><span class="zh-pill">中</span>Vlog 風格,手持自然光,真實隨性,自拍視角親切感,明亮通透</div>
+<div class="sp en"><span class="en-pill">EN</span>vlog style, handheld natural light, authentic candid, selfie angle, relatable, bright</div></div></div>
+<div class="style-card" data-cat="social">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#F0E0D0"/>
+<ellipse cx="160" cy="132" rx="104" ry="26" fill="#B8927A" opacity=".35"/>
+<ellipse cx="160" cy="124" rx="86" ry="22" fill="#fff" opacity=".85"/>
+<ellipse cx="160" cy="118" rx="62" ry="17" fill="#D9B89A"/>
+<ellipse cx="142" cy="114" rx="14" ry="7" fill="#fff" opacity=".4"/>
+<path d="M132 86q-8-14 0-26M160 82q-8-14 0-26M188 86q-8-14 0-26" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" opacity=".7"/></svg><img class="real" src="images/style_19.jpg" alt="ASMR 質感" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--mint)">社群短片</span>
+<h4><span class="sn">#19</span> ASMR 質感</h4><p class="desc">超近特寫,柔光,細節質感觸感強。</p>
+<div class="sp zh"><span class="zh-pill">中</span>ASMR 超近特寫,柔光擴散,極致紋理細節,觸感療癒,微距</div>
+<div class="sp en"><span class="en-pill">EN</span>asmr close-up, soft diffused light, extreme texture detail, tactile, satisfying, macro</div></div></div>
+<div class="style-card" data-cat="social">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#FF3D6E"/>
+<circle cx="92" cy="70" r="46" fill="#FFD23F"/>
+<circle cx="218" cy="110" r="58" fill="#2EC4B6" opacity=".8"/>
+<rect x="150" y="28" width="56" height="56" rx="16" fill="#2EC4B6" opacity=".5" transform="rotate(18 178 56)"/>
+<path d="M30 150q44-34 88 0t88 0" stroke="#fff" stroke-width="7" fill="none" opacity=".55" stroke-linecap="round"/>
+<circle cx="58" cy="140" r="10" fill="#fff" opacity=".5"/></svg><img class="real" src="images/style_20.jpg" alt="動感快剪" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--mint)">社群短片</span>
+<h4><span class="sn">#20</span> 動感快剪</h4><p class="desc">高能量,鮮明色彩,運動模糊節奏感。</p>
+<div class="sp zh"><span class="zh-pill">中</span>高能量動感,鮮明色彩,運動模糊,快節奏,潮流有力</div>
+<div class="sp en"><span class="en-pill">EN</span>high energy dynamic, vivid colors, motion blur, fast-paced, punchy, trendy</div></div></div>
+<div class="style-card" data-cat="social">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#E8A0D0"/>
+<circle cx="92" cy="70" r="46" fill="#A0C8E8"/>
+<circle cx="218" cy="110" r="58" fill="#D8D8E8" opacity=".8"/>
+<rect x="150" y="28" width="56" height="56" rx="16" fill="#D8D8E8" opacity=".5" transform="rotate(18 178 56)"/>
+<path d="M30 150q44-34 88 0t88 0" stroke="#fff" stroke-width="7" fill="none" opacity=".55" stroke-linecap="round"/>
+<circle cx="58" cy="140" r="10" fill="#fff" opacity=".5"/></svg><img class="real" src="images/style_21.jpg" alt="Y2K 復古" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--mint)">社群短片</span>
+<h4><span class="sn">#21</span> Y2K 復古</h4><p class="desc">千禧年數碼感,金屬粉藍,故障特效。</p>
+<div class="sp zh"><span class="zh-pill">中</span>Y2K 千禧美學,金屬粉藍,早期數碼感,故障特效,2000 年代懷舊</div>
+<div class="sp en"><span class="en-pill">EN</span>y2k aesthetic, metallic pink and blue, early digital, glitch effects, nostalgic 2000s</div></div></div>
+<div class="style-card" data-cat="social">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#E8F0E0"/>
+<circle cx="236" cy="44" r="30" fill="#C9DEC0" opacity=".4"/>
+<circle cx="160" cy="74" r="34" fill="#F5E8D9"/>
+<path d="M160 44a30 30 0 0 1 26 16" stroke="#fff" stroke-width="5" fill="none" opacity=".5" stroke-linecap="round"/>
+<path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#C9DEC0"/>
+<circle cx="148" cy="70" r="4" fill="#E8F0E0"/>
+<circle cx="172" cy="70" r="4" fill="#E8F0E0"/>
+<path d="M150 86q10 7 20 0" stroke="#E8F0E0" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_22.jpg" alt="療癒清新" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--mint)">社群短片</span>
+<h4><span class="sn">#22</span> 療癒清新</h4><p class="desc">柔和粉彩,自然元素,平靜放鬆。</p>
+<div class="sp zh"><span class="zh-pill">中</span>療癒清新美學,柔和粉彩,自然元素,平靜放鬆,輕盈通透</div>
+<div class="sp en"><span class="en-pill">EN</span>aesthetic clean girl, soft pastel, natural elements, calming, fresh, airy</div></div></div>
+<div class="style-card" data-cat="social">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#28282E"/>
+<circle cx="64" cy="44" r="20" fill="#3FC1C9" opacity=".5"/>
+<rect x="36" y="84" width="42" height="96" fill="#FF6B35"/>
+<rect x="92" y="56" width="52" height="124" fill="#FF6B35" opacity=".85"/>
+<rect x="158" y="92" width="40" height="88" fill="#FF6B35" opacity=".7"/>
+<rect x="212" y="44" width="56" height="136" fill="#FF6B35"/>
+<g fill="#3FC1C9"><rect x="100" y="68" width="8" height="8"/><rect x="118" y="68" width="8" height="8"/>
+<rect x="100" y="88" width="8" height="8"/><rect x="118" y="108" width="8" height="8"/>
+<rect x="222" y="58" width="8" height="8"/><rect x="240" y="58" width="8" height="8"/>
+<rect x="240" y="80" width="8" height="8"/><rect x="222" y="102" width="8" height="8"/>
+<rect x="46" y="96" width="7" height="7"/><rect x="60" y="116" width="7" height="7"/>
+<rect x="168" y="104" width="7" height="7"/><rect x="180" y="124" width="7" height="7"/></g>
+<rect x="0" y="172" width="320" height="8" fill="#3FC1C9" opacity=".35"/></svg><img class="real" src="images/style_23.jpg" alt="街頭潮流" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--mint)">社群短片</span>
+<h4><span class="sn">#23</span> 街頭潮流</h4><p class="desc">都市街景,大膽塗鴉,潮流嘻哈。</p>
+<div class="sp zh"><span class="zh-pill">中</span>街頭潮流風,塗鴉背景,大膽嘻哈,粗糲都市感,潮流時尚</div>
+<div class="sp en"><span class="en-pill">EN</span>streetwear urban, graffiti backdrop, bold, hip hop, gritty city, trendy fashion</div></div></div>
+<div class="style-card" data-cat="social">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#F7F0E2"/>
+<ellipse cx="160" cy="132" rx="104" ry="26" fill="#8FB57E" opacity=".35"/>
+<ellipse cx="160" cy="124" rx="86" ry="22" fill="#fff" opacity=".85"/>
+<ellipse cx="160" cy="118" rx="62" ry="17" fill="#E8B86B"/>
+<ellipse cx="142" cy="114" rx="14" ry="7" fill="#fff" opacity=".4"/>
+<path d="M132 86q-8-14 0-26M160 82q-8-14 0-26M188 86q-8-14 0-26" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" opacity=".7"/></svg><img class="real" src="images/style_24.jpg" alt="食譜俯拍" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--mint)">社群短片</span>
+<h4><span class="sn">#24</span> 食譜俯拍</h4><p class="desc">正上方俯拍,平鋪構圖,明亮均勻。</p>
+<div class="sp zh"><span class="zh-pill">中</span>正上方俯拍平鋪,食譜構圖,明亮均勻光,整齊有序,乾淨</div>
+<div class="sp en"><span class="en-pill">EN</span>overhead flat lay, top-down, recipe layout, bright even light, organized, clean</div></div></div>
+<div class="style-card" data-cat="portrait">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#E8E8EC"/>
+<circle cx="236" cy="44" r="30" fill="#9AA8C0" opacity=".4"/>
+<circle cx="160" cy="74" r="34" fill="#3A4A6B"/>
+<path d="M160 44a30 30 0 0 1 26 16" stroke="#fff" stroke-width="5" fill="none" opacity=".5" stroke-linecap="round"/>
+<path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#9AA8C0"/>
+<circle cx="148" cy="70" r="4" fill="#E8E8EC"/>
+<circle cx="172" cy="70" r="4" fill="#E8E8EC"/>
+<path d="M150 86q10 7 20 0" stroke="#E8E8EC" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_25.jpg" alt="專業人像" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--yellow)">人物</span>
+<h4><span class="sn">#25</span> 專業人像</h4><p class="desc">柔光環形燈,乾淨背景,自信專業。</p>
+<div class="sp zh"><span class="zh-pill">中</span>專業形象照,柔和環形燈,乾淨背景,眼神銳利,自信專業</div>
+<div class="sp en"><span class="en-pill">EN</span>professional headshot, soft ring light, clean background, sharp eyes, confident, corporate</div></div></div>
+<div class="style-card" data-cat="portrait">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#5B6E5A"/>
+<circle cx="236" cy="44" r="30" fill="#C9B89A" opacity=".4"/>
+<circle cx="160" cy="74" r="34" fill="#3A4438"/>
+<path d="M160 44a30 30 0 0 1 26 16" stroke="#fff" stroke-width="5" fill="none" opacity=".5" stroke-linecap="round"/>
+<path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#C9B89A"/>
+<circle cx="148" cy="70" r="4" fill="#5B6E5A"/>
+<circle cx="172" cy="70" r="4" fill="#5B6E5A"/>
+<path d="M150 86q10 7 20 0" stroke="#5B6E5A" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_26.jpg" alt="環境人像" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--yellow)">人物</span>
+<h4><span class="sn">#26</span> 環境人像</h4><p class="desc">情境中人物,自然光,故事感氛圍。</p>
+<div class="sp zh"><span class="zh-pill">中</span>環境人像,人物置於工作情境中,自然光,敘事氛圍感</div>
+<div class="sp en"><span class="en-pill">EN</span>environmental portrait, subject in context, natural light, storytelling, atmospheric</div></div></div>
+<div class="style-card" data-cat="portrait">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#1A1A1E"/>
+<circle cx="236" cy="44" r="30" fill="#E83F6F" opacity=".4"/>
+<circle cx="160" cy="74" r="34" fill="#E8E8E8"/>
+<path d="M160 44a30 30 0 0 1 26 16" stroke="#fff" stroke-width="5" fill="none" opacity=".5" stroke-linecap="round"/>
+<path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#E83F6F"/>
+<circle cx="148" cy="70" r="4" fill="#1A1A1E"/>
+<circle cx="172" cy="70" r="4" fill="#1A1A1E"/>
+<path d="M150 86q10 7 20 0" stroke="#1A1A1E" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_27.jpg" alt="時尚編輯" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--yellow)">人物</span>
+<h4><span class="sn">#27</span> 時尚編輯</h4><p class="desc">高級時裝,戲劇造型,雜誌封面感。</p>
+<div class="sp zh"><span class="zh-pill">中</span>高級時裝編輯風,戲劇化造型,雜誌封面質感,大膽姿態,影樓閃燈</div>
+<div class="sp en"><span class="en-pill">EN</span>high fashion editorial, dramatic styling, magazine cover, bold pose, studio strobe</div></div></div>
+<div class="style-card" data-cat="portrait">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#A89880"/>
+<circle cx="236" cy="44" r="30" fill="#6B5E4A" opacity=".4"/>
+<circle cx="160" cy="74" r="34" fill="#D9CDB8"/>
+<path d="M160 44a30 30 0 0 1 26 16" stroke="#fff" stroke-width="5" fill="none" opacity=".5" stroke-linecap="round"/>
+<path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#6B5E4A"/>
+<circle cx="148" cy="70" r="4" fill="#A89880"/>
+<circle cx="172" cy="70" r="4" fill="#A89880"/>
+<path d="M150 86q10 7 20 0" stroke="#A89880" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_28.jpg" alt="自然紀實" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--yellow)">人物</span>
+<h4><span class="sn">#28</span> 自然紀實</h4><p class="desc">真實情緒,未擺拍,紀實抓拍。</p>
+<div class="sp zh"><span class="zh-pill">中</span>紀實人像,真實情緒流露,未經擺拍,新聞攝影誠實感</div>
+<div class="sp en"><span class="en-pill">EN</span>documentary portrait, raw emotion, unposed, candid, photojournalistic, honest</div></div></div>
+<div class="style-card" data-cat="portrait">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#F5D9E8"/>
+<circle cx="236" cy="44" r="30" fill="#E8B8D0" opacity=".4"/>
+<circle cx="160" cy="74" r="34" fill="#D0C0E8"/>
+<path d="M160 44a30 30 0 0 1 26 16" stroke="#fff" stroke-width="5" fill="none" opacity=".5" stroke-linecap="round"/>
+<path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#E8B8D0"/>
+<circle cx="148" cy="70" r="4" fill="#F5D9E8"/>
+<circle cx="172" cy="70" r="4" fill="#F5D9E8"/>
+<path d="M150 86q10 7 20 0" stroke="#F5D9E8" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_29.jpg" alt="柔美夢幻" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--yellow)">人物</span>
+<h4><span class="sn">#29</span> 柔美夢幻</h4><p class="desc">柔焦光暈,粉嫩色調,浪漫唯美。</p>
+<div class="sp zh"><span class="zh-pill">中</span>夢幻柔美人像,光暈柔焦,粉嫩色調,浪漫空靈,溫柔</div>
+<div class="sp en"><span class="en-pill">EN</span>dreamy soft portrait, glowing halation, pastel tones, romantic, ethereal, gentle</div></div></div>
+<div class="style-card" data-cat="portrait">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#1A1208"/>
+<circle cx="236" cy="44" r="30" fill="#C9852E" opacity=".4"/>
+<circle cx="160" cy="74" r="34" fill="#0E0A06"/>
+<path d="M160 44a30 30 0 0 1 26 16" stroke="#fff" stroke-width="5" fill="none" opacity=".5" stroke-linecap="round"/>
+<path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#C9852E"/>
+<circle cx="148" cy="70" r="4" fill="#1A1208"/>
+<circle cx="172" cy="70" r="4" fill="#1A1208"/>
+<path d="M150 86q10 7 20 0" stroke="#1A1208" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_30.jpg" alt="戲劇光影" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--yellow)">人物</span>
+<h4><span class="sn">#30</span> 戲劇光影</h4><p class="desc">單側硬光,深陰影,雕塑感立體。</p>
+<div class="sp zh"><span class="zh-pill">中</span>戲劇性人像,單側硬光,深邃陰影,雕塑立體感,倫勃朗光</div>
+<div class="sp en"><span class="en-pill">EN</span>dramatic portrait, single hard side light, deep shadow, sculptural, rembrandt lighting</div></div></div>
+<div class="style-card" data-cat="graphic">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#FFE3D0"/>
+<ellipse cx="160" cy="150" rx="90" ry="12" fill="rgba(0,0,0,.14)"/>
+<rect x="60" y="128" width="200" height="14" rx="7" fill="#FF8A5C" opacity=".7"/>
+<rect x="128" y="52" width="64" height="84" rx="14" fill="#FFF5EC"/>
+<rect x="128" y="52" width="22" height="84" rx="11" fill="#fff" opacity=".22"/>
+<rect x="142" y="38" width="36" height="20" rx="6" fill="#FF8A5C"/>
+<circle cx="252" cy="40" r="26" fill="#FF8A5C" opacity=".35"/>
+<circle cx="48" cy="120" r="14" fill="#FFF5EC" opacity=".3"/></svg><img class="real" src="images/style_31.jpg" alt="懸浮產品" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--violet)">產品・圖象</span>
+<h4><span class="sn">#31</span> 懸浮產品</h4><p class="desc">產品懸空,純色背景,陰影投射。</p>
+<div class="sp zh"><span class="zh-pill">中</span>懸浮產品,純色背景,漂浮失重感,投影陰影,乾淨影樓</div>
+<div class="sp en"><span class="en-pill">EN</span>floating product, solid color background, levitating, drop shadow, clean studio</div></div></div>
+<div class="style-card" data-cat="graphic">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#0E3A5C"/>
+<ellipse cx="160" cy="150" rx="90" ry="12" fill="rgba(0,0,0,.14)"/>
+<rect x="60" y="128" width="200" height="14" rx="7" fill="#3FA8E8" opacity=".7"/>
+<rect x="128" y="52" width="64" height="84" rx="14" fill="#D0ECFF"/>
+<rect x="128" y="52" width="22" height="84" rx="11" fill="#fff" opacity=".22"/>
+<rect x="142" y="38" width="36" height="20" rx="6" fill="#3FA8E8"/>
+<circle cx="252" cy="40" r="26" fill="#3FA8E8" opacity=".35"/>
+<circle cx="48" cy="120" r="14" fill="#D0ECFF" opacity=".3"/></svg><img class="real" src="images/style_32.jpg" alt="水花飛濺" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--violet)">產品・圖象</span>
+<h4><span class="sn">#32</span> 水花飛濺</h4><p class="desc">高速凝結水花,動感,清涼質感。</p>
+<div class="sp zh"><span class="zh-pill">中</span>高速水花攝影,凝結液體瞬間,動感飛濺,清涼水珠</div>
+<div class="sp en"><span class="en-pill">EN</span>splash photography, frozen liquid, high speed, dynamic, refreshing, droplets</div></div></div>
+<div class="style-card" data-cat="graphic">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#E8E0F5"/>
+<circle cx="92" cy="70" r="46" fill="#9A8AD8"/>
+<circle cx="218" cy="110" r="58" fill="#5BC8A8" opacity=".8"/>
+<rect x="150" y="28" width="56" height="56" rx="16" fill="#5BC8A8" opacity=".5" transform="rotate(18 178 56)"/>
+<path d="M30 150q44-34 88 0t88 0" stroke="#fff" stroke-width="7" fill="none" opacity=".55" stroke-linecap="round"/>
+<circle cx="58" cy="140" r="10" fill="#fff" opacity=".5"/></svg><img class="real" src="images/style_33.jpg" alt="等距插畫" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--violet)">產品・圖象</span>
+<h4><span class="sn">#33</span> 等距插畫</h4><p class="desc">等距 3D 風,柔色,可愛幾何。</p>
+<div class="sp zh"><span class="zh-pill">中</span>等距 3D 插畫,柔和配色,可愛幾何造型,乾淨俏皮</div>
+<div class="sp en"><span class="en-pill">EN</span>isometric 3d illustration, soft colors, cute geometric, clean, playful</div></div></div>
+<div class="style-card" data-cat="graphic">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#FF8AC0"/>
+<circle cx="92" cy="70" r="46" fill="#8A9AFF"/>
+<circle cx="218" cy="110" r="58" fill="#5BE8D8" opacity=".8"/>
+<rect x="150" y="28" width="56" height="56" rx="16" fill="#5BE8D8" opacity=".5" transform="rotate(18 178 56)"/>
+<path d="M30 150q44-34 88 0t88 0" stroke="#fff" stroke-width="7" fill="none" opacity=".55" stroke-linecap="round"/>
+<circle cx="58" cy="140" r="10" fill="#fff" opacity=".5"/></svg><img class="real" src="images/style_34.jpg" alt="漸變抽象" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--violet)">產品・圖象</span>
+<h4><span class="sn">#34</span> 漸變抽象</h4><p class="desc">柔順漸變,流體形狀,現代抽象。</p>
+<div class="sp zh"><span class="zh-pill">中</span>柔順網格漸變,流體有機形狀,現代抽象,柔和光暈</div>
+<div class="sp en"><span class="en-pill">EN</span>smooth gradient mesh, fluid organic shapes, modern abstract, soft glow</div></div></div>
+<div class="style-card" data-cat="graphic">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#2E3A2A"/>
+<circle cx="92" cy="70" r="46" fill="#8AB05B"/>
+<circle cx="218" cy="110" r="58" fill="#D9E8B8" opacity=".8"/>
+<rect x="150" y="28" width="56" height="56" rx="16" fill="#D9E8B8" opacity=".5" transform="rotate(18 178 56)"/>
+<path d="M30 150q44-34 88 0t88 0" stroke="#fff" stroke-width="7" fill="none" opacity=".55" stroke-linecap="round"/>
+<circle cx="58" cy="140" r="10" fill="#fff" opacity=".5"/></svg><img class="real" src="images/style_35.jpg" alt="微距細節" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--violet)">產品・圖象</span>
+<h4><span class="sn">#35</span> 微距細節</h4><p class="desc">極微距,紋理放大,抽象質感。</p>
+<div class="sp zh"><span class="zh-pill">中</span>極限微距,紋理放大,抽象質感細節,精緻複雜</div>
+<div class="sp en"><span class="en-pill">EN</span>extreme macro, magnified texture, abstract detail, intricate, tactile</div></div></div>
+<div class="style-card" data-cat="anime">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#7AC9F5"/>
+<circle cx="232" cy="52" r="26" fill="#FF8A9A"/>
+<circle cx="232" cy="52" r="38" fill="#FF8A9A" opacity=".25"/>
+<path d="M-10 180L84 64l74 116z" fill="#F5F0E8"/>
+<path d="M120 180l92-94 118 94z" fill="#F5F0E8" opacity=".75"/>
+<path d="M-10 180h340v-26q-90-18-170 0t-170 0z" fill="#FF8A9A" opacity=".3"/></svg><img class="real" src="images/style_36.jpg" alt="日系動畫" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--pink)">動畫・風格化</span>
+<h4><span class="sn">#36</span> 日系動畫</h4><p class="desc">賽璐璐動畫,鮮明線條,動漫天空。</p>
+<div class="sp zh"><span class="zh-pill">中</span>日系賽璐璐動畫,鮮明乾淨線條,戲劇性動漫天空,富有表現力</div>
+<div class="sp en"><span class="en-pill">EN</span>anime cel shaded, vibrant clean lines, dramatic anime sky, expressive, studio quality</div></div></div>
+<div class="style-card" data-cat="anime">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#FFD98A"/>
+<ellipse cx="160" cy="158" rx="56" ry="9" fill="rgba(0,0,0,.12)"/>
+<rect x="118" y="64" width="84" height="86" rx="38" fill="#7AC9E8"/>
+<circle cx="146" cy="98" r="7" fill="#1E2A44"/>
+<circle cx="178" cy="98" r="7" fill="#1E2A44"/>
+<circle cx="149" cy="95" r="2.5" fill="#fff"/>
+<circle cx="181" cy="95" r="2.5" fill="#fff"/>
+<path d="M148 118q14 10 28 0" stroke="#1E2A44" stroke-width="5" fill="none" stroke-linecap="round"/>
+<circle cx="124" cy="114" r="8" fill="#FF9A6B" opacity=".7"/>
+<circle cx="200" cy="114" r="8" fill="#FF9A6B" opacity=".7"/>
+<path d="M132 60q-6-18 12-22M190 60q6-18-12-22" stroke="#7AC9E8" stroke-width="9" fill="none" stroke-linecap="round"/>
+<circle cx="236" cy="44" r="18" fill="#FF9A6B" opacity=".4"/></svg><img class="real" src="images/style_37.jpg" alt="3D 皮克斯" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--pink)">動畫・風格化</span>
+<h4><span class="sn">#37</span> 3D 皮克斯</h4><p class="desc">圓潤可愛 3D,柔光,溫暖角色感。</p>
+<div class="sp zh"><span class="zh-pill">中</span>皮克斯風 3D,圓潤可愛,柔和全局光照,溫暖討喜角色感</div>
+<div class="sp en"><span class="en-pill">EN</span>pixar style 3d, rounded cute, soft global illumination, warm, charming character</div></div></div>
+<div class="style-card" data-cat="anime">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#E8F0F5"/>
+<circle cx="232" cy="52" r="26" fill="#E8C9D0"/>
+<circle cx="232" cy="52" r="38" fill="#E8C9D0" opacity=".25"/>
+<path d="M-10 180L84 64l74 116z" fill="#A8C9D8"/>
+<path d="M120 180l92-94 118 94z" fill="#A8C9D8" opacity=".75"/>
+<path d="M-10 180h340v-26q-90-18-170 0t-170 0z" fill="#E8C9D0" opacity=".3"/></svg><img class="real" src="images/style_38.jpg" alt="手繪水彩" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--pink)">動畫・風格化</span>
+<h4><span class="sn">#38</span> 手繪水彩</h4><p class="desc">水彩暈染,柔邊紙質,溫柔藝術感。</p>
+<div class="sp zh"><span class="zh-pill">中</span>手繪水彩插畫,柔邊暈染,紙張紋理,溫柔藝術氣息</div>
+<div class="sp en"><span class="en-pill">EN</span>watercolor illustration, soft bleeding edges, paper texture, gentle, artistic</div></div></div>
+<div class="style-card" data-cat="anime">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#F5E0C9"/>
+<ellipse cx="160" cy="158" rx="56" ry="9" fill="rgba(0,0,0,.12)"/>
+<rect x="118" y="64" width="84" height="86" rx="38" fill="#8FB57E"/>
+<circle cx="146" cy="98" r="7" fill="#1E2A44"/>
+<circle cx="178" cy="98" r="7" fill="#1E2A44"/>
+<circle cx="149" cy="95" r="2.5" fill="#fff"/>
+<circle cx="181" cy="95" r="2.5" fill="#fff"/>
+<path d="M148 118q14 10 28 0" stroke="#1E2A44" stroke-width="5" fill="none" stroke-linecap="round"/>
+<circle cx="124" cy="114" r="8" fill="#E89A7A" opacity=".7"/>
+<circle cx="200" cy="114" r="8" fill="#E89A7A" opacity=".7"/>
+<path d="M132 60q-6-18 12-22M190 60q6-18-12-22" stroke="#8FB57E" stroke-width="9" fill="none" stroke-linecap="round"/>
+<circle cx="236" cy="44" r="18" fill="#E89A7A" opacity=".4"/></svg><img class="real" src="images/style_39.jpg" alt="黏土定格" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--pink)">動畫・風格化</span>
+<h4><span class="sn">#39</span> 黏土定格</h4><p class="desc">黏土定格動畫,手作質感,溫馨童趣。</p>
+<div class="sp zh"><span class="zh-pill">中</span>黏土定格動畫,手作質感,溫馨童趣,觸感可愛</div>
+<div class="sp en"><span class="en-pill">EN</span>claymation stop motion, handmade texture, cute, tactile, whimsical</div></div></div>
+<div class="style-card" data-cat="anime">
+<div class="style-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<rect width="320" height="180" fill="#FFC247"/>
+<circle cx="92" cy="70" r="46" fill="#FF6B4A"/>
+<circle cx="218" cy="110" r="58" fill="#1E2A44" opacity=".8"/>
+<rect x="150" y="28" width="56" height="56" rx="16" fill="#1E2A44" opacity=".5" transform="rotate(18 178 56)"/>
+<path d="M30 150q44-34 88 0t88 0" stroke="#fff" stroke-width="7" fill="none" opacity=".55" stroke-linecap="round"/>
+<circle cx="58" cy="140" r="10" fill="#fff" opacity=".5"/></svg><img class="real" src="images/style_40.jpg" alt="扁平向量" loading="lazy" onerror="this.remove()"></div>
+<div class="style-body"><span class="cat-pill" style="background:var(--pink)">動畫・風格化</span>
+<h4><span class="sn">#40</span> 扁平向量</h4><p class="desc">扁平設計,大色塊,簡潔現代圖形。</p>
+<div class="sp zh"><span class="zh-pill">中</span>扁平向量設計,大膽色塊,極簡現代幾何,乾淨俐落</div>
+<div class="sp en"><span class="en-pill">EN</span>flat vector design, bold color blocks, minimal, modern, clean geometric</div></div></div></div>
+</section>
+
+<section id="emotion" class="reveal">
+<div class="sec-head"><span class="sec-num">09</span><h2>情緒 · 畫面背景建構</h2></div>
+<p class="sec-sub">情緒 = 光 × 色 × 構圖一齊講。背景分三層起,層層有嘢。</p>
+<div class="grid2">
+<div class="card"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><path d="M32 50c-12-8-22-16-22-28C10 14 18 10 24 14c4 2 6 6 8 8 2-2 4-6 8-8 6-4 14 0 14 8 0 12-10 20-22 28z" fill="var(--c1)"/><circle cx="26" cy="24" r="2" fill="#fff"/><circle cx="38" cy="24" r="2" fill="#fff"/></svg></span>情緒詞庫(中英對照)</h3>
+<div class="chips">
+<span class="chip">溫馨 warm cozy</span><span class="chip">神秘 mysterious</span>
+<span class="chip">活力 energetic</span><span class="chip">寧靜 calm serene</span>
+<span class="chip">浪漫 romantic</span><span class="chip">緊張 tense</span>
+<span class="chip">懷舊 nostalgic</span><span class="chip">高級 luxurious</span>
+<span class="chip">夢幻 dreamy</span><span class="chip">憂鬱 melancholic</span>
+<span class="chip">希望 hopeful</span><span class="chip">史詩 epic</span></div>
+<p style="margin-top:12px"><b>情緒公式</b>:暖光 + 淺景深 = 親密;冷藍 + 大留白 = 孤獨;逆光 + 霧 = 夢幻;硬光 + 深影 = 戲劇。寫 prompt 時光同色一齊寫,情緒先入到肉。</p></div>
+<div class="card"><h3><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="8" y="14" width="48" height="36" rx="5" fill="var(--c1)"/><circle cx="22" cy="26" r="5" fill="var(--yellow)"/><path d="M8 44l14-14 10 9 8-7 16 14v4H8z" fill="var(--c2)"/></svg></span>背景三層建構法</h3><ul>
+<li><b>前景</b> foreground:加植物/窗框/虛化物件,即刻有景深</li>
+<li><b>中景</b> mid-ground:主體企嘅位,光打喺度</li>
+<li><b>後景</b> background:交代環境,虛化突出主體</li>
+<li><b>材質寫出嚟</b>:木、麻布、霧、霓虹、濕地面——材質詞 AI 食得好深</li>
+<li><b>留白</b>:商業圖喺 prompt 寫「negative space on left for text」預位放字</li>
+<li><b>跨鏡一致</b>:同場景嘅光向、色調描述原句照抄</li></ul></div></div>
+<div class="promptbox"><span class="tag">情緒 + 背景完整範例</span>
+<span class="zh-line"><span class="zh-pill">中</span>溫馨寧靜情緒,咖啡店室內,前景虛化綠植,中景主體企喺吧台,後景柔焦書架,黃金窗光由左入,畫面左側留白俾標題</span>
+<span class="en-pill">EN</span><span class="en"><span class="hl">cozy calm mood</span>, cafe interior, <span class="hl">blurred plants in foreground</span>, subject at counter mid-ground, soft bookshelf background, golden window light from left, <span class="hl">negative space on left for headline</span></span></div>
+</section>
+
+<section id="type" class="reveal">
+<div class="sec-head"><span class="sec-num">10</span><h2>字體 Typography</h2></div>
+<p class="sec-sub">字體決定氣質。一張畫面最多兩隻字,字唔好叫 AI 生——後加先清晰可改。</p>
+<div class="card">
+<div class="fontrow"><div class="spec" style="font-family:Poppins;font-weight:800">Aa 標</div>
+<div class="meta"><b>粗黑圓體 — 標題</b><p>活潑、年輕、商業廣告、社群封面。例:Poppins / 思源黑體 Heavy。用大,用粗,用喺重點。</p></div></div>
+<div class="fontrow"><div class="spec" style="font-family:Georgia,serif">Aa 雅</div>
+<div class="meta"><b>襯線體 — 高級/編輯</b><p>優雅、奢華、時尚雜誌。例:Playfair Display / 思源宋體。配黑金、北歐、編輯風。</p></div></div>
+<div class="fontrow"><div class="spec" style="font-family:'Roboto Mono',monospace">Aa 技</div>
+<div class="meta"><b>等寬體 — 科技/數據</b><p>未來、精準、tech 感。例:Roboto Mono / JetBrains Mono。配科技未來、賽博風。</p></div></div>
+<div class="fontrow"><div class="spec" style="font-family:'Brush Script MT',cursive;font-size:34px">Aa 手</div>
+<div class="meta"><b>手寫體 — 親切/生活</b><p>溫暖、手作、隨性。配生活風格、療癒清新。只做點綴,唔好成段。</p></div></div></div>
+<div class="dodont">
+<div class="dobox"><h4>配字原則</h4><ul>
+<li>標題揀有個性嘅,內文揀易讀嘅,最多兩隻</li>
+<li>建立階級:標題 &gt; 副題 &gt; 內文,大小要拉得開</li>
+<li>字同背景對比要夠(淺底深字/深底淺字)</li>
+<li>生成時 prompt 預留白位,字後加</li></ul></div>
+<div class="dontbox"><h4>避免</h4><ul>
+<li>一張畫面三隻或以上字體</li>
+<li>幼字放雜亂背景上,睇唔到</li>
+<li>字壓住人面或產品重點</li>
+<li>叫 AI 直接生成中文字——大概率亂碼變形</li></ul></div></div>
+</section>
+
+<section id="design" class="reveal">
+<div class="sec-head"><span class="sec-num">11</span><h2>圖像轉可編輯設計</h2></div>
+<p class="sec-sub">AI 出嚟係一張死圖。要變成可改字、可換色嘅活設計稿,行呢四步:</p>
+<div class="steps" style="grid-template-columns:repeat(4,1fr)">
+<div class="step"><span class="n">1</span><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="14" width="20" height="20" rx="4" fill="var(--c1)"/><rect x="34" y="30" width="20" height="20" rx="4" fill="var(--c2)"/><path d="M30 24h6v6" stroke="var(--c2)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h4>分層生成</h4><p>背景、主體、裝飾分開三條 prompt 出,後製自由度大好多</p></div>
+<div class="step"><span class="n">2</span><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><path d="M24 16l-8 8 6 6 8-8z" fill="var(--c1)"/><rect x="30" y="30" width="20" height="6" rx="3" transform="rotate(45 40 33)" fill="var(--c2)"/><circle cx="44" cy="20" r="8" fill="var(--c1)"/></svg></span><h4>去背切件</h4><p>主體去背出透明 PNG,邊緣執乾淨</p></div>
+<div class="step"><span class="n">3</span><span class="ic" style="--c1:var(--violet);--c2:var(--navy)"><svg viewBox="0 0 64 64"><path d="M16 48L28 16h6l12 32h-7l-2.5-7H25l-2.5 7zM27 35h10l-5-14z" fill="var(--c1)"/><rect x="44" y="20" width="6" height="28" rx="3" fill="var(--c2)"/></svg></span><h4>入設計工具</h4><p>Figma / Canva 砌返埋,加真字體、品牌色、logo</p></div>
+<div class="step"><span class="n">4</span><span class="ic" style="--c1:var(--yellow);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="22" cy="32" r="13" fill="var(--c1)"/><circle cx="42" cy="32" r="13" fill="var(--c2)" opacity=".85"/><path d="M32 24v16" stroke="#fff" stroke-width="2" stroke-dasharray="3 3"/></svg></span><h4>向量化</h4><p>圖形元素轉 vector,無限縮放唔起格</p></div></div>
+<div class="card" style="margin-top:18px"><h3><span class="ic" style="--c1:var(--pink);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="14" width="44" height="32" rx="6" fill="var(--c1)"/><path d="M24 46l-4 8 12-8z" fill="var(--c1)"/><rect x="18" y="24" width="16" height="3" rx="1.5" fill="#fff"/><rect x="18" y="32" width="24" height="3" rx="1.5" fill="#fff"/><circle cx="46" cy="18" r="7" fill="var(--c2)"/><path d="M46 15v6M43 18h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>實戰技巧</h3><ul>
+<li>生成時寫埋「<b>flat colors, clean shapes</b> / 平面色塊、乾淨形狀」——扁平風最易後改色</li>
+<li>要放字嘅圖,prompt 寫「<b>negative space for text</b> / 留白位俾文字」</li>
+<li>叫 Claude/GPT 把張圖<b>描述返做 design brief</b>(色值、構圖、層次),再喺 Figma 重建可編輯版</li>
+<li>品牌色要準 → 唔好靠 AI 撞,後製先填正確 hex 色值</li>
+<li>同一張圖要多個比例(16:9 + 9:16 + 1:1)→ 生成時主體放中間,後製裁切</li></ul></div>
+</section>
+
+<section id="cost" class="reveal">
+<div class="sec-head"><span class="sec-num">·</span><h2>成本控制 · Credit 預算</h2></div>
+<p class="sec-sub">Credit 係彈藥。三條規則守住,生成成本可控、可預算、可報價俾客。</p>
+<div class="grid3">
+<div class="card"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="14" y="8" width="36" height="48" rx="6" fill="var(--c1)"/><rect x="20" y="18" width="24" height="4" rx="2" fill="#fff"/><rect x="20" y="28" width="24" height="4" rx="2" fill="#fff"/><rect x="20" y="38" width="16" height="4" rx="2" fill="#fff"/><circle cx="46" cy="46" r="12" fill="var(--c2)"/><path d="M41 46l3 3 6-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>價目感(實測量級)</h3><ul>
+<li>相片級圖:<b>~0.1</b> credit/張</li>
+<li>插畫/向量圖:<b>~1.3</b> credit/張</li>
+<li>5 秒標準片:<b>~7.5</b> credit/條</li>
+<li>4K / pro 模式、加聲、加長秒數都會貴一截;唇形同步等後製功能另計</li>
+<li>各模型價錢隨時變——以工具內即時報價為準</li></ul></div>
+<div class="card"><h3><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="14" cy="32" r="9" fill="var(--c1)"/><circle cx="50" cy="32" r="9" fill="var(--c2)"/><rect x="28" y="28" width="8" height="8" rx="2" fill="var(--c1)"/><path d="M23 32h5M36 32h5" stroke="var(--c2)" stroke-width="3" stroke-linecap="round"/></svg></span>三條慳錢規則</h3><ul>
+<li><b>① 問價先</b>:批量之前先查單價(好多工具有 cost 預覽),預咗先開波</li>
+<li><b>② 圖度迭代,片度收貨</b>:所有試錯喺平嘅圖階段做,片只生成已確認嘅畫面</li>
+<li><b>③ 低 spec 試版</b>:標準模式/低解析度試,客戶簽咗先升 4K/pro 重出</li></ul></div>
+<div class="card"><h3><span class="ic" style="--c1:var(--violet);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="14" width="44" height="32" rx="6" fill="var(--c1)"/><path d="M24 46l-4 8 12-8z" fill="var(--c1)"/><rect x="18" y="24" width="16" height="3" rx="1.5" fill="#fff"/><rect x="18" y="32" width="24" height="3" rx="1.5" fill="#fff"/><circle cx="46" cy="18" r="7" fill="var(--c2)"/><path d="M46 15v6M43 18h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>預算示範:30 秒廣告</h3><ul>
+<li>概念試圖 10 張 ≈ 1–2 credits</li>
+<li>定裝圖 + 角色庫 ≈ 0.2</li>
+<li>正式 6 個 shot × 7.5 ≈ 45</li>
+<li>重做 buffer(預 1/3 唔合格)≈ 15</li>
+<li><b>合計 ≈ 60–65 credits</b> — 報價時可以照呢條公式估</li></ul></div></div>
+<p style="margin-top:14px;font-size:13px;color:#6a7388">公司守則:每單 job 開波前用上面公式估一次 credit 預算,寫入製作文件;收工後記低實際用量,慢慢就有自己嘅準確價目表。</p>
+</section>
+
+<section id="warn" class="reveal">
+<div class="sec-head"><span class="sec-num">12</span><h2>注意事項</h2></div>
+<p class="sec-sub">交付前最後一關。逐項剔,剔唔晒唔好出街。</p>
+<div class="dodont">
+<div class="dobox"><h4><span class="ic" style="--c1:var(--mint);--c2:var(--mint)"><svg viewBox="0 0 64 64"><rect x="14" y="8" width="36" height="48" rx="6" fill="var(--c1)"/><rect x="20" y="18" width="24" height="4" rx="2" fill="#fff"/><rect x="20" y="28" width="24" height="4" rx="2" fill="#fff"/><rect x="20" y="38" width="16" height="4" rx="2" fill="#fff"/><circle cx="46" cy="46" r="12" fill="var(--c2)"/><path d="M41 46l3 3 6-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 交付前 Checklist</h4><ul>
+<li>人樣一致、膚色自然、五官冇變形</li>
+<li>放大 200% 檢查手指、耳朵、牙齒、配飾</li>
+<li>動作自然、冇詭異過渡幀(影片逐格掃一次)</li>
+<li>顏色、光向、色溫跨鏡頭一致</li>
+<li>解析度達規格、無 AI 工具浮水印</li>
+<li>背景冇亂碼文字、冇鬼影物件</li>
+<li>工具 + prompt + seed 已入檔案庫</li></ul></div>
+<div class="dontbox"><h4><span class="ic" style="--c1:var(--coral);--c2:var(--coral)"><svg viewBox="0 0 64 64"><path d="M32 10l24 42H8z" fill="var(--c1)"/><rect x="29" y="26" width="6" height="14" rx="3" fill="#fff"/><circle cx="32" cy="45" r="3.5" fill="#fff"/></svg></span> 合規與風險</h4><ul>
+<li>未授權真人肖像、名人面孔——絕對唔生成</li>
+<li>有版權角色、品牌 logo、藝術作品——唔複製</li>
+<li>AI 生成內容按客戶合約要求標示</li>
+<li>客戶機密素材唔上載去未簽保密嘅第三方工具</li>
+<li>敏感題材、誤導內容、新聞造假——唔接唔做</li></ul></div></div>
+<div class="card" style="margin-top:18px"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><path d="M32 10l24 42H8z" fill="var(--c1)"/><rect x="29" y="26" width="6" height="14" rx="3" fill="#fff"/><circle cx="32" cy="45" r="3.5" fill="#fff"/></svg></span>AI 瑕疵圖鑑(QC 時逐樣搵)</h3>
+<div class="chips">
+<span class="chip"><b>手指</b> 第六隻指/黏連——放大手部逐隻數</span>
+<span class="chip"><b>牙齒耳朵</b> 數量形狀怪——特寫位必檢</span>
+<span class="chip"><b>文字亂碼</b> 背景招牌/標籤出怪字——有字位都要睇</span>
+<span class="chip"><b>物理穿幫</b> 影子方向錯/倒影唔對/物件懸空</span>
+<span class="chip"><b>閃爍 flicker</b> 影片光暗跳動——全片播一次留意背景</span>
+<span class="chip"><b>溶接 morphing</b> 物件邊緣溶化變形——動作大嘅幀逐格睇</span>
+<span class="chip"><b>配飾漂移</b> 耳環眼鏡袖口前後幀唔同——連戲位必檢</span>
+</div>
+<p style="margin-top:10px;font-size:13px;color:#5a647a">QC 口訣:<b>放大 200%、影片逐格、有字必查、影子必對。</b>唔合格唔好慳——重出一張圖係零頭錢,出咗街先發現就係公司聲譽。</p></div>
+</section>
+
+</main>
+<footer><svg viewBox="0 0 200 200" class="mascot" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="100" cy="185" rx="55" ry="8" fill="rgba(30,42,68,.12)"/>
+<rect x="48" y="70" width="104" height="74" rx="18" fill="var(--coral)"/>
+<rect x="150" y="88" width="34" height="38" rx="8" fill="var(--navy)"/>
+<circle cx="96" cy="107" r="26" fill="#fff"/>
+<circle cx="96" cy="107" r="19" fill="var(--navy)"/>
+<circle cx="96" cy="107" r="9" fill="var(--sky)"/>
+<circle cx="89" cy="100" r="4" fill="#fff"/>
+<rect x="60" y="56" width="26" height="16" rx="5" fill="var(--navy)"/>
+<circle cx="140" cy="62" r="8" fill="var(--yellow)"/>
+<path d="M140 54v-9" stroke="var(--yellow)" stroke-width="4" stroke-linecap="round"/>
+<rect x="64" y="144" width="14" height="26" rx="7" fill="var(--navy)"/>
+<rect x="122" y="144" width="14" height="26" rx="7" fill="var(--navy)"/>
+<path d="M48 96c-14 2-20 12-18 24" stroke="var(--coral)" stroke-width="11" fill="none" stroke-linecap="round"/>
+<path d="M152 132c12 4 15 14 11 24" stroke="var(--coral)" stroke-width="11" fill="none" stroke-linecap="round"/>
+</svg>
+<p><b>GenAI 影像生成手冊 3.1</b> · 影片製作公司內部使用</p>
+<p style="font-size:13px;margin-top:6px;color:#aab4cb">Claude · ChatGPT · Higgsfield · Artlist · HeyGen ｜ 把真實生成圖放入 images/、短片放入 videos/ 資料夾,手冊會自動顯示;未有檔案會顯示示意圖</p></footer>
+<script>
+const nums=document.querySelectorAll('main .sec-num');
+nums.forEach((n,i)=>{n.textContent=String(i+1).padStart(2,'0')});
+const tabs=document.querySelectorAll('.cat-tab');
+const colmap={all:'--ink',commercial:'--coral',cinematic:'--navy',social:'--mint',portrait:'--yellow',graphic:'--violet',anime:'--pink'};
+tabs.forEach(t=>t.addEventListener('click',()=>{
+  const f=t.dataset.filter;
+  tabs.forEach(x=>{x.style.background='#fff';x.style.color='var(--ink)';});
+  t.style.background='var('+colmap[f]+')';t.style.color=(f==='portrait')?'var(--ink)':'#fff';
+  document.querySelectorAll('.style-card').forEach(c=>{
+    c.classList.toggle('hidden', f!=='all' && c.dataset.cat!==f);
+  });
+}));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body></html>
