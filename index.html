@@ -43,7 +43,7 @@ h1,h2,h3{font-family:'Poppins','Noto Sans HK',sans-serif;font-weight:800;letter-
   padding:6px 13px;border-radius:20px;color:#fff;background:var(--tb);
   border:2.5px solid var(--ink);box-shadow:2px 2px 0 var(--ink)}
 
-section{padding:46px 0;border-top:2px dashed var(--line)}
+section{padding:46px 0;border-top:2px dashed var(--line);scroll-margin-top:78px}
 .sec-head{display:flex;align-items:center;gap:14px;margin-bottom:8px}
 .sec-num{font-family:'Poppins',sans-serif;font-weight:800;font-size:14px;color:#fff;
   background:var(--ink);width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none}
@@ -230,7 +230,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 @media(max-width:820px){
   .hero .wrap{grid-template-columns:1fr;text-align:center}
   .mascot{width:180px}.blob{display:none}
-  .grid2,.grid3,.dodont,.style-grid,.demo-grid,.demo-grid.three,.film-grid{grid-template-columns:1fr}
+  .grid2,.grid3,.dodont,.style-grid,.demo-grid,.demo-grid.three,.film-grid,.vl-grid,.vl-hero,.vl-stats{grid-template-columns:1fr}
   .tone-grid{grid-template-columns:1fr 1fr}
   .steps{grid-template-columns:1fr 1fr}
   .topbar nav{display:none}
@@ -239,19 +239,62 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
   .d-scene,.actor,.actor *,.track-strip,.f-vhs .band,.live:before{animation:none!important}
 }
 @media(prefers-reduced-motion:no-preference){
-  .reveal{opacity:0;transform:translateY(16px);transition:.6s cubic-bezier(.2,.7,.2,1)}
+  .reveal{opacity:1;transform:none;transition:.6s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
 }
 
 .style-thumb img.real,.d-frame video.real{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:4}
 .style-body h4 .sn{font-size:10.5px;background:var(--paper2);border:1.5px solid var(--line);border-radius:8px;padding:1px 7px;color:#6a7388;vertical-align:2px;font-family:'Roboto Mono',monospace}
+
+/* visual prompt library */
+.vl-hero{background:#fff;border:3px solid var(--ink);border-radius:20px;padding:22px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;margin-bottom:18px}
+.vl-hero h3{font-size:19px;margin-bottom:5px}
+.vl-hero p{font-size:14px;color:#4a546b}
+.vl-stats{display:grid;grid-template-columns:repeat(3,104px);gap:10px}
+.vl-stat{background:var(--paper2);border:2.5px solid var(--ink);border-radius:15px;padding:10px 12px;text-align:center}
+.vl-stat b{display:block;font-family:'Poppins',sans-serif;font-size:24px;line-height:1;color:var(--coral)}
+.vl-stat span{font-size:11px;font-weight:800}
+.vl-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 18px}
+.vl-tab{font-weight:800;font-size:12.5px;padding:8px 14px;border-radius:20px;border:2.5px solid var(--ink);background:#fff;cursor:pointer;box-shadow:2px 2px 0 var(--ink);transition:.12s;font-family:'Noto Sans HK',sans-serif;color:var(--ink)}
+.vl-tab[aria-pressed="true"]{background:var(--ink);color:#fff}
+.vl-tab:active{transform:translate(2px,2px);box-shadow:none}
+.vl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;align-items:start}
+.vl-card{background:#fff;border:3px solid var(--ink);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+.vl-card[data-type="skill"]{padding:18px 18px 16px}
+.vl-thumb{aspect-ratio:var(--ratio,4 / 5);background:var(--paper2);border-bottom:3px solid var(--ink);position:relative;overflow:hidden;display:grid;place-items:center}
+.vl-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.vl-type{position:absolute;top:10px;left:10px;font-size:10px;font-weight:900;color:#fff;border:2px solid var(--ink);border-radius:11px;padding:2px 9px;background:var(--mint);font-family:'Poppins','Noto Sans HK',sans-serif}
+.vl-card[data-type="image"] .vl-type{background:var(--violet)}
+.vl-body{padding:14px 15px 15px}
+.vl-meta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:8px}
+.vl-pill{font-size:10px;font-weight:900;border-radius:10px;padding:2px 8px;border:1.5px solid var(--ink);background:var(--paper2)}
+.vl-card h4{font-family:'Poppins','Noto Sans HK',sans-serif;font-size:16px;line-height:1.2;margin-bottom:6px}
+.vl-card p{font-size:12.5px;color:#5a647a}
+.vl-card a{color:var(--navy);font-weight:800;text-decoration:none}
+.vl-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px}
+.vl-copy,.vl-link{border:2px solid var(--ink);border-radius:12px;background:#fff;color:var(--ink);box-shadow:2px 2px 0 var(--ink);padding:6px 10px;font-size:11px;font-weight:900;font-family:'Noto Sans HK',sans-serif;cursor:pointer;text-decoration:none;line-height:1.2}
+.vl-copy.copied{background:var(--mint);color:#fff}
+.vl-card details{margin-top:11px;border-top:1.5px dashed var(--line);padding-top:10px}
+.vl-card summary{cursor:pointer;font-size:12px;font-weight:900;color:var(--coral)}
+.vl-card pre{margin-top:8px;background:var(--ink);color:#B9F4DE;border-radius:12px;padding:12px;white-space:pre-wrap;font-family:'Roboto Mono',monospace;font-size:10.5px;line-height:1.55;max-height:240px;overflow:auto}
+.vl-skill-title{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px}
+.vl-skill-title h4{font-size:17px;margin:0}
+.vl-skill-tag{font-size:10px;font-weight:900;border:2px solid var(--ink);border-radius:10px;padding:2px 8px;background:var(--yellow)}
+.vl-usage{margin-top:9px;background:#FFF8D8;border:2px solid var(--line);border-radius:12px;padding:9px 10px;font-size:12px;color:#3c4658}
+@media(max-width:820px){
+  .vl-hero{grid-template-columns:1fr;padding:18px}
+  .vl-stats{grid-template-columns:repeat(3,minmax(0,1fr));width:100%}
+  .vl-stat{padding:9px 6px}
+  .vl-stat b{font-size:22px}
+  .vl-grid{grid-template-columns:1fr}
+}
 </style></head><body>
 
 <div class="topbar"><div class="wrap">
 <span class="logo"><b>●</b> GenAI 手冊 <span style="font-size:11px;background:var(--coral);color:#fff;padding:1px 8px;border-radius:8px;vertical-align:2px">3.1</span></span>
 <nav><a href="#rules">規則流程</a><a href="#prompt">落 Prompt</a><a href="#people">人物圖</a>
 <a href="#cam">運鏡</a><a href="#i2v">先圖後片</a><a href="#act">主體動作</a><a href="#tone">色調</a><a href="#film">Film Style</a>
-<a href="#shots">多鏡頭</a><a href="#styles">風格庫</a><a href="#emotion">情緒背景</a><a href="#type">字體</a><a href="#design">轉設計</a><a href="#cost">成本</a><a href="#warn">注意</a></nav>
+<a href="#shots">多鏡頭</a><a href="#styles">風格庫</a><a href="#visual-library">Prompt 庫</a><a href="#emotion">情緒背景</a><a href="#type">字體</a><a href="#design">轉設計</a><a href="#cost">成本</a><a href="#warn">注意</a></nav>
 </div></div>
 
 <header class="hero"><div class="blob b1"></div><div class="blob b2"></div><div class="wrap">
@@ -1262,6 +1305,26 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <div class="sp en"><span class="en-pill">EN</span>flat vector design, bold color blocks, minimal, modern, clean geometric</div></div></div></div>
 </section>
 
+<section id="visual-library" class="reveal">
+<div class="sec-head"><span class="sec-num">·</span><h2>Visual Prompt Library</h2></div>
+<p class="sec-sub">將可落地嘅 visual prompt 變成可查、可 copy、可按「相 / 片 / Skill」分類嘅內部資料庫。</p>
+<div class="vl-hero">
+<div><h3>相 / 片 / Skill 分類整理</h3><p>保留 reference 圖、正確比例、完整 prompt、來源連結同 skill 用法。適合開會選方向、生成前 copy prompt、或者做新 project 時快速搵 reference。</p></div>
+<div class="vl-stats">
+<div class="vl-stat"><b id="vlVideoCount">21</b><span>片 / Video</span></div>
+<div class="vl-stat"><b id="vlImageCount">8</b><span>相 / Image</span></div>
+<div class="vl-stat"><b id="vlSkillCount">16</b><span>Skill</span></div>
+</div>
+</div>
+<div class="vl-tabs" aria-label="Visual prompt library filters">
+<button class="vl-tab" data-vl-filter="all" aria-pressed="true">全部</button>
+<button class="vl-tab" data-vl-filter="image" aria-pressed="false">相 / Image</button>
+<button class="vl-tab" data-vl-filter="video" aria-pressed="false">片 / Video</button>
+<button class="vl-tab" data-vl-filter="skill" aria-pressed="false">Skill</button>
+</div>
+<div class="vl-grid" id="visualPromptGrid"></div>
+</section>
+
 <section id="emotion" class="reveal">
 <div class="sec-head"><span class="sec-num">09</span><h2>情緒 · 畫面背景建構</h2></div>
 <p class="sec-sub">情緒 = 光 × 色 × 構圖一齊講。背景分三層起,層層有嘢。</p>
@@ -1401,7 +1464,90 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 </svg>
 <p><b>GenAI 影像生成手冊 3.1</b> · 影片製作公司內部使用</p>
 <p style="font-size:13px;margin-top:6px;color:#aab4cb">Claude · ChatGPT · Higgsfield · Artlist · HeyGen ｜ 把真實生成圖放入 images/、短片放入 videos/ 資料夾,手冊會自動顯示;未有檔案會顯示示意圖</p></footer>
+<script src="visual-library-data.js"></script>
 <script>
+const vlData=window.VISUAL_PROMPT_LIBRARY||{cards:[],skills:[],intro:{counts:{video:0,image:0,skill:0}}};
+const visualItems=[...(vlData.cards||[]),...(vlData.skills||[])];
+const typeName={video:'片 / Video',image:'相 / Image',skill:'Skill'};
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const plainFor=item=>{
+  if(item.type==='skill') return `${item.title}\n${item.summary}\n\n用法：${item.usage}\n\nSource: ${item.url}`;
+  return `${item.title}\n${item.prompt}\n\nSource: ${item.url||item.source||''}`;
+};
+function visualCard(item){
+  const tags=(item.tags||[]).slice(0,3).map(t=>`<span class="vl-pill">${esc(t)}</span>`).join('');
+  if(item.type==='skill'){
+    return `<article class="vl-card" data-type="skill" data-vl-id="${esc(item.id)}">
+      <div class="vl-skill-title"><h4>${esc(item.title)}</h4><span class="vl-skill-tag">Skill</span></div>
+      <div class="vl-meta"><span class="vl-pill">${esc(item.subtitle||'Workflow')}</span>${tags}</div>
+      <p>${esc(item.summary)}</p>
+      <div class="vl-usage"><b>用法：</b>${esc(item.usage)}</div>
+      <div class="vl-actions"><button class="vl-copy" type="button" data-vl-copy="${esc(item.id)}">Copy 用法</button><a class="vl-link" href="${esc(item.url)}" target="_blank" rel="noopener">Source</a></div>
+    </article>`;
+  }
+  return `<article class="vl-card" data-type="${esc(item.type)}" data-vl-id="${esc(item.id)}">
+    <div class="vl-thumb" style="--ratio:${esc(item.ratioCss||'4 / 5')}"><span class="vl-type">${esc(typeName[item.type]||item.type)}</span><img src="${esc(item.image)}" alt="${esc(item.title)}" loading="lazy"></div>
+    <div class="vl-body">
+      <div class="vl-meta"><span class="vl-pill">#${String(item.no||'').padStart(2,'0')}</span><span class="vl-pill">${esc(item.ratio||'ratio')}</span>${tags}</div>
+      <h4>${esc(item.title)}</h4>
+      <p>${esc(item.source||'Visual source')}</p>
+      <div class="vl-actions"><button class="vl-copy" type="button" data-vl-copy="${esc(item.id)}">Copy prompt</button>${item.url?`<a class="vl-link" href="${esc(item.url)}" target="_blank" rel="noopener">Source</a>`:''}</div>
+      <details><summary>Prompt 全文</summary><pre>${esc(item.prompt)}</pre></details>
+    </div>
+  </article>`;
+}
+function renderVisualLibrary(filter='all'){
+  const grid=document.getElementById('visualPromptGrid');
+  if(!grid) return;
+  const items=visualItems.filter(item=>filter==='all'||item.type===filter);
+  grid.innerHTML=items.map(visualCard).join('');
+}
+function scrollToHashTarget(){
+  const id=decodeURIComponent((location.hash||'').slice(1));
+  if(!id) return;
+  const el=document.getElementById(id);
+  if(!el) return;
+  const html=document.documentElement;
+  const previous=html.style.scrollBehavior;
+  html.style.scrollBehavior='auto';
+  window.scrollTo(0, el.getBoundingClientRect().top + window.pageYOffset - 78);
+  requestAnimationFrame(()=>{html.style.scrollBehavior=previous});
+}
+function copyText(text,btn){
+  const done=()=>{btn.classList.add('copied');btn.textContent='Copied';setTimeout(()=>{btn.classList.remove('copied');btn.textContent=btn.dataset.original||'Copy';},1200)};
+  if(navigator.clipboard&&window.isSecureContext){
+    navigator.clipboard.writeText(text).then(done).catch(()=>fallbackCopy(text,done));
+  }else{
+    fallbackCopy(text,done);
+  }
+}
+function fallbackCopy(text,done){
+  const ta=document.createElement('textarea');
+  ta.value=text;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.left='-9999px';
+  document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();done();
+}
+document.getElementById('vlVideoCount').textContent=vlData.intro?.counts?.video??0;
+document.getElementById('vlImageCount').textContent=vlData.intro?.counts?.image??0;
+document.getElementById('vlSkillCount').textContent=vlData.intro?.counts?.skill??0;
+document.querySelectorAll('.vl-tab').forEach(tab=>tab.addEventListener('click',()=>{
+  const filter=tab.dataset.vlFilter;
+  document.querySelectorAll('.vl-tab').forEach(t=>t.setAttribute('aria-pressed','false'));
+  tab.setAttribute('aria-pressed','true');
+  renderVisualLibrary(filter);
+}));
+document.addEventListener('click',e=>{
+  const btn=e.target.closest('[data-vl-copy]');
+  if(!btn) return;
+  const item=visualItems.find(x=>x.id===btn.dataset.vlCopy);
+  if(!item) return;
+  btn.dataset.original=btn.textContent;
+  copyText(plainFor(item),btn);
+});
+renderVisualLibrary('all');
+scrollToHashTarget();
+window.addEventListener('load',()=>{setTimeout(scrollToHashTarget,80);setTimeout(scrollToHashTarget,700)});
+window.addEventListener('hashchange',()=>setTimeout(scrollToHashTarget,0));
+
 const nums=document.querySelectorAll('main .sec-num');
 nums.forEach((n,i)=>{n.textContent=String(i+1).padStart(2,'0')});
 const tabs=document.querySelectorAll('.cat-tab');
