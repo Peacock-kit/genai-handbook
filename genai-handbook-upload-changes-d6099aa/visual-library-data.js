@@ -18,7 +18,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "Threads / prompts.page cue",
       "url": "https://www.threads.com/@prompts.page/post/DZrssKygATY",
       "ratio": "16:9 master / 9:16 cutdown",
-      "image": "images/visual-library/vp-01.webp",
+      "image": "../images/visual-library/vp-01.webp",
       "ratioCss": "4 / 5",
       "tags": [
         "Frozen-time",
@@ -35,7 +35,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "Threads / prompts.page cue",
       "url": "https://www.threads.com/@prompts.page/post/DZrssKygATY",
       "ratio": "16:9 master / 9:16 cutdown",
-      "image": "images/visual-library/vp-02.webp",
+      "image": "../images/visual-library/vp-02.webp",
       "ratioCss": "4 / 5",
       "tags": [
         "Frozen-time",
@@ -52,7 +52,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "Threads / prompts.page cue",
       "url": "https://www.threads.com/@prompts.page/post/DZrssKygATY",
       "ratio": "16:9 master / 9:16 cutdown",
-      "image": "images/visual-library/vp-03.webp",
+      "image": "../images/visual-library/vp-03.webp",
       "ratioCss": "4 / 5",
       "tags": [
         "Frozen-time",
@@ -69,7 +69,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen visual cue / rewritten",
       "url": "https://www.meigen.ai/prompt/2069018297228575178",
       "ratio": "9:16 reel / 16:9 master option",
-      "image": "images/visual-library/vp-04.webp",
+      "image": "../images/visual-library/vp-04.webp",
       "ratioCss": "9 / 16",
       "tags": [
         "Frozen-time",
@@ -86,7 +86,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen visual cue / rewritten",
       "url": "https://www.meigen.ai/prompt/2068748402889023638",
       "ratio": "16:9 city TVC / 9:16 social crop",
-      "image": "images/visual-library/vp-05.webp",
+      "image": "../images/visual-library/vp-05.webp",
       "ratioCss": "4 / 5",
       "tags": [
         "Frozen-time",
@@ -103,7 +103,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen visual cue / rewritten",
       "url": "https://www.meigen.ai/prompt/2053549072427241745",
       "ratio": "9:16 anime reel / 16:9 key visual",
-      "image": "images/visual-library/vp-06.webp",
+      "image": "../images/visual-library/vp-06.webp",
       "ratioCss": "9 / 16",
       "tags": [
         "Frozen-time",
@@ -120,7 +120,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen visual cue / rewritten",
       "url": "https://www.meigen.ai/prompt/2068666503776620857",
       "ratio": "16:9 TVC / 4:5 social poster",
-      "image": "images/visual-library/vp-07.webp",
+      "image": "../images/visual-library/vp-07.webp",
       "ratioCss": "4 / 5",
       "tags": [
         "Frozen-time",
@@ -137,7 +137,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen visual cue / rewritten",
       "url": "https://www.meigen.ai/prompt/2068726889859203188",
       "ratio": "9:16 editorial reel",
-      "image": "images/visual-library/vp-08.webp",
+      "image": "../images/visual-library/vp-08.webp",
       "ratioCss": "9 / 16",
       "tags": [
         "Frozen-time",
@@ -154,7 +154,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen visual cue / rewritten",
       "url": "https://www.meigen.ai/prompt/2068724929625817199",
       "ratio": "9:16 fashion reel",
-      "image": "images/visual-library/vp-09.webp",
+      "image": "../images/visual-library/vp-09.webp",
       "ratioCss": "9 / 16",
       "tags": [
         "Frozen-time",
@@ -171,7 +171,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen visual cue / rewritten",
       "url": "https://www.meigen.ai/prompt/2051583400616849796",
       "ratio": "9:16 story / 16:9 travel cut",
-      "image": "images/visual-library/vp-10.webp",
+      "image": "../images/visual-library/vp-10.webp",
       "ratioCss": "9 / 16",
       "tags": [
         "Frozen-time",
@@ -188,7 +188,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen visual cue / rewritten",
       "url": "https://www.meigen.ai/prompt/2050272100884340783",
       "ratio": "4:5 social / 16:9 TVC",
-      "image": "images/visual-library/vp-11.webp",
+      "image": "../images/visual-library/vp-11.webp",
       "ratioCss": "4 / 5",
       "tags": [
         "Frozen-time",
@@ -205,7 +205,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen visual cue / rewritten",
       "url": "https://www.meigen.ai/prompt/2056786034864927229",
       "ratio": "4:5 / 9:16 social motion",
-      "image": "images/visual-library/vp-12.webp",
+      "image": "../images/visual-library/vp-12.webp",
       "ratioCss": "4 / 5",
       "tags": [
         "Frozen-time",
@@ -222,7 +222,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen visual cue / rewritten",
       "url": "https://www.meigen.ai/prompt/2055661728185340066",
       "ratio": "9:16 poster motion",
-      "image": "images/visual-library/vp-13.webp",
+      "image": "../images/visual-library/vp-13.webp",
       "ratioCss": "9 / 16",
       "tags": [
         "Frozen-time",
@@ -239,7 +239,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen visual cue / rewritten",
       "url": "https://www.meigen.ai/prompt/2047991391763243032",
       "ratio": "4:5 campaign / 9:16 reel",
-      "image": "images/visual-library/vp-14.webp",
+      "image": "../images/visual-library/vp-14.webp",
       "ratioCss": "4 / 5",
       "tags": [
         "Frozen-time",
@@ -256,7 +256,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen visual cue / rewritten",
       "url": "https://www.meigen.ai/prompt/2047631839406297325",
       "ratio": "9:16 lifestyle reel",
-      "image": "images/visual-library/vp-15.webp",
+      "image": "../images/visual-library/vp-15.webp",
       "ratioCss": "9 / 16",
       "tags": [
         "Frozen-time",
@@ -273,7 +273,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen visual cue / rewritten",
       "url": "https://www.meigen.ai/prompt/2051993667372818749",
       "ratio": "4:5 / 9:16 character reel",
-      "image": "images/visual-library/vp-16.webp",
+      "image": "../images/visual-library/vp-16.webp",
       "ratioCss": "4 / 5",
       "tags": [
         "Frozen-time",
@@ -290,7 +290,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen visual cue / rewritten",
       "url": "https://www.meigen.ai/prompt/2052974175435026714",
       "ratio": "9:16 travel reel",
-      "image": "images/visual-library/vp-17.webp",
+      "image": "../images/visual-library/vp-17.webp",
       "ratioCss": "9 / 16",
       "tags": [
         "Frozen-time",
@@ -307,7 +307,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen visual cue / rewritten",
       "url": "https://www.meigen.ai/prompt/2051662334855426468",
       "ratio": "9:16 art poster motion",
-      "image": "images/visual-library/vp-18.webp",
+      "image": "../images/visual-library/vp-18.webp",
       "ratioCss": "9 / 16",
       "tags": [
         "Frozen-time",
@@ -324,7 +324,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen visual cue / rewritten",
       "url": "https://www.meigen.ai/prompt/2068185059941847175",
       "ratio": "4:5 / 9:16 cute motion",
-      "image": "images/visual-library/vp-19.webp",
+      "image": "../images/visual-library/vp-19.webp",
       "ratioCss": "4 / 5",
       "tags": [
         "Frozen-time",
@@ -341,7 +341,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen visual cue / rewritten",
       "url": "https://www.meigen.ai/prompt/community_1b668732-d903-4055-aabe-e26a8e791c35",
       "ratio": "9:16 technical reel / 16:9 deck",
-      "image": "images/visual-library/vp-20.webp",
+      "image": "../images/visual-library/vp-20.webp",
       "ratioCss": "9 / 16",
       "tags": [
         "Frozen-time",
@@ -358,7 +358,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "Threads / dnaxcat visual reference",
       "url": "https://www.threads.com/@dnaxcat/post/DZ14lCWFAd6",
       "ratio": "15s / 9:16 or 16:9",
-      "image": "images/visual-library/vp-21.webp",
+      "image": "../images/visual-library/vp-21.webp",
       "ratioCss": "16 / 9",
       "tags": [
         "Hyperpop",
@@ -375,7 +375,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen",
       "url": "https://www.meigen.ai/prompt/2068957884537602226",
       "ratio": "4:5 / vertical",
-      "image": "images/visual-library/vp-22.webp",
+      "image": "../images/visual-library/vp-22.webp",
       "ratioCss": "4 / 5",
       "tags": [
         "Visual prompt",
@@ -392,7 +392,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen",
       "url": "https://www.meigen.ai/prompt/2068902163171143925",
       "ratio": "4:5 / vertical",
-      "image": "images/visual-library/vp-23.webp",
+      "image": "../images/visual-library/vp-23.webp",
       "ratioCss": "4 / 5",
       "tags": [
         "Visual prompt",
@@ -409,7 +409,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen",
       "url": "https://www.meigen.ai/prompt/2068852408994955636",
       "ratio": "4:5 / vertical",
-      "image": "images/visual-library/vp-24.webp",
+      "image": "../images/visual-library/vp-24.webp",
       "ratioCss": "4 / 5",
       "tags": [
         "Visual prompt",
@@ -426,7 +426,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen",
       "url": "https://www.meigen.ai/prompt/community_2753a085-1599-410b-b990-5b2631eeb7d7",
       "ratio": "9:16 / vertical",
-      "image": "images/visual-library/vp-25.webp",
+      "image": "../images/visual-library/vp-25.webp",
       "ratioCss": "9 / 16",
       "tags": [
         "Visual prompt",
@@ -443,7 +443,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen",
       "url": "https://www.meigen.ai/prompt/2050013641861214518",
       "ratio": "9:16 / vertical",
-      "image": "images/visual-library/vp-26.webp",
+      "image": "../images/visual-library/vp-26.webp",
       "ratioCss": "9 / 16",
       "tags": [
         "Visual prompt",
@@ -460,7 +460,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen",
       "url": "https://www.meigen.ai/prompt/2010340876632137794",
       "ratio": "4:5 / vertical",
-      "image": "images/visual-library/vp-27.webp",
+      "image": "../images/visual-library/vp-27.webp",
       "ratioCss": "4 / 5",
       "tags": [
         "Visual prompt",
@@ -477,7 +477,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "MeiGen",
       "url": "https://www.meigen.ai/prompt/2068351521016955098",
       "ratio": "4:5 / vertical",
-      "image": "images/visual-library/vp-28.webp",
+      "image": "../images/visual-library/vp-28.webp",
       "ratioCss": "4 / 5",
       "tags": [
         "Visual prompt",
@@ -494,7 +494,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "Threads / p2nda visual reference",
       "url": "https://www.threads.com/@p2nda/post/DZzS2PRlX5N",
       "ratio": "4:5 poster",
-      "image": "images/visual-library/vp-29.webp",
+      "image": "../images/visual-library/vp-29.webp",
       "ratioCss": "4 / 5",
       "tags": [
         "Flat vector",
