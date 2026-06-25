@@ -2,7 +2,7 @@ window.VISUAL_PROMPT_LIBRARY = {
   "updated": "2026-06-24",
   "intro": {
     "title": "Visual Prompt Library",
-    "summary": "把已整理好的相 / 片 / Skill prompt 融入手冊：每張卡保留 reference image、比例、完整 prompt、來源同 copy 動作。",
+    "summary": "把相片與影片 prompt 整理成畫面資料庫：每張卡保留主圖、比例、完整 prompt 與來源。",
     "counts": {
       "video": 21,
       "image": 8,
@@ -512,7 +512,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "subtitle": "Agent Skill / workflow reference",
       "source": "GitHub",
       "url": "https://github.com/DietrichGebert/ponytail",
-      "summary": "像「很懶的資深工程師」：先質疑需求，能不用新代碼/新套件就不用，降低複雜度。",
+      "summary": "像一位極簡取向的資深工程師：先質疑需求，能不用新代碼或新套件就不用，降低複雜度。",
       "usage": "做 coding task 前加入 Ponytail 原則：標準庫、原生 API、既有工具、最少改動。",
       "tags": [
         "Skill",
@@ -648,7 +648,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "GitHub",
       "url": "https://github.com/hesreallyhim/awesome-claude-code",
       "summary": "Curated list of skills、hooks、slash commands、agent orchestrators、apps、plugins。",
-      "usage": "搵 hooks/commands/skills 組合，設計完整 agent workflow。",
+      "usage": "尋找 hooks/commands/skills 組合，設計完整 agent workflow。",
       "tags": [
         "Skill",
         "Workflow",
@@ -663,7 +663,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "GitHub",
       "url": "https://github.com/sickn33/antigravity-awesome-skills",
       "summary": "Installable library of agentic skills for Claude Code、Cursor、Codex CLI、Gemini CLI、Antigravity。",
-      "usage": "用作大量 skill reference；揀同類 skill 後改成自己的 Codex/Claude workflow。",
+      "usage": "用作大量 skill reference；選擇同類 skill 後，改寫成自己的 Codex/Claude workflow。",
       "tags": [
         "Skill",
         "Workflow",
@@ -678,7 +678,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "GitHub",
       "url": "https://github.com/wshobson/agents",
       "summary": "多 harness agentic plugin marketplace；覆蓋 Claude Code、Codex CLI、Cursor、OpenCode、Copilot、Gemini。",
-      "usage": "睇 agent role 分工，將 research / design / code / QA 拆成 subagent pattern。",
+      "usage": "查看 agent role 分工，將 research / design / code / QA 拆成 subagent pattern。",
       "tags": [
         "Skill",
         "Workflow",
@@ -693,7 +693,7 @@ window.VISUAL_PROMPT_LIBRARY = {
       "source": "GitHub",
       "url": "https://github.com/VoltAgent/awesome-agent-skills",
       "summary": "Curated collection of 1000+ agent skills，兼容 Claude Code、Codex、Gemini CLI、Cursor 等。",
-      "usage": "做 skill sourcing；先篩 category，再挑可落地 workflow。",
+      "usage": "用於 skill sourcing；先篩選 category，再挑選可落地 workflow。",
       "tags": [
         "Skill",
         "Workflow",
@@ -707,8 +707,8 @@ window.VISUAL_PROMPT_LIBRARY = {
       "subtitle": "Agent Skill / workflow reference",
       "source": "GitHub",
       "url": "https://github.com/ComposioHQ/awesome-codex-skills",
-      "summary": "Practical Codex skills list，重點係把重複 workflow 變成 Codex 可調用技能。",
-      "usage": "搵 Codex 專用技能方向，例如文件、瀏覽器、設計、資料處理。",
+      "summary": "Practical Codex skills list，重點是把重複 workflow 變成 Codex 可調用技能。",
+      "usage": "尋找 Codex 專用技能方向，例如文件、瀏覽器、設計、資料處理。",
       "tags": [
         "Skill",
         "Workflow",

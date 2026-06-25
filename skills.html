@@ -1,0 +1,279 @@
+<!doctype html><html lang="zh-Hant"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GenAI Lab · Skill Directory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Noto+Sans+HK:wght@400;500;700;900&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F8F3;--paper2:#E8F0E8;--ink:#10231F;--mint:#6F9D84;
+  --yellow:#D8C776;--coral:#B5795F;--line:#CBD8CE;--soft:#D2E5D5;
+  --shadow:0 20px 54px rgba(16,35,31,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Noto Sans HK','PingFang HK','Microsoft JhengHei',system-ui,sans-serif;
+  background:var(--paper);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:'Roboto Mono','Noto Sans HK',monospace;letter-spacing:-.055em}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(246,248,243,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(16,35,31,.16)}
+.topbar .wrap{height:72px;display:flex;align-items:center;gap:18px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-family:'Poppins',sans-serif;font-weight:800;white-space:nowrap}
+.logo img{width:32px;height:32px;object-fit:contain}
+.logo span{font-family:'Roboto Mono',monospace;font-size:11px;color:#6d7a70;font-weight:500}
+.topbar nav{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.topbar nav a{font-size:12px;font-weight:900;text-decoration:none;color:#2f413b;padding:6px 10px;border-radius:999px}
+.topbar nav a:hover{background:var(--ink);color:#fff}
+.skill-hero{
+  position:relative;
+  overflow:hidden;
+  padding:74px 0 58px;
+  background:linear-gradient(135deg,#10231f 0%,#0b1a17 62%,#06110f 100%);
+  color:#fff;
+}
+.skill-hero:after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:-1px;height:58px;
+  background:var(--paper);
+  border-radius:56px 56px 0 0;
+}
+.skill-hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.9fr) minmax(420px,1.1fr);gap:44px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;padding:8px 14px;
+  border:1px solid rgba(255,255,255,.18);border-radius:999px;
+  color:rgba(255,255,255,.74);font-family:'Roboto Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;
+}
+.eyebrow:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mint)}
+.skill-hero h1{font-size:clamp(42px,6vw,78px);font-weight:700;line-height:1.04;max-width:10ch}
+.lead{max-width:54ch;margin-top:22px;color:rgba(255,255,255,.72);font-size:17px;font-weight:700}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:9px 18px;
+  border:1px solid rgba(255,255,255,.46);border-radius:999px;color:#fff;text-decoration:none;font-size:13px;font-weight:900;
+}
+.btn.primary{background:var(--mint);border-color:var(--mint);color:#06110f}
+.skill-art{
+  position:relative;
+  min-height:430px;
+  border-radius:38px;
+  overflow:hidden;
+  box-shadow:0 28px 72px rgba(0,0,0,.34);
+  transform:rotate(-2deg);
+}
+.skill-art img{width:100%;height:100%;min-height:430px;object-fit:cover;object-position:50% 50%;display:block;filter:saturate(.96) contrast(1.02)}
+.skill-art:after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(16,35,31,.46),transparent 56%);
+}
+.metric-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:30px}
+.metric{padding:12px 14px;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:rgba(255,255,255,.07)}
+.metric b{display:block;color:#9ebead;font-family:'Roboto Mono',monospace;font-size:28px;line-height:1}
+.metric span{display:block;margin-top:6px;color:rgba(255,255,255,.52);font-family:'Roboto Mono',monospace;font-size:9px;text-transform:uppercase}
+main.wrap{padding:38px 22px 74px}
+.skill-tools{
+  display:grid;
+  grid-template-columns:minmax(260px,.95fr) minmax(0,1.25fr);
+  gap:14px;
+  align-items:center;
+  margin-bottom:20px;
+}
+.search{
+  width:100%;
+  min-height:48px;
+  border:1px solid rgba(16,35,31,.22);
+  border-radius:999px;
+  background:#fff;
+  color:var(--ink);
+  padding:0 18px;
+  font:700 14px 'Noto Sans HK',sans-serif;
+  outline:none;
+  box-shadow:0 12px 28px rgba(16,35,31,.06);
+}
+.filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.filter{
+  border:1px solid rgba(16,35,31,.22);
+  border-radius:999px;
+  background:#fff;
+  color:var(--ink);
+  padding:8px 13px;
+  font:900 12px 'Noto Sans HK',sans-serif;
+  cursor:pointer;
+}
+.filter[aria-pressed="true"]{background:var(--ink);color:#fff}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+.skill-card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  min-height:310px;
+  padding:19px;
+  border:1px solid rgba(16,35,31,.18);
+  border-radius:28px;
+  background:#fff;
+  box-shadow:var(--shadow);
+  scroll-margin-top:92px;
+}
+.skill-card:nth-child(5n+1){background:var(--soft)}
+.skill-card:nth-child(7n+2){background:#fff8d8}
+.skill-card:target{outline:4px solid rgba(111,157,132,.42);outline-offset:4px}
+.skill-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
+.skill-card h2{font-size:21px;line-height:1.18;max-width:13ch;overflow-wrap:anywhere;word-break:normal}
+.tag{flex:none;padding:4px 9px;border-radius:999px;background:var(--ink);color:#fff;font-family:'Roboto Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase}
+.meta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
+.pill{padding:3px 8px;border:1px solid rgba(16,35,31,.18);border-radius:999px;background:rgba(255,255,255,.62);font-size:10.5px;font-weight:900;color:#30413b}
+.summary{font-size:14px;color:#2f413b;line-height:1.72}
+.usage{
+  margin-top:14px;
+  padding:11px 12px;
+  border-radius:18px;
+  background:rgba(16,35,31,.07);
+  color:#2f413b;
+  font-size:13.5px;
+  line-height:1.66;
+}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:16px}
+.action{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(16,35,31,.28);
+  border-radius:999px;
+  background:#fff;
+  color:var(--ink);
+  min-height:34px;
+  padding:7px 12px;
+  font:900 11.5px 'Noto Sans HK',sans-serif;
+  text-decoration:none;
+  cursor:pointer;
+}
+.action.primary{background:var(--ink);color:#fff}
+.empty{grid-column:1/-1;padding:44px;border-radius:28px;background:#fff;text-align:center;color:#65766f;font-weight:800}
+footer{background:var(--ink);color:#cdd5e6;padding:34px 0;text-align:center}
+footer b{color:#fff;font-family:'Poppins',sans-serif}
+@media(max-width:980px){
+  .skill-hero .wrap{grid-template-columns:1fr}
+  .skill-art{min-height:320px}
+  .skills-grid{grid-template-columns:1fr 1fr}
+  .skill-tools{grid-template-columns:1fr}
+  .filters{justify-content:flex-start}
+}
+@media(max-width:640px){
+  .topbar nav{display:none}
+  .skill-hero{padding:46px 0 72px}
+  .skill-hero h1{font-size:43px}
+  .lead{font-size:15px}
+  .metric-strip{grid-template-columns:1fr 1fr}
+  .skill-art,.skill-art img{min-height:250px}
+  .skills-grid{grid-template-columns:1fr}
+  .skill-card h2{max-width:none}
+}
+</style></head><body data-screen-label="Skill Directory">
+<div class="topbar"><div class="wrap">
+<a class="logo" href="index.html#visual-library"><img src="genai-handbook-upload-changes-d6099aa/images/brand/peacock-mark-mintgreen.png" alt="Peacock"><b>GenAI Lab</b><span>Skills</span></a>
+<nav><a href="index.html">手冊首頁</a><a href="index.html#models">模型</a><a href="index.html#visual-library">Prompt 庫</a><a href="index.html#warn">QC</a></nav>
+</div></div>
+
+<header class="skill-hero"><div class="wrap">
+<div>
+<span class="eyebrow">Peacock / reusable agent workflows</span>
+<h1>Skill Directory</h1>
+<p class="lead">把常用生成、剪片、檢查流程整理成工具卡；每張保留用途、使用時機與來源，開始製作時可直接按照步驟執行。</p>
+<div class="hero-actions"><a class="btn primary" href="#skillsGrid">瀏覽 Skill</a><a class="btn" href="index.html#visual-library">返回 Prompt 庫</a></div>
+<div class="metric-strip">
+<div class="metric"><b id="skillCount">16</b><span>技能卡</span></div>
+<div class="metric"><b>4</b><span>工作流類型</span></div>
+<div class="metric"><b>1</b><span>資料來源</span></div>
+<div class="metric"><b>∞</b><span>可重用</span></div>
+</div>
+</div>
+<figure class="skill-art"><img src="genai-handbook-upload-changes-d6099aa/images/generated/workflow-machine-reference.png" alt="AI production workflow illustration"></figure>
+</div></header>
+
+<main class="wrap">
+<section class="skill-tools" aria-label="Skill filters">
+<input id="skillSearch" class="search" type="search" placeholder="搜尋 skill、流程、來源..." autocomplete="off">
+<div class="filters">
+<button class="filter" type="button" data-filter="all" aria-pressed="true">全部</button>
+<button class="filter" type="button" data-filter="design" aria-pressed="false">Design</button>
+<button class="filter" type="button" data-filter="media" aria-pressed="false">Media</button>
+<button class="filter" type="button" data-filter="agent" aria-pressed="false">Agent</button>
+<button class="filter" type="button" data-filter="library" aria-pressed="false">Library</button>
+</div>
+</section>
+<section class="skills-grid" id="skillsGrid" aria-live="polite"></section>
+</main>
+
+<footer><p><b>GenAI Lab Skill Directory</b> · 來源：visual-library-data.js</p></footer>
+<script src="visual-library-data.js"></script>
+<script>
+const skillData=(window.VISUAL_PROMPT_LIBRARY?.skills||[]);
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const labels={design:'Design',media:'Media',agent:'Agent',library:'Library'};
+let activeFilter='all';
+const category=item=>{
+  const text=`${item.id} ${item.title} ${item.summary} ${item.usage}`.toLowerCase();
+  if(/baoyu|design|cowart|open-design/.test(text)) return 'design';
+  if(/sprite|media|video|audio|anime|generative/.test(text)) return 'media';
+  if(/awesome|anthropic|skills list|collection|marketplace|resources/.test(text)) return 'library';
+  return 'agent';
+};
+const plain=item=>`${item.title}\n${item.summary}\n\n用法：${item.usage}\n\nSource: ${item.url}`;
+function card(item){
+  const cat=category(item);
+  const tags=[labels[cat], item.source||'來源', ...(item.tags||[]).slice(0,2)];
+  return `<article class="skill-card" id="${esc(item.id)}" data-cat="${esc(cat)}">
+    <div class="skill-top"><h2>${esc(item.title)}</h2><span class="tag">${esc(labels[cat])}</span></div>
+    <div class="meta">${tags.map(t=>`<span class="pill">${esc(t)}</span>`).join('')}</div>
+    <p class="summary">${esc(item.summary)}</p>
+    <div class="usage"><b>用法：</b>${esc(item.usage)}</div>
+    <div class="actions"><button class="action primary" type="button" data-copy="${esc(item.id)}">複製用法</button><a class="action" href="${esc(item.url)}" target="_blank" rel="noopener">來源</a></div>
+  </article>`;
+}
+function render(){
+  const q=document.getElementById('skillSearch').value.trim().toLowerCase();
+  const items=skillData.filter(item=>{
+    const cat=category(item);
+    const hay=`${item.title} ${item.summary} ${item.usage} ${item.url} ${(item.tags||[]).join(' ')}`.toLowerCase();
+    return (activeFilter==='all'||cat===activeFilter)&&(!q||hay.includes(q));
+  });
+  document.getElementById('skillsGrid').innerHTML=items.length?items.map(card).join(''):'<div class="empty">未找到相符 skill。</div>';
+  document.getElementById('skillCount').textContent=skillData.length;
+  requestAnimationFrame(scrollHash);
+}
+function copyText(text,btn){
+  const done=()=>{const old=btn.textContent;btn.textContent='已複製';setTimeout(()=>btn.textContent=old,1200)};
+  if(navigator.clipboard&&window.isSecureContext){
+    navigator.clipboard.writeText(text).then(done).catch(()=>fallback(text,done));
+  }else fallback(text,done);
+}
+function fallback(text,done){
+  const ta=document.createElement('textarea');
+  ta.value=text;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.left='-9999px';
+  document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();done();
+}
+function scrollHash(){
+  const id=decodeURIComponent((location.hash||'').slice(1));
+  if(!id) return;
+  const el=document.getElementById(id);
+  if(el) el.scrollIntoView({block:'start'});
+}
+document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{
+  activeFilter=btn.dataset.filter;
+  document.querySelectorAll('.filter').forEach(x=>x.setAttribute('aria-pressed','false'));
+  btn.setAttribute('aria-pressed','true');
+  render();
+}));
+document.getElementById('skillSearch').addEventListener('input',render);
+document.addEventListener('click',e=>{
+  const btn=e.target.closest('[data-copy]');
+  if(!btn) return;
+  const item=skillData.find(x=>x.id===btn.dataset.copy);
+  if(item) copyText(plain(item),btn);
+});
+window.addEventListener('hashchange',scrollHash);
+render();
+</script>
+</body></html>
