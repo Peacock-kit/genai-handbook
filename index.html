@@ -5,15 +5,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Noto+Sans+HK:wght@400;500;700;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#FBF7F0; --paper2:#F3EDE1; --ink:#1E2A44; --navy:#1E2A44;
-  --coral:#FF6B4A; --mint:#3BB58F; --yellow:#FFC247; --violet:#7C6BD6;
-  --pink:#F2789F; --sky:#5BC8E8; --line:#E5DCC9;
-  --shadow:0 6px 0 rgba(30,42,68,.10), 0 14px 30px rgba(30,42,68,.10);
+  --paper:#F6F8F3; --paper2:#E8F0E8; --ink:#10231F; --navy:#10231F;
+  --coral:#B5795F; --mint:#6F9D84; --yellow:#D8C776; --violet:#406A5A;
+  --pink:#B8C7A9; --sky:#9EBEAE; --line:#CBD8CE;
+  --shadow:0 6px 0 rgba(16,35,31,.10), 0 14px 30px rgba(16,35,31,.10);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Noto Sans HK','PingFang HK','Microsoft JhengHei',system-ui,sans-serif;
-  background:var(--paper);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased}
+  background:var(--paper);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .wrap{max-width:1060px;margin:0 auto;padding:0 22px}
 h1,h2,h3{font-family:'Poppins','Noto Sans HK',sans-serif;font-weight:800;letter-spacing:-.01em}
 
@@ -163,7 +163,9 @@ h3.mini .dot{width:12px;height:12px;border-radius:4px;background:var(--coral);fl
 /* 色調卡 */
 .tone-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .tone-card{background:#fff;border:3px solid var(--ink);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
-.tone-thumb{height:96px;position:relative}
+.tone-thumb{height:96px;position:relative;overflow:hidden;background:#10231f}
+.tone-thumb img,.film-thumb img{width:100%;height:100%;display:block;object-fit:cover}
+.tone-thumb img{object-position:center 34%}
 .tone-thumb svg{width:100%;height:100%;display:block}
 .ts-sky{fill:var(--s1)}.ts-sun{fill:var(--s2)}.ts-far{fill:var(--s3)}.ts-near{fill:var(--s4)}.ts-subj{fill:var(--s5)}
 .tone-info{padding:9px 12px}
@@ -178,20 +180,20 @@ h3.mini .dot{width:12px;height:12px;border-radius:4px;background:var(--coral);fl
 .film-thumb{height:110px;position:relative;overflow:hidden}
 .film-thumb svg.tone-scene{width:100%;height:100%;display:block;--s1:#BCE3F2;--s2:#FFC247;--s3:#7FA98F;--s4:#5B8A6E;--s5:#FF6B4A}
 .fx{position:absolute;inset:0;pointer-events:none}
-.f-grain svg.tone-scene{filter:contrast(1.05) saturate(1.05)}
-.f-anam svg.tone-scene{filter:saturate(1.15) contrast(1.1) hue-rotate(-8deg)}
+.f-grain svg.tone-scene,.f-grain .film-photo{filter:contrast(1.05) saturate(1.05)}
+.f-anam svg.tone-scene,.f-anam .film-photo{filter:saturate(1.15) contrast(1.1) hue-rotate(-8deg)}
 .f-anam .bars:before,.f-anam .bars:after{content:"";position:absolute;left:0;right:0;height:14%;background:#0c1320}
 .f-anam .bars:before{top:0}.f-anam .bars:after{bottom:0}
 .f-anam .flare{position:absolute;top:46%;left:-10%;right:-10%;height:3px;background:linear-gradient(90deg,transparent,#6fd9ff 35%,#fff 50%,#6fd9ff 65%,transparent);opacity:.85;filter:blur(.6px)}
-.f-noir svg.tone-scene{filter:grayscale(1) contrast(1.6) brightness(.92)}
+.f-noir svg.tone-scene,.f-noir .film-photo{filter:grayscale(1) contrast(1.6) brightness(.92)}
 .f-noir .vig{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,.65))}
-.f-vhs svg.tone-scene{filter:saturate(1.3) contrast(1.05) hue-rotate(6deg)}
+.f-vhs svg.tone-scene,.f-vhs .film-photo{filter:saturate(1.3) contrast(1.05) hue-rotate(6deg)}
 .f-vhs .scan{position:absolute;inset:0;background:repeating-linear-gradient(transparent 0 2px,rgba(0,0,0,.16) 2px 3px)}
 .f-vhs .band{position:absolute;left:0;right:0;height:9px;background:rgba(255,255,255,.35);mix-blend-mode:overlay;animation:vhsband 2.8s linear infinite}
 @keyframes vhsband{0%{top:-10%}100%{top:110%}}
-.f-faded svg.tone-scene{filter:sepia(.4) saturate(.72) contrast(.9) brightness(1.05)}
+.f-faded svg.tone-scene,.f-faded .film-photo{filter:sepia(.4) saturate(.72) contrast(.9) brightness(1.05)}
 .f-faded .leak{position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,140,60,.4),transparent 42%)}
-.f-dream svg.tone-scene{filter:blur(1.1px) brightness(1.1) saturate(1.15)}
+.f-dream svg.tone-scene,.f-dream .film-photo{filter:blur(1.1px) brightness(1.1) saturate(1.15)}
 .f-dream .glow{position:absolute;inset:0;background:radial-gradient(ellipse at 64% 30%,rgba(255,255,255,.5),transparent 55%)}
 .film-info{padding:10px 13px}
 .film-info h4{font-size:13.5px;font-family:'Poppins','Noto Sans HK',sans-serif;display:flex;gap:7px;align-items:center;flex-wrap:wrap}
@@ -281,82 +283,945 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 .vl-skill-title h4{font-size:17px;margin:0}
 .vl-skill-tag{font-size:10px;font-weight:900;border:2px solid var(--ink);border-radius:10px;padding:2px 8px;background:var(--yellow)}
 .vl-usage{margin-top:9px;background:#FFF8D8;border:2px solid var(--line);border-radius:12px;padding:9px 10px;font-size:12px;color:#3c4658}
+
+/* skill workflow section */
+.skill-section-hero{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:20px;
+  align-items:stretch;
+  margin-bottom:18px;
+}
+.skill-section-panel{
+  background:#10231f;
+  color:#fff;
+  border-radius:34px;
+  padding:28px;
+  box-shadow:0 24px 60px rgba(0,0,0,.18);
+  min-height:220px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.skill-section-panel p{color:rgba(255,255,255,.68);font-size:14px;max-width:58ch}
+.skill-section-panel h3{font-family:'Roboto Mono','Noto Sans HK',monospace;font-size:28px;line-height:1.12;letter-spacing:-.04em;margin-bottom:12px}
+.skill-section-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.skill-section-actions a{
+  display:inline-flex;
+  min-height:38px;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  padding:8px 15px;
+  border:1px solid rgba(255,255,255,.34);
+  color:#fff;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:900;
+}
+.skill-section-actions a.primary{background:#8abfa2;color:#06110f;border-color:#8abfa2}
+.skill-section-meter{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+.skill-section-stat{
+  min-height:103px;
+  padding:16px;
+  border-radius:26px;
+  background:#f4f7f2;
+  border:1px solid rgba(16,35,31,.14);
+  color:#10231f;
+}
+.skill-section-stat b{display:block;font-family:'Roboto Mono',monospace;font-size:34px;line-height:1;color:#67987f;letter-spacing:-.05em}
+.skill-section-stat span{display:block;margin-top:8px;font-size:11px;font-weight:900;color:#53645e;text-transform:uppercase}
+.skill-section-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.skill-mini-card{
+  background:#f4f7f2;
+  color:var(--ink);
+  border:0;
+  border-radius:26px;
+  padding:18px;
+  box-shadow:0 18px 42px rgba(16,35,31,.08);
+}
+.skill-mini-card:nth-child(3n+2){background:#fff8d8}
+.skill-mini-card:nth-child(3n+3){background:#d2e5d5}
+.skill-mini-card h3{font-size:17px;line-height:1.2;margin-bottom:8px}
+.skill-mini-card p{font-size:12.5px;color:#5a647a}
+.skill-mini-card .vl-meta{margin-top:12px}
+.skill-mini-card .vl-actions{margin-top:14px}
 @media(max-width:820px){
   .vl-hero{grid-template-columns:1fr;padding:18px}
-  .vl-stats{grid-template-columns:repeat(3,minmax(0,1fr));width:100%}
+  .vl-stats{grid-template-columns:repeat(2,minmax(0,1fr));width:100%}
   .vl-stat{padding:9px 6px}
   .vl-stat b{font-size:22px}
   .vl-grid{grid-template-columns:1fr}
+  .skill-section-hero,.skill-section-grid{grid-template-columns:1fr}
+  .skill-section-panel{padding:22px;border-radius:26px}
+  .skill-section-meter{grid-template-columns:1fr 1fr}
+}
+
+/* Peacock AI-tech homepage direction */
+.topbar{background:rgba(246,248,243,.94);border-bottom:1px solid rgba(16,35,31,.16)}
+.topbar .wrap{max-width:1220px;height:72px}
+.topbar .logo{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;min-width:max-content;white-space:nowrap}
+.topbar .logo img{width:32px;height:32px;object-fit:contain;filter:drop-shadow(0 0 10px rgba(111,157,132,.16))}
+.topbar .logo b{color:var(--ink)}
+.topbar .logo .version{font-family:'Roboto Mono',monospace;font-size:11px;color:#6d7a70;font-weight:500}
+.topbar nav a{border-radius:999px;color:#2f413b}
+.topbar nav a:hover{background:var(--ink);color:#fff}
+
+.home-hero{
+  position:relative;
+  overflow:hidden;
+  min-height:720px;
+  padding:72px 0 58px;
+  background:
+    radial-gradient(circle at 72% 24%,rgba(111,157,132,.34),transparent 28%),
+    linear-gradient(135deg,#10231f 0%,#0b1a17 62%,#06110f 100%);
+  color:#fff;
+}
+.home-hero:after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-1px;
+  height:64px;
+  background:var(--paper);
+  border-radius:60px 60px 0 0;
+}
+.home-hero .wrap{
+  position:relative;
+  z-index:1;
+  max-width:1220px;
+  display:grid;
+  grid-template-columns:minmax(0,.95fr) minmax(420px,1.05fr);
+  gap:44px;
+  align-items:center;
+}
+.home-ghost{
+  position:absolute;
+  left:8%;
+  top:84px;
+  z-index:0;
+  color:rgba(255,255,255,.032);
+  font-family:'Roboto Mono',monospace;
+  font-size:420px;
+  font-weight:700;
+  line-height:.8;
+  pointer-events:none;
+}
+.home-copy{position:relative;z-index:2}
+.home-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:24px;
+  padding:8px 14px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:999px;
+  color:rgba(255,255,255,.76);
+  font-family:'Roboto Mono',monospace;
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+.home-eyebrow:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mint)}
+.home-hero h1{
+  max-width:11ch;
+  color:#fff;
+  font-family:'Roboto Mono','Noto Sans HK',monospace;
+  font-size:clamp(44px,6.2vw,82px);
+  font-weight:500;
+  line-height:1.05;
+  letter-spacing:-.06em;
+}
+.home-hero .lead{
+  max-width:52ch;
+  margin-top:24px;
+  color:rgba(255,255,255,.72);
+  font-size:17px;
+  font-weight:600;
+}
+.home-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.home-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:40px;
+  padding:9px 18px;
+  border:1px solid rgba(255,255,255,.46);
+  border-radius:999px;
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:900;
+}
+.home-btn.primary{background:var(--mint);border-color:var(--mint);color:#06110f}
+.home-stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  max-width:650px;
+  margin-top:42px;
+}
+.home-stat b{
+  display:block;
+  color:#9ebead;
+  font-family:'Roboto Mono',monospace;
+  font-size:31px;
+  font-weight:500;
+  line-height:1;
+}
+.home-stat span{
+  display:block;
+  margin-top:7px;
+  color:rgba(255,255,255,.5);
+  font-family:'Roboto Mono',monospace;
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.home-visual{
+  position:relative;
+  min-height:600px;
+  display:grid;
+  place-items:center;
+  isolation:isolate;
+  overflow:hidden;
+}
+.home-orbit{
+  position:absolute;
+  width:520px;
+  height:320px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:50%;
+  transform:rotate(-18deg);
+  animation:homeOrbit 18s linear infinite;
+}
+.home-orbit.two{width:440px;height:390px;opacity:.72;animation:homeOrbitReverse 22s linear infinite}
+@keyframes homeOrbit{to{transform:rotate(342deg)}}
+@keyframes homeOrbitReverse{to{transform:rotate(-306deg)}}
+.home-sketch{
+  position:absolute;
+  inset:22px 10px 24px;
+  z-index:1;
+  pointer-events:none;
+  opacity:.72;
+}
+.home-sketch path,.home-sketch circle,.home-sketch rect{
+  fill:none;
+  stroke:rgba(255,255,255,.34);
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-dasharray:4 7;
+  animation:homeDash 12s linear infinite;
+}
+.home-sketch .mint{stroke:rgba(159,190,173,.74)}
+.home-sketch .gold{stroke:rgba(216,199,118,.74)}
+@keyframes homeDash{to{stroke-dashoffset:-120}}
+.home-note{
+  position:absolute;
+  z-index:8;
+  min-width:108px;
+  padding:8px 10px;
+  border:1.5px solid rgba(16,35,31,.22);
+  border-radius:13px;
+  background:#f4f7f2;
+  color:var(--ink);
+  box-shadow:0 16px 30px rgba(0,0,0,.2);
+  font-family:'Roboto Mono',monospace;
+  text-transform:uppercase;
+}
+.home-note b{display:block;font-size:12px;line-height:1;letter-spacing:-.035em}
+.home-note span{display:block;margin-top:4px;color:#617269;font-size:7px;letter-spacing:.05em}
+.home-note.tokens{left:62px;top:90px;transform:rotate(5deg)}
+.home-note.model{right:48px;top:112px;background:#9ebead;transform:rotate(-6deg)}
+.home-note.render{right:32px;bottom:126px;background:#d8c776;transform:rotate(7deg)}
+.home-badge{
+  position:absolute;
+  top:44px;
+  left:44px;
+  z-index:8;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:9px 13px;
+  border-radius:999px;
+  background:rgba(244,247,242,.94);
+  color:var(--ink);
+  box-shadow:0 14px 34px rgba(0,0,0,.28);
+  transform:rotate(-8deg);
+}
+.home-badge img{width:28px;height:28px;object-fit:contain}
+.home-badge span{font-family:'Roboto Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.home-book{
+  position:relative;
+  z-index:2;
+  width:min(510px,100%);
+  aspect-ratio:1.18/1;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:38px;
+  background:#20362f;
+  box-shadow:0 24px 70px rgba(0,0,0,.42);
+  transform:rotate(-13deg);
+  animation:homeBookFloat 5s ease-in-out infinite;
+}
+@keyframes homeBookFloat{
+  0%,100%{transform:rotate(-13deg) translateY(0)}
+  50%{transform:rotate(-11deg) translateY(-10px)}
+}
+.home-book:before{
+  content:"";
+  position:absolute;
+  inset:18px;
+  border-radius:30px;
+  background:linear-gradient(90deg,rgba(255,255,255,.2),transparent 24%,transparent 76%,rgba(16,35,31,.1)),#d2e5d5;
+}
+.home-cover,.home-page{
+  position:absolute;
+  top:42px;
+  bottom:42px;
+  background:#f4f7f2;
+  color:var(--ink);
+  box-shadow:0 18px 34px rgba(0,0,0,.16);
+}
+.home-cover{
+  left:44px;
+  width:50%;
+  overflow:hidden;
+  padding:22px 24px;
+  border-radius:22px 10px 10px 22px;
+}
+.home-cover:before{
+  content:"";
+  position:absolute;
+  inset:12px;
+  border:1.5px dashed rgba(16,35,31,.2);
+  border-radius:17px 8px 8px 17px;
+}
+.home-cover img{width:56px;height:78px;object-fit:contain;margin-bottom:6px}
+.home-chip{
+  position:absolute;
+  right:18px;
+  top:18px;
+  padding:5px 7px;
+  border-radius:999px;
+  background:var(--mint);
+  color:#06110f;
+  font-family:'Roboto Mono',monospace;
+  font-size:7px;
+  font-weight:700;
+}
+.home-chip.two{top:46px;right:30px;background:var(--yellow)}
+.home-chip.three{top:74px;right:16px;background:#cfae92}
+.home-kicker{font-family:'Roboto Mono',monospace;font-size:10px;color:#66776e;text-transform:uppercase;letter-spacing:.08em}
+.home-title{margin-top:10px;font-family:'Roboto Mono',monospace;font-size:33px;font-weight:700;line-height:1.02;letter-spacing:-.06em}
+.home-sub{margin-top:12px;color:#50625b;font-size:12px;font-weight:700}
+.home-mini-map{position:absolute;left:16px;right:18px;bottom:72px;height:70px;opacity:.8}
+.home-mini-map path,.home-mini-map circle,.home-mini-map rect{
+  stroke:rgba(16,35,31,.46);
+  stroke-width:1.5;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-dasharray:5 5;
+}
+.home-mini-map circle{fill:rgba(111,157,132,.22)}
+.home-spine{
+  position:absolute;
+  top:38px;
+  bottom:38px;
+  left:50%;
+  z-index:4;
+  width:18px;
+  border-radius:999px;
+  background:linear-gradient(90deg,rgba(16,35,31,.22),rgba(255,255,255,.36),rgba(16,35,31,.14));
+}
+.home-page{
+  right:44px;
+  width:39%;
+  padding:21px 18px;
+  border-radius:10px 22px 22px 10px;
+  background:rgba(255,255,255,.88);
+}
+.home-row{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin-bottom:10px;
+  color:#40504a;
+  font-family:'Roboto Mono',monospace;
+  font-size:9px;
+  line-height:1.25;
+}
+.home-row i{display:block;flex:none;width:18px;height:12px;border-radius:4px;background:var(--mint)}
+.home-row:nth-child(2) i{background:var(--yellow)}
+.home-row:nth-child(3) i{background:#d2e5d5}
+.home-row:nth-child(4) i{background:#cfae92}
+.home-row:nth-child(5) i{background:#9ebead}
+.home-code{
+  margin-top:12px;
+  padding-top:12px;
+  border-top:1px dashed rgba(16,35,31,.25);
+  display:grid;
+  gap:7px;
+}
+.home-code span{
+  min-height:10px;
+  display:flex;
+  align-items:center;
+  padding-left:7px;
+  border-radius:999px;
+  background:rgba(16,35,31,.14);
+  color:rgba(16,35,31,.58);
+  font-family:'Roboto Mono',monospace;
+  font-size:6.5px;
+}
+.home-code span:nth-child(3){width:62%;background:rgba(111,157,132,.35)}
+.home-flow{
+  position:absolute;
+  z-index:6;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-height:46px;
+  padding:9px 13px;
+  border-radius:999px;
+  background:#f4f7f2;
+  color:var(--ink);
+  box-shadow:0 14px 28px rgba(0,0,0,.22);
+  font-family:'Roboto Mono',monospace;
+  font-size:11px;
+  animation:flowPulse 3.4s ease-in-out infinite;
+}
+.home-flow svg{width:21px;height:21px;stroke:var(--ink);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.home-flow.prompt{left:14px;top:158px;background:var(--yellow)}
+.home-flow.motion{left:58px;bottom:118px;background:#cfae92}
+.home-flow.api{right:66px;bottom:86px}
+@keyframes flowPulse{50%{transform:translateY(-6px)}}
+
+@media(max-width:820px){
+  .home-hero{min-height:0;padding:44px 0 80px}
+  .home-hero .wrap{grid-template-columns:1fr;gap:24px}
+  .home-ghost{font-size:220px;left:0;top:150px}
+  .home-copy{width:min(335px,calc(100vw - 44px));max-width:calc(100vw - 44px)}
+  .home-hero h1{font-size:43px}
+  .home-hero .lead{font-size:15px;line-height:1.75}
+  .home-stats{grid-template-columns:1fr 1fr}
+  .home-visual{min-height:420px}
+  .home-note{display:none}
+  .home-sketch{opacity:.44}
+  .home-badge{top:18px;left:40px;padding:7px 10px}
+  .home-book{width:330px;border-radius:24px}
+  .home-book:before{inset:12px;border-radius:22px}
+  .home-cover{left:28px;top:30px;bottom:30px;width:50%;border-radius:18px 8px 8px 18px;padding:14px}
+  .home-cover:before{inset:8px;border-radius:14px 6px 6px 14px}
+  .home-cover img{width:34px;height:48px;margin-bottom:6px}
+  .home-chip{font-size:5.5px;padding:4px 5px;right:10px;top:10px}
+  .home-chip.two{top:32px;right:18px}
+  .home-chip.three{top:54px;right:10px}
+  .home-kicker{font-size:8px}
+  .home-title{font-size:23px}
+  .home-sub{font-size:10px}
+  .home-mini-map{bottom:54px;height:48px}
+  .home-spine{top:30px;bottom:30px;width:12px}
+  .home-page{right:28px;top:38px;bottom:38px;width:39%;padding:12px 9px}
+  .home-row{font-size:6.4px;margin-bottom:5px;gap:5px}
+  .home-row i{width:10px;height:8px;border-radius:3px}
+  .home-code{gap:4px;margin-top:5px;padding-top:6px}
+  .home-code span{min-height:8px;padding-left:4px;font-size:5px}
+  .home-flow{min-height:34px;padding:7px 9px;font-size:8px;gap:6px}
+  .home-flow svg{width:16px;height:16px}
+  .home-flow.prompt{left:0;top:100px}
+  .home-flow.motion{left:14px;bottom:88px}
+  .home-flow.api{right:88px;bottom:48px}
+}
+
+/* Section-level art direction */
+main.wrap{max-width:1220px}
+main.wrap > section{
+  position:relative;
+  isolation:isolate;
+  padding:88px 0;
+  border-top:0;
+  scroll-margin-top:86px;
+}
+main.wrap > section:before{
+  content:"";
+  position:absolute;
+  inset:0 calc(50% - 50vw);
+  z-index:-1;
+  background:var(--paper);
+}
+main.wrap > section:after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  border-top:1.5px dashed rgba(16,35,31,.2);
+}
+main.wrap > section .sec-head{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) minmax(180px,310px);
+  gap:16px 24px;
+  align-items:center;
+  max-width:none;
+  margin-bottom:14px;
+  --section-gif:url("images/section-gifs/rules.gif");
+}
+main.wrap > section .sec-head:after{
+  content:"";
+  grid-column:3;
+  grid-row:1;
+  align-self:stretch;
+  min-height:132px;
+  border:1px solid rgba(16,35,31,.14);
+  border-radius:28px;
+  background:
+    linear-gradient(135deg,rgba(246,248,243,.18),rgba(16,35,31,.04)),
+    var(--section-gif) center/cover no-repeat;
+  box-shadow:0 18px 44px rgba(16,35,31,.11);
+}
+main.wrap > section .sec-num{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  background:var(--ink);
+  color:#fff;
+  box-shadow:none;
+}
+main.wrap > section .sec-head h2{
+  font-family:'Roboto Mono','Noto Sans HK',monospace;
+  font-size:clamp(30px,4.4vw,56px);
+  line-height:1.08;
+  letter-spacing:-.055em;
+  font-weight:700;
+  max-width:860px;
+}
+main.wrap > section .sec-sub{
+  max-width:62ch;
+  margin-bottom:34px;
+  color:#64736c;
+  font-weight:700;
+}
+.card,.demo,.tone-card,.film-card,.style-card,.vl-card{
+  border:1px solid rgba(16,35,31,.2);
+  border-radius:28px;
+  box-shadow:0 20px 54px rgba(16,35,31,.08);
+}
+.card{background:rgba(255,255,255,.82)}
+.card p,.card li,.d-label p,.tone-info p,.film-info p,.style-body .desc,.vl-card p,.vl-usage{
+  color:#2f413b;
+  line-height:1.68;
+}
+.card p{font-size:14.5px}
+.card ul li{font-size:14px}
+.d-label p,.film-info p,.style-body .desc,.vl-card p{font-size:13px}
+.sp{font-size:11.5px;line-height:1.65}
+.vl-usage{font-size:13px}
+.vl-pill{font-size:10.5px}
+.vl-copy,.vl-link{font-size:11.5px}
+.promptbox{border:0;border-radius:22px;box-shadow:0 18px 42px rgba(16,35,31,.14)}
+
+#rules:before,#models:before,#people:before,#tone:before,#shots:before,#emotion:before,#type:before,#design:before{background:#f6f8f3}
+#prompt:before,#i2v:before,#act:before,#styles:before,#cost:before{background:#e8f0e8}
+#cam:before,#film:before,#visual-library:before,#warn:before{background:#10231f}
+#cam,#film,#visual-library,#warn{color:#fff}
+#cam:after,#film:after,#visual-library:after,#warn:after{border-top-color:rgba(255,255,255,.12)}
+#cam .sec-sub,#film .sec-sub,#visual-library .sec-sub,#warn .sec-sub{color:rgba(255,255,255,.62)}
+#cam .sec-num,#film .sec-num,#visual-library .sec-num,#warn .sec-num{background:#8abfa2;color:#06110f}
+#cam .sec-head:after,#film .sec-head:after,#visual-library .sec-head:after,#warn .sec-head:after{border-color:rgba(255,255,255,.14);box-shadow:0 22px 54px rgba(0,0,0,.28)}
+#rules .sec-head{--section-gif:url("images/section-gifs/rules.gif")}
+#models .sec-head{--section-gif:url("images/section-gifs/models.gif")}
+#prompt .sec-head{--section-gif:url("images/section-gifs/prompt.gif")}
+#people .sec-head{--section-gif:url("images/section-gifs/people.gif")}
+#cam .sec-head{--section-gif:url("images/section-gifs/cam.gif")}
+#act .sec-head{--section-gif:url("images/section-gifs/act.gif")}
+#i2v .sec-head{--section-gif:url("images/section-gifs/i2v.gif")}
+#tone .sec-head{--section-gif:url("images/section-gifs/tone.gif")}
+#film .sec-head{--section-gif:url("images/section-gifs/film.gif")}
+#shots .sec-head{--section-gif:url("images/section-gifs/shots.gif")}
+#styles .sec-head{--section-gif:url("images/section-gifs/styles.gif")}
+#skills .sec-head{--section-gif:url("images/section-gifs/skills.gif")}
+#visual-library .sec-head{--section-gif:url("images/section-gifs/visual-library.gif")}
+#emotion .sec-head{--section-gif:url("images/section-gifs/emotion.gif")}
+#type .sec-head{--section-gif:url("images/section-gifs/type.gif")}
+#design .sec-head{--section-gif:url("images/section-gifs/design.gif")}
+#cost .sec-head{--section-gif:url("images/section-gifs/cost.gif")}
+#warn .sec-head{--section-gif:url("images/section-gifs/warn.gif")}
+
+#rules .grid3{grid-template-columns:1.15fr 1fr 1fr}
+#rules .grid3 > .card:first-child{background:#10231f;color:#fff}
+#rules .grid3 > .card:first-child p,#rules .grid3 > .card:first-child li{color:rgba(255,255,255,.72)}
+#rules .steps{grid-template-columns:repeat(5,1fr);gap:14px}
+#rules .step{border-width:1px;border-radius:24px;background:#fff;box-shadow:0 14px 36px rgba(16,35,31,.08)}
+
+.model-board{
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);
+  gap:18px;
+  align-items:stretch;
+}
+.model-map{
+  background:#10231f;
+  color:#fff;
+  border-radius:30px;
+  padding:24px;
+  box-shadow:0 22px 54px rgba(16,35,31,.16);
+}
+.model-map h3,.model-selector h3,.model-card h3{font-family:'Roboto Mono','Noto Sans HK',monospace;letter-spacing:-.04em}
+.model-flow{display:grid;gap:10px;margin-top:16px}
+.model-step{
+  display:grid;
+  grid-template-columns:92px minmax(0,1fr);
+  gap:12px;
+  align-items:center;
+  padding:12px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:18px;
+  background:rgba(255,255,255,.07);
+}
+.model-step b{font-family:'Roboto Mono',monospace;font-size:12px;color:#d8c776;text-transform:uppercase}
+.model-step span{color:rgba(255,255,255,.78);font-size:13px;line-height:1.55}
+.model-selector{display:flex;flex-direction:column;justify-content:space-between}
+.model-selector .chips{margin-top:16px}
+.model-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:18px}
+.model-card{
+  grid-column:span 2;
+  background:#fff;
+  border:1px solid rgba(16,35,31,.18);
+  border-radius:26px;
+  padding:18px;
+  box-shadow:0 18px 42px rgba(16,35,31,.08);
+}
+.model-card.featured{grid-column:span 3;background:#d2e5d5}
+.model-card.dark{grid-column:span 3;background:#10231f;color:#fff}
+.model-card.dark p,.model-card.dark li{color:rgba(255,255,255,.76)}
+.model-tag{display:inline-flex;margin-bottom:12px;padding:4px 9px;border-radius:999px;background:#e8f0e8;color:#10231f;font-family:'Roboto Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase}
+.model-card.dark .model-tag{background:#8abfa2}
+.model-card h3{font-size:17px;margin-bottom:7px}
+.model-card p,.model-card li{font-size:13.5px}
+.model-card ul{margin-top:8px}
+.model-note{
+  margin-top:16px;
+  padding:12px 14px;
+  border-radius:18px;
+  background:#fff8d8;
+  color:#30413b;
+  font-size:13px;
+  line-height:1.65;
+}
+.photo-ref{
+  overflow:hidden;
+  margin-bottom:18px;
+  border:1px solid rgba(16,35,31,.18);
+  border-radius:30px;
+  background:#fff;
+  box-shadow:0 20px 54px rgba(16,35,31,.08);
+}
+.photo-ref img{
+  display:block;
+  width:100%;
+  aspect-ratio:16 / 9;
+  object-fit:cover;
+}
+.photo-ref .photo-caption{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  padding:14px 18px 16px;
+}
+.photo-ref h3{
+  margin:0;
+  font-family:'Roboto Mono','Noto Sans HK',monospace;
+  font-size:16px;
+  letter-spacing:-.035em;
+}
+.photo-ref p{
+  max-width:58ch;
+  color:#2f413b;
+  font-size:13.5px;
+  line-height:1.6;
+}
+
+#prompt > .card:first-of-type{
+  display:grid;
+  grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
+  gap:22px;
+  align-items:start;
+  background:#10231f;
+  color:#fff;
+}
+#prompt > .card:first-of-type > h3,#prompt > .card:first-of-type > p,#prompt > .card:first-of-type > .chips{grid-column:1}
+#prompt > .card:first-of-type > .promptbox{grid-column:2}
+#prompt > .card:first-of-type > .promptbox + .promptbox{margin-top:16px}
+#prompt > .card:first-of-type p,#prompt > .card:first-of-type li{color:rgba(255,255,255,.72)}
+#prompt > .card:first-of-type .chip{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);color:#fff}
+
+#people .grid2{grid-template-columns:.85fr 1.15fr}
+#people .grid2 > .card:first-child{background:#d2e5d5}
+#people .grid3 .card:nth-child(2){background:#fff6ec;color:var(--ink)}
+#people .grid3 .card:nth-child(2) li,#people .grid3 .card:nth-child(2) p{color:#2f413b}
+
+#cam .demo-grid{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:18px;
+}
+#cam .demo{grid-column:span 3;background:#f4f7f2;color:var(--ink)}
+#cam .demo:nth-child(1){
+  grid-column:span 4;
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+}
+#cam .demo:nth-child(2){grid-column:span 2}
+#cam .demo:nth-child(1) .d-frame{height:100%}
+#cam .demo:nth-child(1) .d-label{display:flex;flex-direction:column;justify-content:end;padding:24px}
+#cam .d-frame{height:190px;border-bottom:1px solid rgba(16,35,31,.14)}
+#cam .promptbox{background:#06110f;color:#fff}
+
+#act .demo-grid{grid-template-columns:repeat(4,1fr)}
+#act .demo{grid-column:span 2;background:#fff}
+#act .demo:nth-child(1){grid-column:span 4;display:grid;grid-template-columns:1fr 1fr}
+#act .demo:nth-child(1) .d-frame{height:260px}
+
+#i2v .grid3{align-items:stretch}
+#i2v .grid3 .card{
+  min-height:280px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+#i2v .grid3 .card:nth-child(2){background:#10231f;color:#fff}
+#i2v .grid3 .card:nth-child(2) li,#i2v .grid3 .card:nth-child(2) p{color:rgba(255,255,255,.72)}
+
+#tone .tone-grid{grid-template-columns:repeat(6,1fr)}
+#tone .tone-card{grid-column:span 3}
+#tone .tone-card:first-child{grid-column:span 6}
+#tone .tone-card:first-child .tone-thumb{height:260px}
+#tone .tone-card:nth-child(4){grid-row:auto}
+#tone .tone-card:nth-child(n+2) .tone-thumb{height:290px}
+#tone .tone-card:nth-child(n+2) .tone-photo{object-position:center 30%}
+
+#film .film-grid{
+  grid-template-columns:repeat(6,1fr);
+  gap:18px;
+}
+#film .film-card{grid-column:span 2;background:#f4f7f2;color:var(--ink)}
+#film .film-card:nth-child(1),#film .film-card:nth-child(2){grid-column:span 3}
+#film .film-thumb{height:160px}
+#film .film-card:nth-child(1) .film-thumb,#film .film-card:nth-child(2) .film-thumb{height:220px}
+
+#shots .demo-grid.three{grid-template-columns:repeat(4,1fr)}
+#shots .demo-grid.three .demo{grid-column:span 2}
+#shots .demo-grid.three .demo:nth-child(1){grid-column:span 4;display:grid;grid-template-columns:1.2fr .8fr}
+#shots .demo-grid.three .demo:nth-child(1) .d-frame{height:270px}
+
+#styles .cat-tabs{position:sticky;top:72px;z-index:15;padding:12px 0;background:rgba(232,240,232,.88);backdrop-filter:blur(12px)}
+#styles .style-grid{grid-template-columns:repeat(3,1fr);gap:18px}
+#styles .style-card{background:#fff}
+#styles .style-card:nth-child(9n+1){grid-column:span 2}
+#styles .style-card:nth-child(9n+1) .style-thumb{height:260px}
+#styles .style-thumb{height:180px;border-bottom:1px solid rgba(16,35,31,.14)}
+
+#visual-library .vl-hero{
+  background:#f4f7f2;
+  color:var(--ink);
+  border:0;
+  border-radius:34px;
+  box-shadow:0 24px 60px rgba(0,0,0,.18);
+}
+#visual-library .vl-grid{grid-template-columns:repeat(3,1fr);gap:18px}
+#visual-library .vl-card{background:#f4f7f2;color:var(--ink);border:0}
+#visual-library .vl-card:nth-child(1){grid-column:span 2}
+#visual-library .vl-card:nth-child(1) .vl-thumb{aspect-ratio:16 / 9}
+#visual-library .vl-card[data-type="skill"]{background:#d2e5d5}
+#visual-library .vl-card[data-type="skill"] .vl-actions{margin-top:14px}
+#visual-library .vl-tab{border-color:rgba(255,255,255,.22);box-shadow:none}
+#visual-library .vl-tab[aria-pressed="true"]{background:#8abfa2;color:#06110f}
+
+#emotion .grid2,#design .grid2{grid-template-columns:1.2fr .8fr}
+#type .fontrow{
+  background:#fff;
+  border:1px solid rgba(16,35,31,.14);
+  border-radius:22px;
+  padding:18px 20px;
+  margin-bottom:12px;
+}
+#cost .grid3 .card:first-child{background:#10231f;color:#fff}
+#cost .grid3 .card:first-child li,#cost .grid3 .card:first-child p{color:rgba(255,255,255,.72)}
+#warn .dobox,#warn .dontbox,#warn .card{
+  background:#f4f7f2;
+  color:var(--ink);
+  border:0;
+  box-shadow:0 24px 60px rgba(0,0,0,.18);
+}
+
+@media(max-width:980px){
+  #prompt > .card:first-of-type,#cam .demo:nth-child(1),#act .demo:nth-child(1),#shots .demo-grid.three .demo:nth-child(1){
+    display:block;
+  }
+  #prompt > .card:first-of-type > h3,#prompt > .card:first-of-type > p,#prompt > .card:first-of-type > .chips,#prompt > .card:first-of-type > .promptbox{grid-column:auto}
+  #cam .demo:nth-child(1) .d-frame,#act .demo:nth-child(1) .d-frame,#shots .demo-grid.three .demo:nth-child(1) .d-frame{height:220px}
+}
+
+@media(max-width:820px){
+  main.wrap > section{padding:64px 0}
+  main.wrap > section .sec-head{grid-template-columns:1fr;gap:10px}
+  main.wrap > section .sec-head:after{display:block;grid-column:1;grid-row:auto;min-height:112px;margin-top:8px;border-radius:22px}
+  main.wrap > section .sec-head h2{font-size:34px}
+  .photo-ref .photo-caption{display:block}
+  .photo-ref p{margin-top:6px}
+  .home-visual{max-width:100%;contain:paint}
+  .steps,#rules .steps,#design .steps{grid-template-columns:1fr!important}
+  .step{min-width:0}
+  #rules .grid3,#people .grid2,#cam .demo-grid,#act .demo-grid,#tone .tone-grid,#film .film-grid,#shots .demo-grid.three,#styles .style-grid,#skills .skill-section-grid,#visual-library .vl-grid,#emotion .grid2,#design .grid2,.model-board,.model-grid{
+    grid-template-columns:1fr;
+  }
+  #cam .demo,#cam .demo:nth-child(1),#cam .demo:nth-child(2),#act .demo,#act .demo:nth-child(1),#film .film-card,#film .film-card:nth-child(1),#film .film-card:nth-child(2),#shots .demo-grid.three .demo,#shots .demo-grid.three .demo:nth-child(1),#styles .style-card:nth-child(9n+1),#visual-library .vl-card:nth-child(1),.model-card,.model-card.featured,.model-card.dark{
+    grid-column:span 1;
+  }
+  #styles .cat-tabs{position:relative;top:auto}
+  #tone .tone-card,#tone .tone-card:first-child,#tone .tone-card:nth-child(4){grid-column:auto;grid-row:auto}
+  #tone .tone-card .tone-thumb,#tone .tone-card:first-child .tone-thumb,#tone .tone-card:nth-child(4) .tone-thumb{height:240px}
+  #film .film-card:nth-child(1) .film-thumb,#film .film-card:nth-child(2) .film-thumb{height:160px}
+  #visual-library .vl-card:nth-child(1) .vl-thumb{aspect-ratio:4 / 5}
 }
 </style></head><body>
 
 <div class="topbar"><div class="wrap">
-<span class="logo"><b>●</b> GenAI 手冊 <span style="font-size:11px;background:var(--coral);color:#fff;padding:1px 8px;border-radius:8px;vertical-align:2px">3.1</span></span>
-<nav><a href="#rules">規則流程</a><a href="#prompt">落 Prompt</a><a href="#people">人物圖</a>
+<a class="logo" href="#visual-library"><img src="images/brand/peacock-mark-mintgreen.png" alt="Peacock"><b>GenAI Lab</b><span class="version">3.1</span></a>
+<nav><a href="#rules">規則流程</a><a href="#models">模型</a><a href="#prompt">Prompt 撰寫</a><a href="#people">人物圖</a>
 <a href="#cam">運鏡</a><a href="#i2v">先圖後片</a><a href="#act">主體動作</a><a href="#tone">色調</a><a href="#film">Film Style</a>
-<a href="#shots">多鏡頭</a><a href="#styles">風格庫</a><a href="#visual-library">Prompt 庫</a><a href="#emotion">情緒背景</a><a href="#type">字體</a><a href="#design">轉設計</a><a href="#cost">成本</a><a href="#warn">注意</a></nav>
+<a href="#shots">多鏡頭</a><a href="#styles">風格庫</a><a href="#skills">Skill</a><a href="#visual-library">Prompt 庫</a><a href="skills.html">Skill 頁</a><a href="#emotion">情緒背景</a><a href="#type">字體</a><a href="#design">轉設計</a><a href="#cost">成本</a><a href="#warn">注意</a></nav>
 </div></div>
 
-<header class="hero"><div class="blob b1"></div><div class="blob b2"></div><div class="wrap">
-<div><span class="eyebrow">🎬 影片製作公司 · 內部使用 · 3.0 真實素材就緒版</span>
-<h1>用 AI <span class="pop">生影片</span><br>同 <span class="pop2">圖象</span>嘅<br>員工手冊</h1>
-<p class="lead">全部 prompt 中英對照、40 個風格附示意圖、運鏡同動作有得郁嘅 LIVE 示範、色調同 film style 直接視覺對比。</p>
-<div class="tools"><span class="tool-badge" style="--tb:var(--navy)">Claude</span><span class="tool-badge" style="--tb:var(--mint)">ChatGPT</span><span class="tool-badge" style="--tb:var(--violet)">Higgsfield</span><span class="tool-badge" style="--tb:var(--coral)">Artlist</span><span class="tool-badge" style="--tb:var(--pink)">HeyGen</span></div></div>
-<svg viewBox="0 0 200 200" class="mascot" xmlns="http://www.w3.org/2000/svg">
-<ellipse cx="100" cy="185" rx="55" ry="8" fill="rgba(30,42,68,.12)"/>
-<rect x="48" y="70" width="104" height="74" rx="18" fill="var(--coral)"/>
-<rect x="150" y="88" width="34" height="38" rx="8" fill="var(--navy)"/>
-<circle cx="96" cy="107" r="26" fill="#fff"/>
-<circle cx="96" cy="107" r="19" fill="var(--navy)"/>
-<circle cx="96" cy="107" r="9" fill="var(--sky)"/>
-<circle cx="89" cy="100" r="4" fill="#fff"/>
-<rect x="60" y="56" width="26" height="16" rx="5" fill="var(--navy)"/>
-<circle cx="140" cy="62" r="8" fill="var(--yellow)"/>
-<path d="M140 54v-9" stroke="var(--yellow)" stroke-width="4" stroke-linecap="round"/>
-<rect x="64" y="144" width="14" height="26" rx="7" fill="var(--navy)"/>
-<rect x="122" y="144" width="14" height="26" rx="7" fill="var(--navy)"/>
-<path d="M48 96c-14 2-20 12-18 24" stroke="var(--coral)" stroke-width="11" fill="none" stroke-linecap="round"/>
-<path d="M152 132c12 4 15 14 11 24" stroke="var(--coral)" stroke-width="11" fill="none" stroke-linecap="round"/>
-</svg></div></header>
+<header class="home-hero"><div class="home-ghost">AI</div><div class="wrap">
+<div class="home-copy"><span class="home-eyebrow">Peacock / AI prompt-to-video OS</span>
+<h1>GenAI 影像生成 · 員工手冊 3.1</h1>
+<p class="lead">由模型選型、visual prompt、image-to-video、運鏡、色調、film style 到 skill 用法，整理成一套可複製的 AI video 工作手冊。</p>
+<div class="home-actions"><a class="home-btn primary" href="#visual-library">打開 Prompt 庫</a><a class="home-btn" href="#i2v">由流程開始</a></div>
+<div class="home-stats" aria-label="Handbook stats">
+<div class="home-stat"><b>29+</b><span>visual prompts</span></div>
+<div class="home-stat"><b>21</b><span>motion recipes</span></div>
+<div class="home-stat"><b>16</b><span>技能卡</span></div>
+<div class="home-stat"><b>5</b><span>model layers</span></div>
+</div></div>
+<div class="home-visual" aria-label="Peacock AI prompt-to-video booklet illustration">
+<div class="home-orbit"></div><div class="home-orbit two"></div>
+<svg class="home-sketch" viewBox="0 0 600 520" aria-hidden="true">
+<path class="mint" d="M126 222 C174 150 262 132 330 166 C390 196 438 190 492 142"></path>
+<path class="gold" d="M110 350 C168 312 236 314 286 354 C340 396 424 390 500 338"></path>
+<path d="M202 98 C230 74 274 74 310 94"></path>
+<path d="M426 260 C452 244 488 248 512 270"></path>
+<rect x="344" y="66" width="70" height="34" rx="9"></rect>
+<rect x="72" y="392" width="78" height="38" rx="10"></rect>
+<circle cx="144" cy="220" r="7"></circle><circle cx="330" cy="166" r="8"></circle><circle cx="492" cy="142" r="7"></circle><circle cx="286" cy="354" r="8"></circle>
+</svg>
+<div class="home-note tokens"><b>Prompt Tokens</b><span>LLM parse</span></div>
+<div class="home-note model"><b>Latent Map</b><span>AI model</span></div>
+<div class="home-note render"><b>Render API</b><span>video out</span></div>
+<div class="home-badge"><img src="images/brand/peacock-mark-mintgreen.png" alt=""><span>Peacock manual</span></div>
+<div class="home-book">
+<div class="home-cover"><img src="images/brand/peacock-logo-mintgreen.png" alt="Peacock Video Content Provider">
+<span class="home-chip">AI</span><span class="home-chip two">LLM</span><span class="home-chip three">API</span>
+<div class="home-kicker">AI video field manual</div><div class="home-title">Prompt<br>to Video</div><div class="home-sub">GenAI Handbook 3.1</div>
+<svg class="home-mini-map" viewBox="0 0 210 80" aria-hidden="true">
+<path d="M16 48 C34 18 62 24 76 38 C94 56 120 48 137 24 C151 4 181 14 194 32"></path>
+<path d="M24 62 L62 62 M84 62 L124 62 M148 62 L184 62"></path>
+<circle cx="18" cy="48" r="6"></circle><circle cx="76" cy="38" r="6"></circle><circle cx="137" cy="24" r="6"></circle><rect x="158" y="42" width="34" height="22" rx="5"></rect>
+</svg></div>
+<div class="home-spine"></div>
+<div class="home-page">
+<div class="home-row"><i></i><span>01 AI vision input</span></div>
+<div class="home-row"><i></i><span>02 prompt tokens</span></div>
+<div class="home-row"><i></i><span>03 latent map</span></div>
+<div class="home-row"><i></i><span>04 motion vectors</span></div>
+<div class="home-row"><i></i><span>05 render API</span></div>
+<div class="home-code"><span>prompt.tokenize()</span><span>model.render()</span><span>api.export()</span></div>
+</div></div>
+<div class="home-flow prompt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h11M4 18h7"></path></svg><span>AI Prompt</span></div>
+<div class="home-flow motion"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v10H4z"></path><path d="m9 10 3 2-3 2"></path><path d="M15 10h2M15 14h2"></path></svg><span>Motion Engine</span></div>
+<div class="home-flow api"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"></path></svg><span>Render API</span></div>
+</div></div></header>
 
 <main class="wrap">
 
 <section id="rules" class="reveal">
 <div class="sec-head"><span class="sec-num">01</span><h2>生成規則・流程・工具</h2></div>
-<p class="sec-sub">開始之前:用啱工具、跟足流程、守住規則。每一步都有原因。</p>
+<p class="sec-sub">開始之前：選用合適工具、遵循流程、遵守規則。每一步都有原因。</p>
 <div class="grid3" style="margin-bottom:20px">
 <div class="card"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="14" y="8" width="36" height="48" rx="6" fill="var(--c1)"/><rect x="20" y="18" width="24" height="4" rx="2" fill="#fff"/><rect x="20" y="28" width="24" height="4" rx="2" fill="#fff"/><rect x="20" y="38" width="16" height="4" rx="2" fill="#fff"/><circle cx="46" cy="46" r="12" fill="var(--c2)"/><path d="M41 46l3 3 6-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>三條鐵則</h3><ul>
-<li><b>人手把關</b>:對外作品必須經人 review 先出街。AI 係草稿引擎,唔係終審</li>
-<li><b>授權先行</b>:客戶人像、品牌素材、第三方圖未攞授權,一律唔可以餵入 AI 工具</li>
-<li><b>留底可溯</b>:每個 final 交付記低「工具 + 模型版本 + 完整 prompt + seed」,客戶要改可以重現</li></ul></div>
+<li><b>人手把關</b>:對外作品必須經人手 review 後才可發布。AI 是草稿引擎，不是最終審核</li>
+<li><b>授權先行</b>：客戶人像、品牌素材、第三方圖片未取得授權時，一律不可輸入 AI 工具</li>
+<li><b>可追溯紀錄</b>：每個 final 交付都記錄「工具 + 模型版本 + 完整 prompt + seed」，方便客戶修改時重現</li></ul></div>
 <div class="card"><h3><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><path d="M24 16l-8 8 6 6 8-8z" fill="var(--c1)"/><rect x="30" y="30" width="20" height="6" rx="3" transform="rotate(45 40 33)" fill="var(--c2)"/><circle cx="44" cy="20" r="8" fill="var(--c1)"/></svg></span>工具分工</h3><ul>
-<li><b>Claude / ChatGPT</b>:諗 concept、把中文需求擴寫成詳細英文 prompt、寫文案</li>
+<li><b>Claude / ChatGPT</b>：發想 concept、把中文需求擴寫成詳細英文 prompt、撰寫文案</li>
 <li><b>Higgsfield</b>:AI 影片生成、運鏡控制、image-to-video 動態化</li>
 <li><b>Artlist</b>:授權素材、配樂音效、AI 圖像生成</li>
 <li><b>HeyGen</b>:AI 數字人、口播影片、多語配音翻譯</li></ul></div>
 <div class="card"><h3><span class="ic" style="--c1:var(--violet);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="22" cy="32" r="13" fill="var(--c1)"/><circle cx="42" cy="32" r="13" fill="var(--c2)" opacity=".85"/><path d="M32 24v16" stroke="#fff" stroke-width="2" stroke-dasharray="3 3"/></svg></span>品質底線</h3><ul>
-<li>人樣一致、膚色自然、唔變形變色</li>
+<li>面容一致、膚色自然、不變形、不偏色</li>
 <li>手指肢體正常、動作自然流暢</li>
 <li>解析度達交付規格(社群至少 1080p,廣告 4K)</li>
-<li>構圖乾淨、無 AI 浮水印殘留</li></ul></div></div>
-<h3 class="mini"><span class="dot"></span>標準生成流程(每單 job 行一次)</h3>
+<li>構圖乾淨、沒有 AI 浮水印殘留</li></ul></div></div>
+<h3 class="mini"><span class="dot"></span>標準生成流程（每個 job 執行一次）</h3>
 <div class="steps">
 <div class="step"><span class="n">1</span><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="14" width="44" height="32" rx="6" fill="var(--c1)"/><path d="M24 46l-4 8 12-8z" fill="var(--c1)"/><rect x="18" y="24" width="16" height="3" rx="1.5" fill="#fff"/><rect x="18" y="32" width="24" height="3" rx="1.5" fill="#fff"/><circle cx="46" cy="18" r="7" fill="var(--c2)"/><path d="M46 15v6M43 18h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span><h4>定需求</h4><p>用途、平台、比例(16:9/9:16/1:1)、秒數、風格、情緒</p></div>
-<div class="step"><span class="n">2</span><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="14" cy="32" r="9" fill="var(--c1)"/><circle cx="50" cy="32" r="9" fill="var(--c2)"/><rect x="28" y="28" width="8" height="8" rx="2" fill="var(--c1)"/><path d="M23 32h5M36 32h5" stroke="var(--c2)" stroke-width="3" stroke-linecap="round"/></svg></span><h4>寫 Prompt</h4><p>用 Claude/GPT 按六元素公式擴寫,中英都留底</p></div>
-<div class="step"><span class="n">3</span><span class="ic" style="--c1:var(--violet);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="22" width="36" height="26" rx="5" fill="var(--c1)"/><path d="M46 30l10-6v22l-10-6z" fill="var(--c2)"/><circle cx="24" cy="35" r="7" fill="#fff"/><circle cx="24" cy="35" r="3.5" fill="var(--c2)"/><rect x="16" y="16" width="12" height="8" rx="2" fill="var(--c1)"/></svg></span><h4>生成</h4><p>先低解析度/短秒數試 3-4 版,慳 credit</p></div>
-<div class="step"><span class="n">4</span><span class="ic" style="--c1:var(--yellow);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="22" cy="32" r="13" fill="var(--c1)"/><circle cx="42" cy="32" r="13" fill="var(--c2)" opacity=".85"/><path d="M32 24v16" stroke="#fff" stroke-width="2" stroke-dasharray="3 3"/></svg></span><h4>篩選修正</h4><p>對住 §10 checklist 逐項驗,微調 prompt 再生成</p></div>
-<div class="step"><span class="n">5</span><span class="ic" style="--c1:var(--pink);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="14" width="20" height="20" rx="4" fill="var(--c1)"/><rect x="34" y="30" width="20" height="20" rx="4" fill="var(--c2)"/><path d="M30 24h6v6" stroke="var(--c2)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h4>交付</h4><p>升 4K、轉可編輯設計、prompt 連成品入檔案庫</p></div></div>
+<div class="step"><span class="n">2</span><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="14" cy="32" r="9" fill="var(--c1)"/><circle cx="50" cy="32" r="9" fill="var(--c2)"/><rect x="28" y="28" width="8" height="8" rx="2" fill="var(--c1)"/><path d="M23 32h5M36 32h5" stroke="var(--c2)" stroke-width="3" stroke-linecap="round"/></svg></span><h4>寫 Prompt</h4><p>用 Claude/GPT 按六元素公式擴寫，並保留中英文版本</p></div>
+<div class="step"><span class="n">3</span><span class="ic" style="--c1:var(--violet);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="22" width="36" height="26" rx="5" fill="var(--c1)"/><path d="M46 30l10-6v22l-10-6z" fill="var(--c2)"/><circle cx="24" cy="35" r="7" fill="#fff"/><circle cx="24" cy="35" r="3.5" fill="var(--c2)"/><rect x="16" y="16" width="12" height="8" rx="2" fill="var(--c1)"/></svg></span><h4>生成</h4><p>先用低解析度或短秒數測試 3-4 版，以節省 credit</p></div>
+<div class="step"><span class="n">4</span><span class="ic" style="--c1:var(--yellow);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="22" cy="32" r="13" fill="var(--c1)"/><circle cx="42" cy="32" r="13" fill="var(--c2)" opacity=".85"/><path d="M32 24v16" stroke="#fff" stroke-width="2" stroke-dasharray="3 3"/></svg></span><h4>篩選修正</h4><p>按照 §10 checklist 逐項檢查，微調 prompt 後再生成</p></div>
+<div class="step"><span class="n">5</span><span class="ic" style="--c1:var(--pink);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="14" width="20" height="20" rx="4" fill="var(--c1)"/><rect x="34" y="30" width="20" height="20" rx="4" fill="var(--c2)"/><path d="M30 24h6v6" stroke="var(--c2)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h4>交付</h4><p>升級至 4K、轉成可編輯設計，prompt 連同成品存入檔案庫</p></div></div>
+</section>
+
+<section id="models" class="reveal">
+<div class="sec-head"><span class="sec-num">02</span><h2>如何選擇模型 · Model Primer</h2></div>
+<p class="sec-sub">不同模型不是互相取代，而是分工接力。先選任務層，再選工具；版本、seed、prompt 一律保留紀錄。</p>
+<div class="model-board">
+<div class="model-map">
+<h3>一條影片的模型接力</h3>
+<div class="model-flow">
+<div class="model-step"><b>Brief</b><span>LLM 先拆需求、寫 concept、shot list、中文轉英文 prompt。</span></div>
+<div class="model-step"><b>Still</b><span>圖像模型先鎖定 key visual、角色、產品與背景，生成可控首格。</span></div>
+<div class="model-step"><b>Motion</b><span>影片模型負責 image-to-video，為已確認的畫面加入運鏡與動作。</span></div>
+<div class="model-step"><b>Human</b><span>口播、avatar、lipsync 交給數字人模型；不要用一般影片模型勉強生成對白。</span></div>
+<div class="model-step"><b>Finish</b><span>最後再做 upscale、去背、補幀、配音、字幕與設計轉檔。</span></div>
+</div>
+</div>
+<div class="card model-selector">
+<div><h3>選擇模型之前，先回答三個問題</h3>
+<ul>
+<li><b>輸入是什麼？</b> 文字、參考圖、首尾格、角色相、產品圖。</li>
+<li><b>最需要避免什麼錯誤？</b> 面容、手部、文字、品牌色、logo、動作自然度。</li>
+<li><b>交付物是什麼？</b> 概念圖、海報、5 秒 shot、30 秒片、口播、可編輯設計。</li>
+</ul></div>
+<div class="model-note"><b>公司記錄格式：</b>工具 / 模型名稱 / 模型版本或模式 / prompt / negative prompt / reference / seed / ratio / credit 用量 / 生成日期。</div>
+</div>
+</div>
+<div class="model-grid">
+<article class="model-card featured"><span class="model-tag">01 LLM</span><h3>文字與策略模型</h3><p>適合做 concept、腳本、shot list、prompt 擴寫、風格詞翻譯。它不負責生成圖片，但負責讓生成模型理解需求。</p><ul><li>輸入：客戶 brief、品牌資料、參考圖描述</li><li>輸出：可複製的中英 prompt、QC checklist</li></ul></article>
+<article class="model-card featured"><span class="model-tag">02 Image</span><h3>圖像生成模型</h3><p>先做首格、角色定裝、產品主視覺。若畫面尚未穩定，不要急於生成影片。</p><ul><li>重點：比例、構圖、人物一致、品牌色</li><li>常用：reference image + 固定描述 + seed</li></ul></article>
+<article class="model-card dark"><span class="model-tag">03 Video</span><h3>影片 / I2V 模型</h3><p>最穩定的做法是先圖後片。影片模型擅長運鏡、環境動勢、短秒數 motion；複雜劇情要拆 shot。</p><ul><li>輸入：首格圖、end frame、motion prompt</li><li>限制：一個 5 秒 shot 只要求一個主要動作</li></ul></article>
+<article class="model-card"><span class="model-tag">04 Avatar</span><h3>數字人與口播模型</h3><p>要準確對白、唇形、多語配音，交給 avatar / lipsync workflow。一般影片模型只做視覺氣氛，不負責說話。</p><ul><li>適合：CEO message、教學、產品介紹</li><li>留意：授權、聲音、字幕與語氣一致</li></ul></article>
+<article class="model-card"><span class="model-tag">05 Utility</span><h3>後製修補模型</h3><p>去背、放大、補幀、降噪、局部修補、設計 brief 反推，全部屬於 finishing layer。</p><ul><li>適合：已接近交付但需要修整細節</li><li>不適合：用來修補方向錯誤的初稿</li></ul></article>
+</div>
 </section>
 
 <section id="prompt" class="reveal">
-<div class="sec-head"><span class="sec-num">02</span><h2>落 Prompt 嘅方法</h2></div>
-<p class="sec-sub">AI 唔會讀心。一條好 prompt = 講清楚六件事,順序講,唔好亂。</p>
+<div class="sec-head"><span class="sec-num">02</span><h2>Prompt 撰寫方法</h2></div>
+<p class="sec-sub">AI 不會讀心。一條好的 prompt 需要清楚交代六件事，並按順序描述。</p>
 <div class="card"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="14" width="44" height="32" rx="6" fill="var(--c1)"/><path d="M24 46l-4 8 12-8z" fill="var(--c1)"/><rect x="18" y="24" width="16" height="3" rx="1.5" fill="#fff"/><rect x="18" y="32" width="24" height="3" rx="1.5" fill="#fff"/><circle cx="46" cy="18" r="7" fill="var(--c2)"/><path d="M46 15v6M43 18h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>萬用六元素公式</h3>
-<p>逐個元素填,缺一樣 AI 就自己腦補一樣——腦補就係走樣嘅開始:</p>
+<p>逐一填寫元素；每缺少一項，AI 就會自行補充，而自行補充往往是畫面偏離的開始：</p>
 <div class="chips">
-<span class="chip"><b>① 主體</b> 邊個/咩嘢(年齡、性別、特徵)</span>
-<span class="chip"><b>② 動作/姿態</b> 做緊咩、點做(速度、幅度)</span>
-<span class="chip"><b>③ 環境</b> 邊度、時間、前中後景有咩</span>
+<span class="chip"><b>① 主體</b> 誰或什麼（年齡、性別、特徵）</span>
+<span class="chip"><b>② 動作/姿態</b> 正在做什麼、如何進行（速度、幅度）</span>
+<span class="chip"><b>③ 環境</b> 地點、時間、前景／中景／後景內容</span>
 <span class="chip"><b>④ 鏡頭</b> 景別、角度、運鏡、焦距</span>
 <span class="chip"><b>⑤ 光線</b> 方向、軟硬、色溫、光源</span>
 <span class="chip"><b>⑥ 風格</b> 色調、film style、情緒、參考</span></div>
@@ -364,7 +1229,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <span class="zh-line"><span class="zh-pill">中</span>一位 30 歲女咖啡師(主體),微笑緩慢手沖咖啡、蒸氣升起(動作),溫暖木質咖啡店、背景書架虛化(環境),中近景、85mm、輕微俯角、淺景深(鏡頭),柔和側窗光、暖色溫 5600K(光線),電影感、35mm 膠片顆粒、橙啡色調、寧靜療癒(風格)</span>
 <span class="en-pill">EN</span><span class="en">a 30yo female barista <span class="hl">smiling, slowly hand-brewing coffee, steam rising</span>, warm wooden cafe with <span class="hl">blurred bookshelf background</span>, medium close-up, <span class="hl">85mm, slight high angle, shallow depth of field</span>, soft window side light, warm 5600K, cinematic, <span class="hl">35mm film grain, warm brown tones</span>, calm soothing mood</span></div>
 <div class="promptbox"><span class="tag">影片要加多三樣</span>
-<span class="zh-line"><span class="zh-pill">中</span>影片 prompt 喺六元素之上,再講埋:⑦ 鏡頭點郁(運鏡,見 §04) ⑧ 主體點郁(動作節奏,見 §05) ⑨ 秒數同節奏(5 秒一個動作最穩)</span>
+<span class="zh-line"><span class="zh-pill">中</span>影片 prompt 在六個元素之上，還需要補充：⑦ 鏡頭如何移動（運鏡，見 §04）⑧ 主體如何移動（動作節奏，見 §05）⑨ 秒數與節奏（5 秒一個動作最穩定）</span>
 <span class="en-pill">EN</span><span class="en">...all six elements above + <span class="hl">camera: slow dolly in</span> + <span class="hl">subject motion: pouring in circular motion</span> + <span class="hl">5s, calm pacing, 24fps</span></span></div></div>
 <div class="card" style="margin-top:18px"><h3><span class="ic" style="--c1:var(--sky);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="14" width="20" height="20" rx="4" fill="var(--c1)"/><rect x="34" y="30" width="20" height="20" rx="4" fill="var(--c2)"/><path d="M30 24h6v6" stroke="var(--c2)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>平台比例速查(生成前第一件事決定)</h3>
 <div class="chips">
@@ -372,122 +1237,122 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <span class="chip"><b>Reels / TikTok / Shorts</b> 9:16</span>
 <span class="chip"><b>IG Feed</b> 1:1 或 4:5</span>
 <span class="chip"><b>電影感橫額</b> 21:9</span>
-<span class="chip"><b>Stories 安全區</b> 上下各留 ~15% 俾 UI 遮</span>
+<span class="chip"><b>Stories 安全區</b> 上下各預留約 15% 給 UI 遮擋</span>
 </div>
 <ul style="margin-top:10px">
-<li>同一條片要出多個平台 → 生成時<b>主體放中間</b>,後製裁切最慳</li>
-<li>9:16 直片唔好用 16:9 裁——構圖會散;直片要直接用 9:16 生成</li>
-<li>字幕位、logo 位喺 prompt 預留白,跟返安全區</li></ul></div>
+<li>同一條影片需要輸出至多個平台 → 生成時<b>主體置中</b>，後製裁切最節省成本</li>
+<li>9:16 直片不要由 16:9 裁切而成，否則構圖容易鬆散；直片應直接用 9:16 生成</li>
+<li>字幕位置、logo 位置應在 prompt 中預留空間，並按照安全區規劃</li></ul></div>
 <div class="dodont">
 <div class="dobox"><h4><span class="ic" style="--c1:var(--mint);--c2:var(--mint)"><svg viewBox="0 0 64 64"><rect x="14" y="8" width="36" height="48" rx="6" fill="var(--c1)"/><rect x="20" y="18" width="24" height="4" rx="2" fill="#fff"/><rect x="20" y="28" width="24" height="4" rx="2" fill="#fff"/><rect x="20" y="38" width="16" height="4" rx="2" fill="#fff"/><circle cx="46" cy="46" r="12" fill="var(--c2)"/><path d="M41 46l3 3 6-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 好習慣</h4><ul>
-<li><b>具體量化</b>:寫「日落金光由右側打入」,唔好寫「靚光」</li>
+<li><b>具體量化</b>:寫「日落金光由右側照入」，不要寫「漂亮光線」</li>
 <li><b>順序分層</b>:主體→動作→環境→鏡頭→光→風格,AI 讀得清</li>
-<li><b>俾參考錨點</b>:指明 film style、年代、「documentary style」呢類 AI 識嘅詞</li>
-<li><b>中轉英</b>:用 Claude/GPT 把中文需求擴寫成英文 prompt,生成工具普遍英文準啲</li>
-<li><b>一次改一樣</b>:迭代時只動一個元素,先知邊樣造成分別</li>
-<li><b>留底</b>:成功 prompt 即刻入公司 prompt 庫,連 seed 一齊記</li></ul></div>
+<li><b>提供參考錨點</b>:指明 film style、年代、「documentary style」這類 AI 能理解的詞彙</li>
+<li><b>中轉英</b>:用 Claude/GPT 把中文需求擴寫成英文 prompt，生成工具普遍對英文理解更準確</li>
+<li><b>一次只改一項</b>：迭代時只調整一個元素，才能判斷哪一項造成差異</li>
+<li><b>保留紀錄</b>：成功 prompt 立即存入公司 prompt 庫，並同步記錄 seed</li></ul></div>
 <div class="dontbox"><h4><span class="ic" style="--c1:var(--coral);--c2:var(--coral)"><svg viewBox="0 0 64 64"><path d="M32 10l24 42H8z" fill="var(--c1)"/><rect x="29" y="26" width="6" height="14" rx="3" fill="#fff"/><circle cx="32" cy="45" r="3.5" fill="#fff"/></svg></span> 易踩雷</h4><ul>
 <li>一句塞兩種互相矛盾風格(極簡 + 巴洛克)</li>
-<li>淨係堆形容詞,冇主體冇動作</li>
-<li>忽略比例:IG Reels 係 9:16,YouTube 係 16:9,生錯要重做</li>
-<li>「唔要」嘅嘢寫埋落正面描述度——負面要求一律放 negative prompt</li>
-<li>一個 5 秒鏡頭要求三個動作,AI 實做爛</li></ul></div></div>
+<li>只堆疊形容詞，沒有主體，也沒有動作</li>
+<li>忽略比例：IG Reels 是 9:16，YouTube 是 16:9；比例錯誤就需要重做</li>
+<li>把「不要」的內容寫進正面描述之中；負面要求一律放入 negative prompt</li>
+<li>一個 5 秒鏡頭要求三個動作，AI 容易生成失敗</li></ul></div></div>
 </section>
 
 <section id="people" class="reveal">
-<div class="sec-head"><span class="sec-num">03</span><h2>人物圖 · 確保唔走樣</h2></div>
-<p class="sec-sub">人物最易崩:換臉、變色、多手指、怪姿勢。以下係保命四步 + 中英 prompt。</p>
+<div class="sec-head"><span class="sec-num">03</span><h2>人物圖 · 確保不失真</h2></div>
+<p class="sec-sub">人物最容易出問題：換臉、變色、多手指、怪姿勢。以下是四個穩定步驟與中英 prompt。</p>
 <div class="grid2">
-<div class="card"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="32" cy="26" r="14" fill="var(--c1)"/><circle cx="27" cy="24" r="2.5" fill="#fff"/><circle cx="37" cy="24" r="2.5" fill="#fff"/><path d="M27 32q5 4 10 0" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M14 56c0-12 8-18 18-18s18 6 18 18" fill="var(--c2)"/></svg></span>人樣一致(唔換臉)</h3><ul>
-<li><b>圖鎖樣</b>:必須用 reference image / 角色參考圖,唔好淨靠文字描述個樣</li>
-<li><b>Seed 鎖定</b>:同一角色固定 seed + 一字不改嘅外貌描述段落,跨張先一致</li>
-<li><b>描述寫死</b>:年齡、髮型髮色、臉型、膚色、標誌特徵(眼鏡/鬚/痣)逐樣寫</li>
+<div class="card"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="32" cy="26" r="14" fill="var(--c1)"/><circle cx="27" cy="24" r="2.5" fill="#fff"/><circle cx="37" cy="24" r="2.5" fill="#fff"/><path d="M27 32q5 4 10 0" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M14 56c0-12 8-18 18-18s18 6 18 18" fill="var(--c2)"/></svg></span>面容一致（不換臉）</h3><ul>
+<li><b>圖鎖樣</b>:必須使用 reference image / 角色參考圖，不要只靠文字描述外貌</li>
+<li><b>Seed 鎖定</b>:同一角色固定 seed，並使用完全一致的外貌描述段落，跨圖才會穩定</li>
+<li><b>固定描述</b>：年齡、髮型髮色、臉型、膚色、標誌特徵（眼鏡／鬍鬚／痣）逐項寫明</li>
 <li><b>多角度</b>:要側面背面 → 一次過用 character sheet 方式生成全套</li>
-<li><b>HeyGen</b>:數字人由頭到尾用同一個 avatar ID,中途唔好換</li></ul></div>
-<div class="card"><h3><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="22" cy="32" r="13" fill="var(--c1)"/><circle cx="42" cy="32" r="13" fill="var(--c2)" opacity=".85"/><path d="M32 24v16" stroke="#fff" stroke-width="2" stroke-dasharray="3 3"/></svg></span>唔變色 · 唔變形</h3><ul>
-<li><b>顏色寫死</b>:膚色、髮色、衫色每次 prompt 都重複寫一次</li>
-<li><b>色溫鎖定</b>:指定 warm 5600K / neutral daylight,唔好俾 AI 自由發揮</li>
+<li><b>HeyGen</b>:數字人由頭到尾使用同一個 avatar ID，中途不要更換</li></ul></div>
+<div class="card"><h3><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="22" cy="32" r="13" fill="var(--c1)"/><circle cx="42" cy="32" r="13" fill="var(--c2)" opacity=".85"/><path d="M32 24v16" stroke="#fff" stroke-width="2" stroke-dasharray="3 3"/></svg></span>不偏色 · 不變形</h3><ul>
+<li><b>固定顏色</b>：膚色、髮色、服裝顏色每次 prompt 都重複寫明</li>
+<li><b>色溫鎖定</b>:指定 warm 5600K / neutral daylight，不要讓 AI 自由決定</li>
 <li><b>膚色保護</b>:極端光環境(霓虹/夕陽)加「natural accurate skin tone」</li>
-<li><b>連續鏡頭</b>:同場戲全部用同一段光線描述,後製再統一 grade</li></ul></div></div>
-<div class="card" style="margin-top:18px"><h3><span class="ic" style="--c1:var(--yellow);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="32" cy="26" r="14" fill="var(--c1)"/><circle cx="27" cy="24" r="2.5" fill="#fff"/><circle cx="37" cy="24" r="2.5" fill="#fff"/><path d="M27 32q5 4 10 0" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M14 56c0-12 8-18 18-18s18 6 18 18" fill="var(--c2)"/></svg></span>角色一致性三級制(按需要揀)</h3>
+<li><b>連續鏡頭</b>：同一場戲全部使用同一段光線描述，後製再統一 grade</li></ul></div></div>
+<div class="card" style="margin-top:18px"><h3><span class="ic" style="--c1:var(--yellow);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="32" cy="26" r="14" fill="var(--c1)"/><circle cx="27" cy="24" r="2.5" fill="#fff"/><circle cx="37" cy="24" r="2.5" fill="#fff"/><path d="M27 32q5 4 10 0" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M14 56c0-12 8-18 18-18s18 6 18 18" fill="var(--c2)"/></svg></span>角色一致性三級鎖定法</h3>
 <div class="grid3" style="margin-top:10px">
 <div class="card" style="box-shadow:none;border-width:2px"><h3 style="font-size:14.5px">Lv.1 文字鎖</h3><ul>
-<li>外貌描述寫死 + 固定 seed</li><li>零成本、即用</li><li>人樣仍會跳,單張可以,連戲唔夠</li></ul></div>
+<li>外貌描述固定 + 固定 seed</li><li>零成本、即用</li><li>面容仍可能不穩定，適合單張，不足以支援連續鏡頭</li></ul></div>
 <div class="card" style="box-shadow:none;border-width:2px;background:#FFF6EC"><h3 style="font-size:14.5px">Lv.2 定裝圖 + 角色庫 ★推薦</h3><ul>
-<li>先生成一張<b>定裝圖</b>(中景、面容清晰、定裝定髮型)</li>
-<li>儲存做<b>可重用角色</b>,之後每次生成直接引用呢個角色</li>
-<li>即時生效、可以幾個角色同場;本手冊嘅示範片就係咁做</li></ul></div>
+<li>先生成一張<b>定裝圖</b>（中景、面容清晰、造型與髮型固定）</li>
+<li>儲存為<b>可重用角色</b>，之後每次生成直接引用這個角色</li>
+<li>即時生效，也可讓多個角色同場；本手冊的示範片即採用此方式</li></ul></div>
 <div class="card" style="box-shadow:none;border-width:2px"><h3 style="font-size:14.5px">Lv.3 模型訓練</h3><ul>
-<li>用 5–20 張同一人相片訓練專屬角色模型(約 10 分鐘)</li>
-<li>保真度最高,適合品牌長期代言人、老闆數字分身</li><li>一人一模型,啟動成本高啲</li></ul></div></div>
-<p style="margin-top:10px;font-size:13px;color:#5a647a"><b>實戰心法:</b>單張海報用 Lv.1;一條片/一個 campaign 用 Lv.2;成個品牌長期用同一個面孔先升級 Lv.3。</p></div>
+<li>用 5–20 張同一人的相片訓練專屬角色模型（約 10 分鐘）</li>
+<li>保真度最高,適合品牌長期代言人、老闆數字分身</li><li>一人一模型，啟動成本較高</li></ul></div></div>
+<p style="margin-top:10px;font-size:13px;color:#5a647a"><b>實務建議：</b>單張海報使用 Lv.1；一條影片或一個 campaign 使用 Lv.2；若整個品牌需要長期使用同一個面孔，再升級至 Lv.3。</p></div>
 
-<div class="card" style="margin-top:18px"><h3><span class="ic" style="--c1:var(--violet);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="40" cy="16" r="6" fill="var(--c1)"/><path d="M40 22v14l-8 12M40 30l10 6M40 30l-12 4" stroke="var(--c1)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M12 30h8M10 40h10" stroke="var(--c2)" stroke-width="3" stroke-linecap="round"/></svg></span>唔會有奇怪動作 / 多餘肢體</h3>
+<div class="card" style="margin-top:18px"><h3><span class="ic" style="--c1:var(--violet);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="40" cy="16" r="6" fill="var(--c1)"/><path d="M40 22v14l-8 12M40 30l10 6M40 30l-12 4" stroke="var(--c1)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M12 30h8M10 40h10" stroke="var(--c2)" stroke-width="3" stroke-linecap="round"/></svg></span>避免奇怪動作 / 多餘肢體</h3>
 <div class="dodont">
 <div class="dobox"><h4>正面 prompt 要寫</h4><ul>
 <li>natural relaxed pose / 自然放鬆姿勢</li>
 <li>anatomically correct / 解剖結構正確</li>
 <li>five fingers each hand, both hands visible / 每手五指清晰可見</li>
 <li>smooth natural movement / 動作流暢自然(影片)</li></ul></div>
-<div class="dontbox"><h4>Negative prompt 放呢啲</h4><ul>
+<div class="dontbox"><h4>Negative prompt 放入以下項目</h4><ul>
 <li>extra fingers, extra limbs / 多手指、多肢體</li>
 <li>deformed hands, fused fingers / 變形手、黏連手指</li>
-<li>distorted face, asymmetric eyes / 扭曲臉、大細眼</li>
+<li>distorted face, asymmetric eyes / 扭曲臉、眼睛不對稱</li>
 <li>twisted body, unnatural pose / 扭曲身體、怪姿勢</li>
-<li>color shift, plastic skin / 變色、膠皮膚</li></ul></div></div>
-<div class="promptbox"><span class="tag">人物保命 prompt(成段照抄)</span>
-<span class="zh-line"><span class="zh-pill">中</span>同參考圖一致嘅角色,面容一致,自然準確膚色,每手五指正常,放鬆自然姿勢 ‖ 負面:多手指、變形手、扭曲臉、變色、膠感皮膚</span>
+<li>color shift, plastic skin / 變色、塑膠感皮膚</li></ul></div></div>
+<div class="promptbox"><span class="tag">人物穩定 prompt（整段可複製）</span>
+<span class="zh-line"><span class="zh-pill">中</span>與參考圖一致的角色，面容一致，自然且準確的膚色，每隻手五指正常，放鬆自然姿勢 ‖ 負面：多手指、變形手、扭曲臉、變色、塑膠感皮膚</span>
 <span class="en-pill">EN</span><span class="en">same character as reference image, <span class="hl">consistent face</span>, natural accurate skin tone, <span class="hl">five fingers each hand</span>, relaxed natural pose ‖ negative: <span class="hl">extra fingers, deformed hands, distorted face, color shift, plastic skin</span></span></div></div>
 </section>
 
 <section id="cam" class="reveal">
 <div class="sec-head"><span class="sec-num">04</span><h2>運鏡 Camera Movement</h2></div>
-<p class="sec-sub">每格都係 LIVE 動態示範——個鏡頭真係咁郁。揀啱運鏡,半條片嘅情緒已經對咗。</p>
+<p class="sec-sub">每格都是 LIVE 動態示範，呈現鏡頭的實際移動方式。選對運鏡，影片的情緒已經完成一半。</p>
 <div class="demo-grid"><div class="demo an-dollyin"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"></div><div class="d-sun"></div>
 <div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div><div class="d-subj"></div></div>
-<video class="real" src="videos/dollyin.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<video class="real" src="../videos/dollyin.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
 <div class="d-label"><h4>推軌入 <span class="en-term">dolly in</span></h4><p>鏡頭慢慢推近主體。情緒聚焦、揭示重點、營造親密或壓迫感。商業片收結最常用。</p><div class="use">prompt 寫法:slow dolly in on subject / 鏡頭緩慢推近主體</div></div></div>
 <div class="demo an-dollyout"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"></div><div class="d-sun"></div>
 <div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div><div class="d-subj"></div></div>
-<video class="real" src="videos/dollyout.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<video class="real" src="../videos/dollyout.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
 <div class="d-label"><h4>推軌出 <span class="en-term">dolly out</span></h4><p>由近拉遠,揭示環境全貌。常用於開場交代場景,或結尾抽離留白。</p><div class="use">prompt 寫法:slow dolly out revealing the scene / 緩慢拉遠揭示全景</div></div></div>
 <div class="demo an-pan"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"></div><div class="d-sun"></div>
 <div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div><div class="d-subj"></div></div>
-<video class="real" src="videos/pan.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<video class="real" src="../videos/pan.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
 <div class="d-label"><h4>橫搖 <span class="en-term">pan</span></h4><p>機位不動,左右掃視。跟隨橫向移動、展示寬闊環境、兩個主體之間過渡。</p><div class="use">prompt 寫法:smooth pan left to right / 平滑由左至右橫搖</div></div></div>
 <div class="demo an-tilt"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"></div><div class="d-sun"></div>
 <div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div><div class="d-subj"></div></div>
-<video class="real" src="videos/tilt.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<video class="real" src="../videos/tilt.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
 <div class="d-label"><h4>直搖 <span class="en-term">tilt</span></h4><p>機位不動,上下掃視。由腳到頭介紹人物、由地面搖上天空製造氣勢。</p><div class="use">prompt 寫法:tilt up from ground to sky / 由下而上直搖</div></div></div>
 <div class="demo an-orbit"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"></div><div class="d-sun"></div>
 <div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div><div class="d-subj"></div></div>
-<video class="real" src="videos/orbit.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<video class="real" src="../videos/orbit.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
 <div class="d-label"><h4>環繞 <span class="en-term">orbit / arc</span></h4><p>鏡頭圍住主體轉。產品 360 展示、人物英雄感、空間立體感必備。</p><div class="use">prompt 寫法:camera orbiting around subject / 鏡頭環繞主體運動</div></div></div>
 <div class="demo an-track"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene" style="inset:0"><div class="d-sky"></div><div class="d-sun"></div>
 <div class="track-strip"><div class="d-far"></div><div class="d-far f2"></div><div class="d-near"></div><div class="d-near n2"></div></div>
 <div class="d-grd"></div><div class="d-subj" style="left:46%"></div></div>
-<video class="real" src="videos/track.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
-<div class="d-label"><h4>跟拍 <span class="en-term">tracking shot</span></h4><p>鏡頭跟住主體一齊移動,背景流動。行走訪談、追逐、沉浸式跟隨。</p><div class="use">prompt 寫法:tracking shot following subject / 跟隨主體移動拍攝</div></div></div>
+<video class="real" src="../videos/track.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<div class="d-label"><h4>跟拍 <span class="en-term">tracking shot</span></h4><p>鏡頭跟隨主體同步移動，背景呈現流動感。適用於行走訪談、追逐與沉浸式跟隨。</p><div class="use">prompt 寫法:tracking shot following subject / 跟隨主體移動拍攝</div></div></div>
 <div class="demo an-hand"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"></div><div class="d-sun"></div>
 <div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div><div class="d-subj"></div></div>
-<video class="real" src="videos/hand.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<video class="real" src="../videos/hand.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
 <div class="d-label"><h4>手持 <span class="en-term">handheld</span></h4><p>輕微晃動,真實紀錄感。Vlog、紀錄片、緊張追逐;商業精緻片避免。</p><div class="use">prompt 寫法:handheld camera, documentary feel / 手持鏡頭,紀實感</div></div></div>
 <div class="demo an-zoom"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"></div><div class="d-sun"></div>
 <div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div><div class="d-subj"></div></div>
-<video class="real" src="videos/zoom.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<video class="real" src="../videos/zoom.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
 <div class="d-label"><h4>快速變焦 <span class="en-term">zoom / punch in</span></h4><p>焦距快速推入,節奏感強。社群短片 hook、強調反應、喜劇效果。</p><div class="use">prompt 寫法:fast zoom punch in / 快速變焦推入</div></div></div>
 <div class="demo an-whip"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"></div><div class="d-sun"></div>
 <div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div><div class="d-subj"></div></div>
-<video class="real" src="videos/whip.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<video class="real" src="../videos/whip.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
 <div class="d-label"><h4>甩鏡 <span class="en-term">whip pan</span></h4><p>極速橫甩帶動態模糊。轉場神器,連接兩個場景,energy 爆棚。</p><div class="use">prompt 寫法:whip pan transition / 快速甩鏡轉場</div></div></div>
 <div class="demo an-drone"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"></div><div class="d-sun"></div>
 <div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div><div class="d-subj"></div></div>
-<video class="real" src="videos/drone.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<video class="real" src="../videos/drone.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
 <div class="d-label"><h4>航拍升降 <span class="en-term">drone / aerial</span></h4><p>由高空俯瞰或拉升。開場立 scale、地理交代、史詩感結尾。</p><div class="use">prompt 寫法:aerial drone shot rising up / 航拍鏡頭緩緩拉升</div></div></div></div>
 <div class="promptbox"><span class="tag">運鏡組合範例</span>
-<span class="zh-line"><span class="zh-pill">中</span>開場航拍拉升交代環境 → 切跟拍主體行入咖啡店 → 結尾緩慢推軌入到面部特寫。一條 prompt 一個運鏡,分三條生成再剪埋。</span>
+<span class="zh-line"><span class="zh-pill">中</span>開場用航拍拉升交代環境 → 切至跟拍主體走進咖啡店 → 結尾緩慢推軌至面部特寫。一條 prompt 只寫一個運鏡，分成三條生成後再剪接。</span>
 <span class="en-pill">EN</span><span class="en">shot 1: <span class="hl">aerial drone rising</span> over city · shot 2: <span class="hl">tracking shot</span> following subject into cafe · shot 3: <span class="hl">slow dolly in</span> to close-up</span></div>
-<h3 class="mini"><span class="dot"></span>光圈・快門・焦距(影響畫面質感嘅三粒掣)</h3>
+<h3 class="mini"><span class="dot"></span>光圈・快門・焦距（影響畫面質感的三個控制項）</h3>
 <div class="grid3">
 <div class="card"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="20" fill="none" stroke="var(--c1)" stroke-width="4"/><path d="M32 12l10 18H22zM52 32l-10 18-8-18zM12 32l10-18 8 18z" fill="var(--c2)" opacity=".7"/><circle cx="32" cy="32" r="6" fill="var(--c1)"/></svg></span>光圈 / 景深</h3><ul>
 <li><b>f1.8 淺景深</b> shallow DOF:主體實、背景化開,人像產品必用</li>
@@ -498,37 +1363,37 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <div class="card"><h3><span class="ic" style="--c1:var(--violet);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="22" width="36" height="26" rx="5" fill="var(--c1)"/><path d="M46 30l10-6v22l-10-6z" fill="var(--c2)"/><circle cx="24" cy="35" r="7" fill="#fff"/><circle cx="24" cy="35" r="3.5" fill="var(--c2)"/><rect x="16" y="16" width="12" height="8" rx="2" fill="var(--c1)"/></svg></span>焦距 / 透視</h3><ul>
 <li><b>24mm 廣角</b>:空間張力大、輕微誇張,環境交代</li>
 <li><b>50mm 標準</b>:似人眼,自然紀實</li>
-<li><b>85mm 長焦</b>:壓縮空間、人像最靚,背景化開</li></ul></div></div>
+<li><b>85mm 長焦</b>:壓縮空間、人像最漂亮,背景化開</li></ul></div></div>
 </section>
 
 <section id="act" class="reveal">
 <div class="sec-head"><span class="sec-num">05</span><h2>主體動作設計</h2></div>
-<p class="sec-sub">影片 prompt 嘅主角係動詞。一個鏡頭一個清晰動作,寫埋速度同方向。</p>
+<p class="sec-sub">影片 prompt 的重點是動詞。一個鏡頭只安排一個清晰動作，並寫明速度與方向。</p>
 <div class="demo-grid"><div class="demo an-walk"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"><div class="actor"><span class="a-head"></span><span class="a-body"></span><span class="a-arm"></span></div></div><div class="d-sun"></div>
 <div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div></div>
-<video class="real" src="videos/walk.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
-<div class="d-label"><h4>行走 <span class="en-term">walking</span></h4><p>主體橫越畫面。寫明方向同速度:slowly walking left to right。配 tracking 跟拍更自然。</p><div class="use">prompt 寫法:subject slowly walking across / 主體緩慢橫越畫面</div></div></div>
+<video class="real" src="../videos/walk.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<div class="d-label"><h4>行走 <span class="en-term">walking</span></h4><p>主體橫越畫面。寫明方向與速度：slowly walking left to right。配合 tracking 跟拍會更自然。</p><div class="use">prompt 寫法:subject slowly walking across / 主體緩慢橫越畫面</div></div></div>
 <div class="demo an-turn"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"><div class="actor"><span class="a-head"></span><span class="a-body"></span><span class="a-arm"></span></div></div><div class="d-sun"></div>
 <div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div></div>
-<video class="real" src="videos/turn.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<video class="real" src="../videos/turn.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
 <div class="d-label"><h4>轉身 <span class="en-term">turning around</span></h4><p>主體轉向鏡頭。揭示表情、回應呼喚、劇情轉折位。寫:turns to face camera。</p><div class="use">prompt 寫法:slowly turns to face the camera / 緩緩轉身面向鏡頭</div></div></div>
 <div class="demo an-raise"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"><div class="actor"><span class="a-head"></span><span class="a-body"></span><span class="a-arm"></span></div></div><div class="d-sun"></div>
 <div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div></div>
-<video class="real" src="videos/raise.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
-<div class="d-label"><h4>舉手動作 <span class="en-term">raising arm</span></h4><p>清晰單一手部動作:舉手、揮手、指向。一個鏡頭一個動作,避免 AI 出怪手。</p><div class="use">prompt 寫法:raises one hand to wave, five fingers / 舉起一隻手揮動,五指正常</div></div></div>
+<video class="real" src="../videos/raise.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<div class="d-label"><h4>舉手動作 <span class="en-term">raising arm</span></h4><p>清晰單一手部動作:舉手、揮手、指向。一個鏡頭只安排一個動作，避免 AI 產生異常手部。</p><div class="use">prompt 寫法:raises one hand to wave, five fingers / 舉起一隻手揮動,五指正常</div></div></div>
 <div class="demo an-lean"><div class="d-frame"><span class="live">LIVE 示範</span><div class="d-scene"><div class="d-sky"><div class="actor"><span class="a-head"></span><span class="a-body"></span><span class="a-arm"></span></div></div><div class="d-sun"></div>
 <div class="d-far"></div><div class="d-near"></div><div class="d-grd"></div></div>
-<video class="real" src="videos/lean.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
+<video class="real" src="../videos/lean.mp4" autoplay muted loop playsinline onerror="this.remove()"></video></div>
 <div class="d-label"><h4>前傾靠近 <span class="en-term">leaning in</span></h4><p>主體向鏡頭傾前。製造親密、秘密、邀請感。配 dolly in 雙重推進更強。</p><div class="use">prompt 寫法:leans in toward camera / 向鏡頭前傾靠近</div></div></div></div>
 <div class="grid3" style="margin-top:18px">
 <div class="card"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="40" cy="16" r="6" fill="var(--c1)"/><path d="M40 22v14l-8 12M40 30l10 6M40 30l-12 4" stroke="var(--c1)" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M12 30h8M10 40h10" stroke="var(--c2)" stroke-width="3" stroke-linecap="round"/></svg></span>動作三要素</h3><ul>
 <li><b>動詞</b>:行、轉身、伸手、舉杯、微笑漸開</li>
 <li><b>速度</b>:slowly / gently / briskly / energetically</li>
 <li><b>方向</b>:left to right / toward camera / upward</li></ul></div>
-<div class="card"><h3><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="22" width="36" height="26" rx="5" fill="var(--c1)"/><path d="M46 30l10-6v22l-10-6z" fill="var(--c2)"/><circle cx="24" cy="35" r="7" fill="#fff"/><circle cx="24" cy="35" r="3.5" fill="var(--c2)"/><rect x="16" y="16" width="12" height="8" rx="2" fill="var(--c1)"/></svg></span>同運鏡夾埋</h3><ul>
-<li>主體靜 → 鏡頭動(orbit / dolly 營造氛圍)</li>
-<li>主體動 → 鏡頭跟(tracking 保持構圖)</li>
-<li>情緒爆發位 → 雙重推進(主體 lean in + dolly in)</li></ul></div>
+<div class="card"><h3><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="22" width="36" height="26" rx="5" fill="var(--c1)"/><path d="M46 30l10-6v22l-10-6z" fill="var(--c2)"/><circle cx="24" cy="35" r="7" fill="#fff"/><circle cx="24" cy="35" r="3.5" fill="var(--c2)"/><rect x="16" y="16" width="12" height="8" rx="2" fill="var(--c1)"/></svg></span>與運鏡配合</h3><ul>
+<li>主體靜止 → 鏡頭移動（orbit / dolly 營造氛圍）</li>
+<li>主體移動 → 鏡頭跟隨（tracking 保持構圖）</li>
+<li>情緒爆發位置 → 雙重推進（主體 lean in + dolly in）</li></ul></div>
 <div class="card"><h3><span class="ic" style="--c1:var(--violet);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="14" cy="32" r="9" fill="var(--c1)"/><circle cx="50" cy="32" r="9" fill="var(--c2)"/><rect x="28" y="28" width="8" height="8" rx="2" fill="var(--c1)"/><path d="M23 32h5M36 32h5" stroke="var(--c2)" stroke-width="3" stroke-linecap="round"/></svg></span>節奏 Pacing</h3><ul>
 <li><b>商業片</b>:慢、穩、優雅,5 秒一個動作</li>
 <li><b>社群片</b>:首 2 秒要有 hook 動作,快而跳</li>
@@ -537,207 +1402,99 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 
 <section id="i2v" class="reveal">
 <div class="sec-head"><span class="sec-num">·</span><h2>先圖後片 · Image-to-Video 工作流</h2></div>
-<p class="sec-sub">製作公司最重要嘅一條流程紀律:畫面喺「圖」階段執到完美,先俾佢「郁」。</p>
+<p class="sec-sub">製作公司最重要的一條流程紀律：先在「圖」階段把畫面修整到位，再讓它「動起來」。</p>
 <div class="grid3">
-<div class="card"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="20" fill="none" stroke="var(--c1)" stroke-width="4"/><path d="M32 12l10 18H22zM52 32l-10 18-8-18zM12 32l10-18 8 18z" fill="var(--c2)" opacity=".7"/><circle cx="32" cy="32" r="6" fill="var(--c1)"/></svg></span>點解先圖後片</h3><ul>
+<div class="card"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="20" fill="none" stroke="var(--c1)" stroke-width="4"/><path d="M32 12l10 18H22zM52 32l-10 18-8-18zM12 32l10-18 8 18z" fill="var(--c2)" opacity=".7"/><circle cx="32" cy="32" r="6" fill="var(--c1)"/></svg></span>為何先圖後片</h3><ul>
 <li><b>價差巨大</b>:一張圖大約 0.1–1.3 credit,一條 5 秒片 7.5+ ——差成 6 至 60 倍</li>
-<li>圖階段可以平價迭代 5–10 個版本揀最好;片階段先迭代 = 燒錢</li>
-<li>構圖、人物、光線、色調全部喺圖度鎖死,片只負責「郁」</li></ul></div>
+<li>圖像階段可以低成本迭代 5–10 個版本並選出最佳方案；到了影片階段才迭代，成本會大幅增加</li>
+<li>構圖、人物、光線、色調全部在圖像階段鎖定，影片只負責「動起來」</li></ul></div>
 <div class="card"><h3><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="14" cy="32" r="9" fill="var(--c1)"/><circle cx="50" cy="32" r="9" fill="var(--c2)"/><rect x="28" y="28" width="8" height="8" rx="2" fill="var(--c1)"/><path d="M23 32h5M36 32h5" stroke="var(--c2)" stroke-width="3" stroke-linecap="round"/></svg></span>三步流程</h3><ul>
-<li><b>① 出圖</b>:照六元素公式生 3–5 版,揀構圖最啱嗰張</li>
-<li><b>② 設定首尾格</b>:揀好嘅圖做 start frame(起始畫面);要控制運動終點可以再俾埋 end frame(結尾畫面)</li>
-<li><b>③ 動態化</b>:image-to-video,prompt 淨係寫「點郁」——運鏡 + 主體動作 + 節奏</li></ul></div>
+<li><b>① 出圖</b>:按照六元素公式生成 3–5 版，選出構圖最合適的一張</li>
+<li><b>② 設定首尾格</b>:選好的圖片作為 start frame（起始畫面）；如需控制運動終點，可再提供 end frame（結尾畫面）</li>
+<li><b>③ 動態化</b>:image-to-video 階段，prompt 只寫「如何移動」：運鏡 + 主體動作 + 節奏</li></ul></div>
 <div class="card"><h3><span class="ic" style="--c1:var(--violet);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="14" width="44" height="32" rx="6" fill="var(--c1)"/><path d="M24 46l-4 8 12-8z" fill="var(--c1)"/><rect x="18" y="24" width="16" height="3" rx="1.5" fill="#fff"/><rect x="18" y="32" width="24" height="3" rx="1.5" fill="#fff"/><circle cx="46" cy="18" r="7" fill="var(--c2)"/><path d="M46 15v6M43 18h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>I2V prompt 重點</h3><ul>
-<li>畫面已經喺圖度定咗,<b>唔好再重複描述場景</b>——重複會令 AI 想改畫面</li>
+<li>畫面已經在圖像階段確定，<b>不要再重複描述場景</b>，否則 AI 可能會改動畫面</li>
 <li>只寫動態:「slow dolly in, she turns to face camera, calm pacing」</li>
-<li>想畫面盡量唔變形 → 加「maintain composition / 保持構圖」</li></ul></div></div>
+<li>希望畫面盡量不變形 → 加上「maintain composition / 保持構圖」</li></ul></div></div>
 <div class="promptbox"><span class="tag">I2V 完整範例</span>
-<span class="zh-line"><span class="zh-pill">中</span>(已上載起始圖)鏡頭緩慢推近,主體緩緩望向鏡頭微笑,保持構圖同光線,平靜節奏,5 秒</span>
+<span class="zh-line"><span class="zh-pill">中</span>（已上載起始圖）鏡頭緩慢推近，主體緩緩望向鏡頭微笑，保持構圖與光線，平靜節奏，5 秒</span>
 <span class="en-pill">EN</span><span class="en">(start frame attached) <span class="hl">slow dolly in</span>, she slowly looks toward camera and smiles, <span class="hl">maintain composition and lighting</span>, calm pacing, 5s</span></div>
 </section>
 
 <section id="tone" class="reveal">
 <div class="sec-head"><span class="sec-num">06</span><h2>色調 Color</h2></div>
-<p class="sec-sub">同一個場景、八種色調——直接見到色調點改情緒。揀一個,抄低 prompt 寫法。</p>
-<div class="tone-grid"><div class="tone-card"><div class="tone-thumb" style="--s1:#1A4A56;--s2:#FF8A4A;--s3:#15535E;--s4:#0E3A42;--s5:#FF8A4A"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
-<rect width="320" height="180" class="ts-sky"/>
-<circle cx="226" cy="54" r="24" class="ts-sun"/>
-<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
-<path d="M-10 180L90 70l78 110z" class="ts-far"/>
-<path d="M128 180l90-88 112 88z" class="ts-near"/>
-<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
-<circle cx="76" cy="110" r="10" class="ts-subj"/>
-</svg></div>
+<p class="sec-sub">同一場景、八種色調，直接比較色調如何改變情緒。選定一種後，記下 prompt 寫法。</p>
+<div class="photo-ref"><img src="images/generated/tone-color-grade-contact.png" alt="同一人物城市場景的八種真實色調對比" loading="lazy">
+<div class="photo-caption"><h3>真圖色調對比</h3><p>同一人物城市場景用不同 grade 會立即改變情緒。每張卡都已換成真圖，方便直接比較並複製 prompt。</p></div></div>
+<div class="tone-grid"><div class="tone-card"><div class="tone-thumb"><img class="tone-photo" src="images/generated/tone-teal-orange.png" alt="橙藍 Teal & Orange 真圖示範" loading="lazy"></div>
 <div class="tone-info"><h4>橙藍 Teal & Orange</h4><div class="swatches"><i style="background:#1A4A56"></i><i style="background:#15535E"></i><i style="background:#0E3A42"></i><i style="background:#FF8A4A"></i></div><p>teal and orange grade / 橙藍電影調色</p></div></div>
-<div class="tone-card"><div class="tone-thumb" style="--s1:#FFD9A0;--s2:#FF9A4A;--s3:#C97B3A;--s4:#A05A2B;--s5:#7A3A1E"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
-<rect width="320" height="180" class="ts-sky"/>
-<circle cx="226" cy="54" r="24" class="ts-sun"/>
-<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
-<path d="M-10 180L90 70l78 110z" class="ts-far"/>
-<path d="M128 180l90-88 112 88z" class="ts-near"/>
-<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
-<circle cx="76" cy="110" r="10" class="ts-subj"/>
-</svg></div>
+<div class="tone-card"><div class="tone-thumb"><img class="tone-photo" src="images/generated/tone-golden.png" alt="暖金 Golden 真圖示範" loading="lazy"></div>
 <div class="tone-info"><h4>暖金 Golden</h4><div class="swatches"><i style="background:#FFD9A0"></i><i style="background:#C97B3A"></i><i style="background:#A05A2B"></i><i style="background:#7A3A1E"></i></div><p>golden hour warm tones / 黃金時刻暖金色調</p></div></div>
-<div class="tone-card"><div class="tone-thumb" style="--s1:#A8C4D8;--s2:#D8E8F0;--s3:#4A6478;--s4:#2E4456;--s5:#1E3040"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
-<rect width="320" height="180" class="ts-sky"/>
-<circle cx="226" cy="54" r="24" class="ts-sun"/>
-<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
-<path d="M-10 180L90 70l78 110z" class="ts-far"/>
-<path d="M128 180l90-88 112 88z" class="ts-near"/>
-<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
-<circle cx="76" cy="110" r="10" class="ts-subj"/>
-</svg></div>
+<div class="tone-card"><div class="tone-thumb"><img class="tone-photo" src="images/generated/tone-cold-blue.png" alt="冷藍 Cold Blue 真圖示範" loading="lazy"></div>
 <div class="tone-info"><h4>冷藍 Cold Blue</h4><div class="swatches"><i style="background:#A8C4D8"></i><i style="background:#4A6478"></i><i style="background:#2E4456"></i><i style="background:#1E3040"></i></div><p>cold desaturated blue / 冷峻低飽和藍調</p></div></div>
-<div class="tone-card"><div class="tone-thumb" style="--s1:#1A0830;--s2:#E83FA0;--s3:#3FC8D8;--s4:#7C3FE8;--s5:#FF4A8A"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
-<rect width="320" height="180" class="ts-sky"/>
-<circle cx="226" cy="54" r="24" class="ts-sun"/>
-<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
-<path d="M-10 180L90 70l78 110z" class="ts-far"/>
-<path d="M128 180l90-88 112 88z" class="ts-near"/>
-<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
-<circle cx="76" cy="110" r="10" class="ts-subj"/>
-</svg></div>
+<div class="tone-card"><div class="tone-thumb"><img class="tone-photo" src="images/generated/tone-neon.png" alt="霓虹 Neon 真圖示範" loading="lazy"></div>
 <div class="tone-info"><h4>霓虹 Neon</h4><div class="swatches"><i style="background:#1A0830"></i><i style="background:#3FC8D8"></i><i style="background:#7C3FE8"></i><i style="background:#FF4A8A"></i></div><p>neon magenta and cyan glow / 霓虹紫紅青藍光</p></div></div>
-<div class="tone-card"><div class="tone-thumb" style="--s1:#D8CBB4;--s2:#E8D9B8;--s3:#A89878;--s4:#8A7A5E;--s5:#B0764E"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
-<rect width="320" height="180" class="ts-sky"/>
-<circle cx="226" cy="54" r="24" class="ts-sun"/>
-<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
-<path d="M-10 180L90 70l78 110z" class="ts-far"/>
-<path d="M128 180l90-88 112 88z" class="ts-near"/>
-<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
-<circle cx="76" cy="110" r="10" class="ts-subj"/>
-</svg></div>
+<div class="tone-card"><div class="tone-thumb"><img class="tone-photo" src="images/generated/tone-faded.png" alt="褪色 Faded 真圖示範" loading="lazy"></div>
 <div class="tone-info"><h4>褪色 Faded</h4><div class="swatches"><i style="background:#D8CBB4"></i><i style="background:#A89878"></i><i style="background:#8A7A5E"></i><i style="background:#B0764E"></i></div><p>faded vintage tones / 褪色復古色調</p></div></div>
-<div class="tone-card"><div class="tone-thumb" style="--s1:#E8E8E8;--s2:#FFFFFF;--s3:#3A3A3A;--s4:#141414;--s5:#FF4A3A"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
-<rect width="320" height="180" class="ts-sky"/>
-<circle cx="226" cy="54" r="24" class="ts-sun"/>
-<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
-<path d="M-10 180L90 70l78 110z" class="ts-far"/>
-<path d="M128 180l90-88 112 88z" class="ts-near"/>
-<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
-<circle cx="76" cy="110" r="10" class="ts-subj"/>
-</svg></div>
+<div class="tone-card"><div class="tone-thumb"><img class="tone-photo" src="images/generated/tone-high-contrast.png" alt="高反差 High Contrast 真圖示範" loading="lazy"></div>
 <div class="tone-info"><h4>高反差 High Contrast</h4><div class="swatches"><i style="background:#E8E8E8"></i><i style="background:#3A3A3A"></i><i style="background:#141414"></i><i style="background:#FF4A3A"></i></div><p>high contrast punchy / 高反差有力</p></div></div>
-<div class="tone-card"><div class="tone-thumb" style="--s1:#F5E0EC;--s2:#FFF0D9;--s3:#C9D8E8;--s4:#A8C0D8;--s5:#E8A0B8"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
-<rect width="320" height="180" class="ts-sky"/>
-<circle cx="226" cy="54" r="24" class="ts-sun"/>
-<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
-<path d="M-10 180L90 70l78 110z" class="ts-far"/>
-<path d="M128 180l90-88 112 88z" class="ts-near"/>
-<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
-<circle cx="76" cy="110" r="10" class="ts-subj"/>
-</svg></div>
+<div class="tone-card"><div class="tone-thumb"><img class="tone-photo" src="images/generated/tone-pastel.png" alt="柔粉 Pastel 真圖示範" loading="lazy"></div>
 <div class="tone-info"><h4>柔粉 Pastel</h4><div class="swatches"><i style="background:#F5E0EC"></i><i style="background:#C9D8E8"></i><i style="background:#A8C0D8"></i><i style="background:#E8A0B8"></i></div><p>soft pastel palette / 柔和粉彩色盤</p></div></div>
-<div class="tone-card"><div class="tone-thumb" style="--s1:#D8D8D8;--s2:#F0F0F0;--s3:#8A8A8A;--s4:#4A4A4A;--s5:#202020"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
-<rect width="320" height="180" class="ts-sky"/>
-<circle cx="226" cy="54" r="24" class="ts-sun"/>
-<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
-<path d="M-10 180L90 70l78 110z" class="ts-far"/>
-<path d="M128 180l90-88 112 88z" class="ts-near"/>
-<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
-<circle cx="76" cy="110" r="10" class="ts-subj"/>
-</svg></div>
+<div class="tone-card"><div class="tone-thumb"><img class="tone-photo" src="images/generated/tone-monochrome.png" alt="單色 Monochrome 真圖示範" loading="lazy"></div>
 <div class="tone-info"><h4>單色 Monochrome</h4><div class="swatches"><i style="background:#D8D8D8"></i><i style="background:#8A8A8A"></i><i style="background:#4A4A4A"></i><i style="background:#202020"></i></div><p>black and white monochrome / 黑白單色</p></div></div></div>
-<div class="promptbox"><span class="tag">色調點落 prompt</span>
-<span class="zh-line"><span class="zh-pill">中</span>色調放喺 prompt 風格段:寫「色名 + grade/tones/palette」。同一條片所有鏡頭用同一段色調描述,先唔會跳色。</span>
+<div class="promptbox"><span class="tag">色調如何寫入 prompt</span>
+<span class="zh-line"><span class="zh-pill">中</span>色調放在 prompt 的風格段：寫「色名 + grade/tones/palette」。同一條影片的所有鏡頭使用同一段色調描述，才能避免跳色。</span>
 <span class="en-pill">EN</span><span class="en">...scene description, <span class="hl">teal and orange cinematic grade</span> — or — <span class="hl">soft pastel palette</span> — or — <span class="hl">cold desaturated blue tones</span></span></div>
 </section>
 
 <section id="film" class="reveal">
 <div class="sec-head"><span class="sec-num">07</span><h2>Film Style 質感</h2></div>
-<p class="sec-sub">同一場景、六種 film style 即時對比。質感係風格嘅最後一層皮。</p>
-<div class="film-grid"><div class="film-card f-grain"><div class="film-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
-<rect width="320" height="180" class="ts-sky"/>
-<circle cx="226" cy="54" r="24" class="ts-sun"/>
-<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
-<path d="M-10 180L90 70l78 110z" class="ts-far"/>
-<path d="M128 180l90-88 112 88z" class="ts-near"/>
-<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
-<circle cx="76" cy="110" r="10" class="ts-subj"/>
-</svg><svg class="fx" width="100%" height="100%"><filter id="grainF"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#grainF)" opacity="0.22"/></svg></div>
-<div class="film-info"><h4>35mm 膠片 <span class="en-term">35mm film grain</span></h4><p>細膩顆粒,溫潤質感。商業片加一層即刻高級,萬用安全牌。</p><div class="use">35mm film grain, kodak texture / 35mm 膠片顆粒質感</div></div></div>
-<div class="film-card f-anam"><div class="film-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
-<rect width="320" height="180" class="ts-sky"/>
-<circle cx="226" cy="54" r="24" class="ts-sun"/>
-<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
-<path d="M-10 180L90 70l78 110z" class="ts-far"/>
-<path d="M128 180l90-88 112 88z" class="ts-near"/>
-<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
-<circle cx="76" cy="110" r="10" class="ts-subj"/>
-</svg><div class="fx bars"></div><div class="fx"><div class="flare"></div></div><svg class="fx" width="100%" height="100%"><rect width="100%" height="100%" filter="url(#grainF)" opacity="0.22"/></svg></div>
-<div class="film-info"><h4>Anamorphic 寬幕 <span class="en-term">anamorphic</span></h4><p>上下黑邊 + 橫向藍色光斑,即刻電影院氣場。大片感、預告片必備。</p><div class="use">anamorphic widescreen, horizontal lens flare / 變形寬銀幕,橫向光暈</div></div></div>
-<div class="film-card f-noir"><div class="film-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
-<rect width="320" height="180" class="ts-sky"/>
-<circle cx="226" cy="54" r="24" class="ts-sun"/>
-<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
-<path d="M-10 180L90 70l78 110z" class="ts-far"/>
-<path d="M128 180l90-88 112 88z" class="ts-near"/>
-<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
-<circle cx="76" cy="110" r="10" class="ts-subj"/>
-</svg><div class="fx vig"></div></div>
+<p class="sec-sub">同一場景、六種 film style 即時對比。質感是風格的最後一層表現。</p>
+<div class="photo-ref"><img src="images/generated/film-style-portrait-contact.png" alt="同一人像 portrait 的六種 film style 對比" loading="lazy">
+<div class="photo-caption"><h3>人像 Film Style 對比</h3><p>Film style 用人像最容易看出質感差異：膚色、顆粒、對比、光暈、復古感與柔焦會直接影響整片氣質。</p></div></div>
+<div class="film-grid"><div class="film-card f-grain"><div class="film-thumb"><img class="film-photo" src="images/generated/film-35mm-grain.png" alt="35mm 膠片人像真圖示範" loading="lazy"><svg class="fx" width="100%" height="100%"><filter id="grainF"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#grainF)" opacity="0.22"/></svg></div>
+<div class="film-info"><h4>35mm 膠片 <span class="en-term">35mm film grain</span></h4><p>細膩顆粒,溫潤質感。商業片加一層立即高級,萬用安全牌。</p><div class="use">35mm film grain, kodak texture / 35mm 膠片顆粒質感</div></div></div>
+<div class="film-card f-anam"><div class="film-thumb"><img class="film-photo" src="images/generated/film-anamorphic.png" alt="Anamorphic 寬幕人像真圖示範" loading="lazy"><div class="fx bars"></div><div class="fx"><div class="flare"></div></div><svg class="fx" width="100%" height="100%"><rect width="100%" height="100%" filter="url(#grainF)" opacity="0.22"/></svg></div>
+<div class="film-info"><h4>Anamorphic 寬幕 <span class="en-term">anamorphic</span></h4><p>上下黑邊 + 橫向藍色光斑,立即電影院氣場。大片感、預告片必備。</p><div class="use">anamorphic widescreen, horizontal lens flare / 變形寬銀幕,橫向光暈</div></div></div>
+<div class="film-card f-noir"><div class="film-thumb"><img class="film-photo" src="images/generated/film-noir.png" alt="黑色電影人像真圖示範" loading="lazy"><div class="fx vig"></div></div>
 <div class="film-info"><h4>黑色電影 <span class="en-term">film noir</span></h4><p>高反差黑白 + 暗角。懸疑、復古偵探、強烈戲劇光影。</p><div class="use">film noir, high contrast b&w, vignette / 黑色電影,高反差黑白</div></div></div>
-<div class="film-card f-vhs"><div class="film-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
-<rect width="320" height="180" class="ts-sky"/>
-<circle cx="226" cy="54" r="24" class="ts-sun"/>
-<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
-<path d="M-10 180L90 70l78 110z" class="ts-far"/>
-<path d="M128 180l90-88 112 88z" class="ts-near"/>
-<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
-<circle cx="76" cy="110" r="10" class="ts-subj"/>
-</svg><div class="fx scan"></div><div class="band"></div></div>
+<div class="film-card f-vhs"><div class="film-thumb"><img class="film-photo" src="images/generated/film-vhs.png" alt="VHS 復古人像真圖示範" loading="lazy"><div class="fx scan"></div><div class="band"></div></div>
 <div class="film-info"><h4>VHS 復古 <span class="en-term">vhs retro</span></h4><p>掃描線 + 訊號雜訊,90 年代錄影帶。懷舊主題、復古 MV、Y2K。</p><div class="use">vhs tape look, scanlines, analog noise / VHS 錄影帶質感,掃描線</div></div></div>
-<div class="film-card f-faded"><div class="film-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
-<rect width="320" height="180" class="ts-sky"/>
-<circle cx="226" cy="54" r="24" class="ts-sun"/>
-<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
-<path d="M-10 180L90 70l78 110z" class="ts-far"/>
-<path d="M128 180l90-88 112 88z" class="ts-near"/>
-<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
-<circle cx="76" cy="110" r="10" class="ts-subj"/>
-</svg><div class="fx leak"></div><svg class="fx" width="100%" height="100%"><rect width="100%" height="100%" filter="url(#grainF)" opacity="0.22"/></svg></div>
+<div class="film-card f-faded"><div class="film-thumb"><img class="film-photo" src="images/generated/film-faded-70s.png" alt="70s 復古菲林人像真圖示範" loading="lazy"><div class="fx leak"></div><svg class="fx" width="100%" height="100%"><rect width="100%" height="100%" filter="url(#grainF)" opacity="0.22"/></svg></div>
 <div class="film-info"><h4>復古菲林 70s <span class="en-term">faded vintage</span></h4><p>褪色暖調 + 漏光。舊相簿回憶感、情懷敘事、咖啡店品牌。</p><div class="use">vintage 70s faded film, light leaks / 70 年代褪色膠片,漏光</div></div></div>
-<div class="film-card f-dream"><div class="film-thumb"><svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" class="tone-scene">
-<rect width="320" height="180" class="ts-sky"/>
-<circle cx="226" cy="54" r="24" class="ts-sun"/>
-<circle cx="226" cy="54" r="36" class="ts-sun" opacity=".25"/>
-<path d="M-10 180L90 70l78 110z" class="ts-far"/>
-<path d="M128 180l90-88 112 88z" class="ts-near"/>
-<rect x="66" y="118" width="20" height="34" rx="9" class="ts-subj"/>
-<circle cx="76" cy="110" r="10" class="ts-subj"/>
-</svg><div class="fx glow"></div></div>
+<div class="film-card f-dream"><div class="film-thumb"><img class="film-photo" src="images/generated/film-dreamy-soft.png" alt="夢幻柔焦人像真圖示範" loading="lazy"><div class="fx glow"></div></div>
 <div class="film-info"><h4>夢幻柔焦 <span class="en-term">dreamy soft</span></h4><p>輕微柔焦 + 高光泛光。婚禮、香水、浪漫回憶片段。</p><div class="use">dreamy soft focus, glowing halation / 夢幻柔焦,光暈泛光</div></div></div></div>
-<div class="promptbox"><span class="tag">Film style 點落 prompt</span>
-<span class="zh-line"><span class="zh-pill">中</span>Film style 放喺 prompt 最尾。一條片揀一種就夠,兩種質感疊埋會打架。要再穩陣可以加「shot on」句式。</span>
+<div class="promptbox"><span class="tag">Film style 如何寫入 prompt</span>
+<span class="zh-line"><span class="zh-pill">中</span>Film style 放在 prompt 最後。一條影片選一種即可，兩種質感疊加容易互相衝突。若要更穩定，可以加入「shot on」句式。</span>
 <span class="en-pill">EN</span><span class="en">...mood description, <span class="hl">shot on 35mm film, fine grain</span> — or — <span class="hl">anamorphic widescreen, lens flare</span> — or — <span class="hl">vhs analog tape look</span></span></div>
 </section>
 
 <section id="shots" class="reveal">
-<div class="sec-head"><span class="sec-num">·</span><h2>多鏡頭敘事 · 由分鏡到成片</h2></div>
-<p class="sec-sub">AI 一條 prompt 出唔到 30 秒廣告。正確做法:拆 shot、逐條生成、剪埋——同傳統製作一樣,只係攝影機換咗。</p>
+<div class="sec-head"><span class="sec-num">·</span><h2>多鏡頭敘事 · 由分鏡到完整影片</h2></div>
+<p class="sec-sub">AI 很難用一條 prompt 生成完整 30 秒廣告。正確做法是拆成 shot、逐條生成、再剪接，流程與傳統製作相同，只是攝影機換成了生成模型。</p>
 <div class="grid3">
 <div class="card"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="14" cy="32" r="9" fill="var(--c1)"/><circle cx="50" cy="32" r="9" fill="var(--c2)"/><rect x="28" y="28" width="8" height="8" rx="2" fill="var(--c1)"/><path d="M23 32h5M36 32h5" stroke="var(--c2)" stroke-width="3" stroke-linecap="round"/></svg></span>拆 Shot 原則</h3><ul>
 <li>30 秒廣告 = <b>6 個 5 秒 shot</b>,每個 shot 一個動作一個運鏡</li>
-<li>跟住片種節奏:商業片 5 秒一拍;社群片首 2 秒落 hook</li>
-<li>每個 shot 寫一行 shot list:景別/運鏡/動作/秒數,先寫齊再生成</li></ul></div>
+<li>按照片種節奏：商業片 5 秒一拍；社群片首 2 秒加入 hook</li>
+<li>每個 shot 寫一行 shot list：景別／運鏡／動作／秒數，先寫完整再生成</li></ul></div>
 <div class="card"><h3><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="22" cy="32" r="13" fill="var(--c1)"/><circle cx="42" cy="32" r="13" fill="var(--c2)" opacity=".85"/><path d="M32 24v16" stroke="#fff" stroke-width="2" stroke-dasharray="3 3"/></svg></span>跨鏡一致性三寶</h3><ul>
-<li><b>① 同一角色</b>:全部 shot 引用同一個定裝角色(Lv.2)</li>
-<li><b>② 色調原句照抄</b>:色調 + film style 嗰段文字,逐隻字唔好改</li>
-<li><b>③ 光向一致</b>:同場戲寫同一個光源方向同色溫</li></ul></div>
+<li><b>① 同一角色</b>：全部 shot 引用同一個定裝角色（Lv.2）</li>
+<li><b>② 色調原句照抄</b>:色調 + film style 那段文字，逐字保持一致</li>
+<li><b>③ 光向一致</b>：同一場戲寫同一個光源方向與色溫</li></ul></div>
 <div class="card"><h3><span class="ic" style="--c1:var(--violet);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="22" width="36" height="26" rx="5" fill="var(--c1)"/><path d="M46 30l10-6v22l-10-6z" fill="var(--c2)"/><circle cx="24" cy="35" r="7" fill="#fff"/><circle cx="24" cy="35" r="3.5" fill="var(--c2)"/><rect x="16" y="16" width="12" height="8" rx="2" fill="var(--c1)"/></svg></span>剪輯與轉場</h3><ul>
-<li>whip pan 收尾嘅 shot 駁 whip pan 開頭 = 無縫轉場</li>
-<li>相似構圖 cut(match cut):兩個 shot 主體放同一位置</li>
-<li>生成時每條頭尾留半秒鬆位,剪接先有得修</li></ul></div></div>
-<div class="card" style="margin-top:18px"><h3><span class="ic" style="--c1:var(--pink);--c2:var(--navy)"><svg viewBox="0 0 64 64"><path d="M32 50c-12-8-22-16-22-28C10 14 18 10 24 14c4 2 6 6 8 8 2-2 4-6 8-8 6-4 14 0 14 8 0 12-10 20-22 28z" fill="var(--c1)"/><circle cx="26" cy="24" r="2" fill="#fff"/><circle cx="38" cy="24" r="2" fill="#fff"/></svg></span>聲音點處理</h3><ul>
-<li>影片模型嘅 <b>sound 開關</b>:示範片/會配樂嘅片<b>關聲</b>生成,慳 credit 又唔嘈</li>
-<li><b>口播/對白</b>:唔好叫生成模型出對白——交 HeyGen 數字人 + lipsync,口型先準</li>
-<li><b>配樂音效</b>:Artlist 授權庫揀,版權乾淨;AI 生成音樂商用授權要逐個工具查</li>
-<li>聲音都入 prompt:需要環境聲就寫明(雨聲、街道 ambience),唔需要就 sound off</li></ul></div>
+<li>以 whip pan 收尾的 shot 接上以 whip pan 開頭的 shot，可形成無縫轉場</li>
+<li>相似構圖 cut（match cut）：兩個 shot 的主體放在同一位置</li>
+<li>生成時每條影片頭尾預留半秒緩衝，剪接時才有修整空間</li></ul></div></div>
+<div class="card" style="margin-top:18px"><h3><span class="ic" style="--c1:var(--pink);--c2:var(--navy)"><svg viewBox="0 0 64 64"><path d="M32 50c-12-8-22-16-22-28C10 14 18 10 24 14c4 2 6 6 8 8 2-2 4-6 8-8 6-4 14 0 14 8 0 12-10 20-22 28z" fill="var(--c1)"/><circle cx="26" cy="24" r="2" fill="#fff"/><circle cx="38" cy="24" r="2" fill="#fff"/></svg></span>聲音處理方式</h3><ul>
+<li>影片模型的 <b>sound 開關</b>：示範片或會另行配樂的影片建議<b>關聲</b>生成，可節省 credit，也避免雜音</li>
+<li><b>口播/對白</b>:不要要求生成模型直接產生對白，交給 HeyGen 數字人 + lipsync，口型會更準確</li>
+<li><b>配樂音效</b>:從 Artlist 授權庫選擇，版權較清晰；AI 生成音樂的商用授權需要逐個工具查核</li>
+<li>聲音也應寫入 prompt：需要環境聲就寫明（雨聲、街道 ambience），不需要就 sound off</li></ul></div>
 </section>
 
 <section id="styles" class="reveal">
 <div class="sec-head"><span class="sec-num">08</span><h2>常用風格參考庫 · 40 款</h2></div>
-<p class="sec-sub">每款有示意圖、中文 prompt、英文 prompt。撳分類篩選,直接複製嚟用。</p>
+<p class="sec-sub">每款包含示意圖、中文 prompt、英文 prompt。點選分類篩選後，可直接複製使用。</p>
 <div class="cat-tabs"><button class="cat-tab" data-filter="all" style="background:var(--ink);color:#fff">全部 (40)</button>
 <button class="cat-tab" data-filter="commercial">商業・廣告 (8)</button>
 <button class="cat-tab" data-filter="cinematic">電影感・故事 (9)</button>
@@ -754,7 +1511,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <rect x="128" y="52" width="22" height="84" rx="11" fill="#fff" opacity=".22"/>
 <rect x="142" y="38" width="36" height="20" rx="6" fill="#DDDAD2"/>
 <circle cx="252" cy="40" r="26" fill="#DDDAD2" opacity=".35"/>
-<circle cx="48" cy="120" r="14" fill="#FF6B4A" opacity=".3"/></svg><img class="real" src="images/style_01.jpg" alt="商業淨白" loading="lazy" onerror="this.remove()"></div>
+<circle cx="48" cy="120" r="14" fill="#FF6B4A" opacity=".3"/></svg><img class="real" src="../images/style_01.jpg" alt="商業淨白" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--coral)">商業・廣告</span>
 <h4><span class="sn">#01</span> 商業淨白</h4><p class="desc">極簡白底產品廣告,柔和影樓燈,乾淨。</p>
 <div class="sp zh"><span class="zh-pill">中</span>純白無縫背景,柔光箱影樓燈,極簡商業產品照,高調明亮,陰影乾淨利落</div>
@@ -768,7 +1525,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <rect x="128" y="52" width="22" height="84" rx="11" fill="#fff" opacity=".22"/>
 <rect x="142" y="38" width="36" height="20" rx="6" fill="#C9A14E"/>
 <circle cx="252" cy="40" r="26" fill="#C9A14E" opacity=".35"/>
-<circle cx="48" cy="120" r="14" fill="#3A3A44" opacity=".3"/></svg><img class="real" src="images/style_02.jpg" alt="奢華質感" loading="lazy" onerror="this.remove()"></div>
+<circle cx="48" cy="120" r="14" fill="#3A3A44" opacity=".3"/></svg><img class="real" src="../images/style_02.jpg" alt="奢華質感" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--coral)">商業・廣告</span>
 <h4><span class="sn">#02</span> 奢華質感</h4><p class="desc">黑金高級感,聚光打在主體,戲劇陰影。</p>
 <div class="sp zh"><span class="zh-pill">中</span>黑金奢華氛圍,單一戲劇性聚光燈,深邃陰影,高級產品,光澤反射</div>
@@ -782,7 +1539,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#D9A05B"/>
 <circle cx="148" cy="70" r="4" fill="#F0E3D0"/>
 <circle cx="172" cy="70" r="4" fill="#F0E3D0"/>
-<path d="M150 86q10 7 20 0" stroke="#F0E3D0" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_03.jpg" alt="生活風格" loading="lazy" onerror="this.remove()"></div>
+<path d="M150 86q10 7 20 0" stroke="#F0E3D0" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="../images/style_03.jpg" alt="生活風格" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--coral)">商業・廣告</span>
 <h4><span class="sn">#03</span> 生活風格</h4><p class="desc">自然光居家場景,溫暖隨性,真實生活感。</p>
 <div class="sp zh"><span class="zh-pill">中</span>生活化場景,溫暖自然窗光,隨性抓拍,溫馨家居室內,真實日常時刻</div>
@@ -796,7 +1553,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <rect x="128" y="52" width="22" height="84" rx="11" fill="#fff" opacity=".22"/>
 <rect x="142" y="38" width="36" height="20" rx="6" fill="#1FB6D8"/>
 <circle cx="252" cy="40" r="26" fill="#1FB6D8" opacity=".35"/>
-<circle cx="48" cy="120" r="14" fill="#3A57E8" opacity=".3"/></svg><img class="real" src="images/style_04.jpg" alt="科技未來" loading="lazy" onerror="this.remove()"></div>
+<circle cx="48" cy="120" r="14" fill="#3A57E8" opacity=".3"/></svg><img class="real" src="../images/style_04.jpg" alt="科技未來" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--coral)">商業・廣告</span>
 <h4><span class="sn">#04</span> 科技未來</h4><p class="desc">藍青冷調,霓虹邊光,玻璃與金屬反射。</p>
 <div class="sp zh"><span class="zh-pill">中</span>未來科技感,藍青冷色調,霓虹邊緣光,玻璃金屬反射,流線俐落</div>
@@ -808,7 +1565,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <ellipse cx="160" cy="124" rx="86" ry="22" fill="#fff" opacity=".85"/>
 <ellipse cx="160" cy="118" rx="62" ry="17" fill="#E8893A"/>
 <ellipse cx="142" cy="114" rx="14" ry="7" fill="#fff" opacity=".4"/>
-<path d="M132 86q-8-14 0-26M160 82q-8-14 0-26M188 86q-8-14 0-26" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" opacity=".7"/></svg><img class="real" src="images/style_05.jpg" alt="美食特寫" loading="lazy" onerror="this.remove()"></div>
+<path d="M132 86q-8-14 0-26M160 82q-8-14 0-26M188 86q-8-14 0-26" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" opacity=".7"/></svg><img class="real" src="../images/style_05.jpg" alt="美食特寫" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--coral)">商業・廣告</span>
 <h4><span class="sn">#05</span> 美食特寫</h4><p class="desc">微距美食,蒸氣與水珠,淺景深垂涎欲滴。</p>
 <div class="sp zh"><span class="zh-pill">中</span>微距美食攝影,蒸氣升騰,水珠細節,淺景深,引人食慾,柔和側光</div>
@@ -820,7 +1577,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <circle cx="218" cy="110" r="58" fill="#27C0A8" opacity=".8"/>
 <rect x="150" y="28" width="56" height="56" rx="16" fill="#27C0A8" opacity=".5" transform="rotate(18 178 56)"/>
 <path d="M30 150q44-34 88 0t88 0" stroke="#fff" stroke-width="7" fill="none" opacity=".55" stroke-linecap="round"/>
-<circle cx="58" cy="140" r="10" fill="#fff" opacity=".5"/></svg><img class="real" src="images/style_06.jpg" alt="極繽紛" loading="lazy" onerror="this.remove()"></div>
+<circle cx="58" cy="140" r="10" fill="#fff" opacity=".5"/></svg><img class="real" src="../images/style_06.jpg" alt="極繽紛" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--coral)">商業・廣告</span>
 <h4><span class="sn">#06</span> 極繽紛</h4><p class="desc">高飽和撞色,平面波普,活潑年輕。</p>
 <div class="sp zh"><span class="zh-pill">中</span>高飽和流行色,大膽撞色色塊,活潑俏皮,平面圖形背景,年輕氣息</div>
@@ -834,7 +1591,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <rect x="128" y="52" width="22" height="84" rx="11" fill="#fff" opacity=".22"/>
 <rect x="142" y="38" width="36" height="20" rx="6" fill="#C9BFAE"/>
 <circle cx="252" cy="40" r="26" fill="#C9BFAE" opacity=".35"/>
-<circle cx="48" cy="120" r="14" fill="#9DB5A8" opacity=".3"/></svg><img class="real" src="images/style_07.jpg" alt="北歐簡約" loading="lazy" onerror="this.remove()"></div>
+<circle cx="48" cy="120" r="14" fill="#9DB5A8" opacity=".3"/></svg><img class="real" src="../images/style_07.jpg" alt="北歐簡約" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--coral)">商業・廣告</span>
 <h4><span class="sn">#07</span> 北歐簡約</h4><p class="desc">低飽和原木米白,留白多,寧靜質感。</p>
 <div class="sp zh"><span class="zh-pill">中</span>北歐極簡,低飽和大地色,原木麻布質感,大量留白,寧靜柔和日光</div>
@@ -848,7 +1605,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#7A7A7A"/>
 <circle cx="148" cy="70" r="4" fill="#161616"/>
 <circle cx="172" cy="70" r="4" fill="#161616"/>
-<path d="M150 86q10 7 20 0" stroke="#161616" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_08.jpg" alt="黑白經典" loading="lazy" onerror="this.remove()"></div>
+<path d="M150 86q10 7 20 0" stroke="#161616" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="../images/style_08.jpg" alt="黑白經典" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--coral)">商業・廣告</span>
 <h4><span class="sn">#08</span> 黑白經典</h4><p class="desc">高反差黑白,顆粒質感,永恆優雅。</p>
 <div class="sp zh"><span class="zh-pill">中</span>經典黑白,高反差單色,細膩膠片顆粒,永恆優雅</div>
@@ -860,7 +1617,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <circle cx="232" cy="52" r="38" fill="#13414F" opacity=".25"/>
 <path d="M-10 180L84 64l74 116z" fill="#E8762E"/>
 <path d="M120 180l92-94 118 94z" fill="#E8762E" opacity=".75"/>
-<path d="M-10 180h340v-26q-90-18-170 0t-170 0z" fill="#13414F" opacity=".3"/></svg><img class="real" src="images/style_09.jpg" alt="電影膠片" loading="lazy" onerror="this.remove()"></div>
+<path d="M-10 180h340v-26q-90-18-170 0t-170 0z" fill="#13414F" opacity=".3"/></svg><img class="real" src="../images/style_09.jpg" alt="電影膠片" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--navy)">電影感・故事</span>
 <h4><span class="sn">#09</span> 電影膠片</h4><p class="desc">anamorphic 寬幕,橙藍色調,膠片顆粒。</p>
 <div class="sp zh"><span class="zh-pill">中</span>電影感寬銀幕,橙藍分級調色,35mm 膠片顆粒,鏡頭光暈,淺景深</div>
@@ -874,7 +1631,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#4A4A55"/>
 <circle cx="148" cy="70" r="4" fill="#0B0B0F"/>
 <circle cx="172" cy="70" r="4" fill="#0B0B0F"/>
-<path d="M150 86q10 7 20 0" stroke="#0B0B0F" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_10.jpg" alt="黑色電影" loading="lazy" onerror="this.remove()"></div>
+<path d="M150 86q10 7 20 0" stroke="#0B0B0F" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="../images/style_10.jpg" alt="黑色電影" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--navy)">電影感・故事</span>
 <h4><span class="sn">#10</span> 黑色電影</h4><p class="desc">硬光百葉窗陰影,低調照明,神秘。</p>
 <div class="sp zh"><span class="zh-pill">中</span>黑色電影風,百葉窗硬光陰影,低調照明,陰鬱神秘,強烈明暗對比</div>
@@ -886,7 +1643,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <circle cx="232" cy="52" r="38" fill="#7A4A2B" opacity=".25"/>
 <path d="M-10 180L84 64l74 116z" fill="#FF7B54"/>
 <path d="M120 180l92-94 118 94z" fill="#FF7B54" opacity=".75"/>
-<path d="M-10 180h340v-26q-90-18-170 0t-170 0z" fill="#7A4A2B" opacity=".3"/></svg><img class="real" src="images/style_11.jpg" alt="黃金時刻" loading="lazy" onerror="this.remove()"></div>
+<path d="M-10 180h340v-26q-90-18-170 0t-170 0z" fill="#7A4A2B" opacity=".3"/></svg><img class="real" src="../images/style_11.jpg" alt="黃金時刻" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--navy)">電影感・故事</span>
 <h4><span class="sn">#11</span> 黃金時刻</h4><p class="desc">日落逆光,金色霧氣,鏡頭光斑。</p>
 <div class="sp zh"><span class="zh-pill">中</span>黃金時刻逆光,溫暖朦朧光暈,太陽光斑,夢幻柔焦散景,浪漫</div>
@@ -905,7 +1662,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <rect x="240" y="80" width="8" height="8"/><rect x="222" y="102" width="8" height="8"/>
 <rect x="46" y="96" width="7" height="7"/><rect x="60" y="116" width="7" height="7"/>
 <rect x="168" y="104" width="7" height="7"/><rect x="180" y="124" width="7" height="7"/></g>
-<rect x="0" y="172" width="320" height="8" fill="#1FC8D8" opacity=".35"/></svg><img class="real" src="images/style_12.jpg" alt="賽博龐克" loading="lazy" onerror="this.remove()"></div>
+<rect x="0" y="172" width="320" height="8" fill="#1FC8D8" opacity=".35"/></svg><img class="real" src="../images/style_12.jpg" alt="賽博龐克" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--navy)">電影感・故事</span>
 <h4><span class="sn">#12</span> 賽博龐克</h4><p class="desc">霓虹雨夜,紫紅青藍,反射濕地面。</p>
 <div class="sp zh"><span class="zh-pill">中</span>賽博龐克霓虹都市,雨夜,紫紅青藍光暈,濕滑反光街道,銀翼殺手氛圍</div>
@@ -917,7 +1674,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <circle cx="232" cy="52" r="38" fill="#E8C97A" opacity=".25"/>
 <path d="M-10 180L84 64l74 116z" fill="#5B8AA0"/>
 <path d="M120 180l92-94 118 94z" fill="#5B8AA0" opacity=".75"/>
-<path d="M-10 180h340v-26q-90-18-170 0t-170 0z" fill="#E8C97A" opacity=".3"/></svg><img class="real" src="images/style_13.jpg" alt="史詩奇幻" loading="lazy" onerror="this.remove()"></div>
+<path d="M-10 180h340v-26q-90-18-170 0t-170 0z" fill="#E8C97A" opacity=".3"/></svg><img class="real" src="../images/style_13.jpg" alt="史詩奇幻" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--navy)">電影感・故事</span>
 <h4><span class="sn">#13</span> 史詩奇幻</h4><p class="desc">壯闊風景,體積光,宏大冒險氣勢。</p>
 <div class="sp zh"><span class="zh-pill">中</span>史詩奇幻地景,體積光神聖光束,宏大尺度,壯闊冒險感,戲劇性天空</div>
@@ -931,7 +1688,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#A0764E"/>
 <circle cx="148" cy="70" r="4" fill="#C9A87A"/>
 <circle cx="172" cy="70" r="4" fill="#C9A87A"/>
-<path d="M150 86q10 7 20 0" stroke="#C9A87A" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_14.jpg" alt="復古菲林" loading="lazy" onerror="this.remove()"></div>
+<path d="M150 86q10 7 20 0" stroke="#C9A87A" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="../images/style_14.jpg" alt="復古菲林" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--navy)">電影感・故事</span>
 <h4><span class="sn">#14</span> 復古菲林</h4><p class="desc">70 年代褪色暖調,漏光,懷舊。</p>
 <div class="sp zh"><span class="zh-pill">中</span>70 年代復古膠片,褪色暖調,漏光效果,柯達懷舊質感,顆粒感</div>
@@ -950,7 +1707,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <rect x="240" y="80" width="8" height="8"/><rect x="222" y="102" width="8" height="8"/>
 <rect x="46" y="96" width="7" height="7"/><rect x="60" y="116" width="7" height="7"/>
 <rect x="168" y="104" width="7" height="7"/><rect x="180" y="124" width="7" height="7"/></g>
-<rect x="0" y="172" width="320" height="8" fill="#A8B8C0" opacity=".35"/></svg><img class="real" src="images/style_15.jpg" alt="懸疑驚悚" loading="lazy" onerror="this.remove()"></div>
+<rect x="0" y="172" width="320" height="8" fill="#A8B8C0" opacity=".35"/></svg><img class="real" src="../images/style_15.jpg" alt="懸疑驚悚" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--navy)">電影感・故事</span>
 <h4><span class="sn">#15</span> 懸疑驚悚</h4><p class="desc">冷藍暗調,霧氣,不安張力。</p>
 <div class="sp zh"><span class="zh-pill">中</span>懸疑驚悚氛圍,冷峻低飽和藍調,霧氣瀰漫,緊張不安,昏暗陰森</div>
@@ -964,7 +1721,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#E8A86B"/>
 <circle cx="148" cy="70" r="4" fill="#F5DEB8"/>
 <circle cx="172" cy="70" r="4" fill="#F5DEB8"/>
-<path d="M150 86q10 7 20 0" stroke="#F5DEB8" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_16.jpg" alt="溫馨家庭" loading="lazy" onerror="this.remove()"></div>
+<path d="M150 86q10 7 20 0" stroke="#F5DEB8" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="../images/style_16.jpg" alt="溫馨家庭" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--navy)">電影感・故事</span>
 <h4><span class="sn">#16</span> 溫馨家庭</h4><p class="desc">柔焦暖光,淺金色調,親密溫情。</p>
 <div class="sp zh"><span class="zh-pill">中</span>溫馨家庭時刻,柔和暖光,淺金色調,親密溫情,舒適柔軟</div>
@@ -983,7 +1740,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <rect x="240" y="80" width="8" height="8"/><rect x="222" y="102" width="8" height="8"/>
 <rect x="46" y="96" width="7" height="7"/><rect x="60" y="116" width="7" height="7"/>
 <rect x="168" y="104" width="7" height="7"/><rect x="180" y="124" width="7" height="7"/></g>
-<rect x="0" y="172" width="320" height="8" fill="#C9A14E" opacity=".35"/></svg><img class="real" src="images/style_17.jpg" alt="黑暗哥德" loading="lazy" onerror="this.remove()"></div>
+<rect x="0" y="172" width="320" height="8" fill="#C9A14E" opacity=".35"/></svg><img class="real" src="../images/style_17.jpg" alt="黑暗哥德" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--navy)">電影感・故事</span>
 <h4><span class="sn">#17</span> 黑暗哥德</h4><p class="desc">深沉陰影,燭光,巴洛克華麗陰鬱。</p>
 <div class="sp zh"><span class="zh-pill">中</span>黑暗哥德風,深沉陰影,搖曳燭光,巴洛克華麗陰鬱,戲劇張力</div>
@@ -997,7 +1754,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#FFB47A"/>
 <circle cx="148" cy="70" r="4" fill="#FFE9C9"/>
 <circle cx="172" cy="70" r="4" fill="#FFE9C9"/>
-<path d="M150 86q10 7 20 0" stroke="#FFE9C9" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_18.jpg" alt="Vlog 自然" loading="lazy" onerror="this.remove()"></div>
+<path d="M150 86q10 7 20 0" stroke="#FFE9C9" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="../images/style_18.jpg" alt="Vlog 自然" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--mint)">社群短片</span>
 <h4><span class="sn">#18</span> Vlog 自然</h4><p class="desc">手持自然光,真實隨性,直拍親近感。</p>
 <div class="sp zh"><span class="zh-pill">中</span>Vlog 風格,手持自然光,真實隨性,自拍視角親切感,明亮通透</div>
@@ -1009,7 +1766,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <ellipse cx="160" cy="124" rx="86" ry="22" fill="#fff" opacity=".85"/>
 <ellipse cx="160" cy="118" rx="62" ry="17" fill="#D9B89A"/>
 <ellipse cx="142" cy="114" rx="14" ry="7" fill="#fff" opacity=".4"/>
-<path d="M132 86q-8-14 0-26M160 82q-8-14 0-26M188 86q-8-14 0-26" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" opacity=".7"/></svg><img class="real" src="images/style_19.jpg" alt="ASMR 質感" loading="lazy" onerror="this.remove()"></div>
+<path d="M132 86q-8-14 0-26M160 82q-8-14 0-26M188 86q-8-14 0-26" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" opacity=".7"/></svg><img class="real" src="images/generated/asmr-texture-clean.png" alt="ASMR 質感" loading="eager" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--mint)">社群短片</span>
 <h4><span class="sn">#19</span> ASMR 質感</h4><p class="desc">超近特寫,柔光,細節質感觸感強。</p>
 <div class="sp zh"><span class="zh-pill">中</span>ASMR 超近特寫,柔光擴散,極致紋理細節,觸感療癒,微距</div>
@@ -1021,7 +1778,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <circle cx="218" cy="110" r="58" fill="#2EC4B6" opacity=".8"/>
 <rect x="150" y="28" width="56" height="56" rx="16" fill="#2EC4B6" opacity=".5" transform="rotate(18 178 56)"/>
 <path d="M30 150q44-34 88 0t88 0" stroke="#fff" stroke-width="7" fill="none" opacity=".55" stroke-linecap="round"/>
-<circle cx="58" cy="140" r="10" fill="#fff" opacity=".5"/></svg><img class="real" src="images/style_20.jpg" alt="動感快剪" loading="lazy" onerror="this.remove()"></div>
+<circle cx="58" cy="140" r="10" fill="#fff" opacity=".5"/></svg><img class="real" src="../images/style_20.jpg" alt="動感快剪" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--mint)">社群短片</span>
 <h4><span class="sn">#20</span> 動感快剪</h4><p class="desc">高能量,鮮明色彩,運動模糊節奏感。</p>
 <div class="sp zh"><span class="zh-pill">中</span>高能量動感,鮮明色彩,運動模糊,快節奏,潮流有力</div>
@@ -1033,7 +1790,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <circle cx="218" cy="110" r="58" fill="#D8D8E8" opacity=".8"/>
 <rect x="150" y="28" width="56" height="56" rx="16" fill="#D8D8E8" opacity=".5" transform="rotate(18 178 56)"/>
 <path d="M30 150q44-34 88 0t88 0" stroke="#fff" stroke-width="7" fill="none" opacity=".55" stroke-linecap="round"/>
-<circle cx="58" cy="140" r="10" fill="#fff" opacity=".5"/></svg><img class="real" src="images/style_21.jpg" alt="Y2K 復古" loading="lazy" onerror="this.remove()"></div>
+<circle cx="58" cy="140" r="10" fill="#fff" opacity=".5"/></svg><img class="real" src="../images/style_21.jpg" alt="Y2K 復古" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--mint)">社群短片</span>
 <h4><span class="sn">#21</span> Y2K 復古</h4><p class="desc">千禧年數碼感,金屬粉藍,故障特效。</p>
 <div class="sp zh"><span class="zh-pill">中</span>Y2K 千禧美學,金屬粉藍,早期數碼感,故障特效,2000 年代懷舊</div>
@@ -1047,7 +1804,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#C9DEC0"/>
 <circle cx="148" cy="70" r="4" fill="#E8F0E0"/>
 <circle cx="172" cy="70" r="4" fill="#E8F0E0"/>
-<path d="M150 86q10 7 20 0" stroke="#E8F0E0" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_22.jpg" alt="療癒清新" loading="lazy" onerror="this.remove()"></div>
+<path d="M150 86q10 7 20 0" stroke="#E8F0E0" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="../images/style_22.jpg" alt="療癒清新" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--mint)">社群短片</span>
 <h4><span class="sn">#22</span> 療癒清新</h4><p class="desc">柔和粉彩,自然元素,平靜放鬆。</p>
 <div class="sp zh"><span class="zh-pill">中</span>療癒清新美學,柔和粉彩,自然元素,平靜放鬆,輕盈通透</div>
@@ -1066,7 +1823,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <rect x="240" y="80" width="8" height="8"/><rect x="222" y="102" width="8" height="8"/>
 <rect x="46" y="96" width="7" height="7"/><rect x="60" y="116" width="7" height="7"/>
 <rect x="168" y="104" width="7" height="7"/><rect x="180" y="124" width="7" height="7"/></g>
-<rect x="0" y="172" width="320" height="8" fill="#3FC1C9" opacity=".35"/></svg><img class="real" src="images/style_23.jpg" alt="街頭潮流" loading="lazy" onerror="this.remove()"></div>
+<rect x="0" y="172" width="320" height="8" fill="#3FC1C9" opacity=".35"/></svg><img class="real" src="../images/style_23.jpg" alt="街頭潮流" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--mint)">社群短片</span>
 <h4><span class="sn">#23</span> 街頭潮流</h4><p class="desc">都市街景,大膽塗鴉,潮流嘻哈。</p>
 <div class="sp zh"><span class="zh-pill">中</span>街頭潮流風,塗鴉背景,大膽嘻哈,粗糲都市感,潮流時尚</div>
@@ -1078,7 +1835,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <ellipse cx="160" cy="124" rx="86" ry="22" fill="#fff" opacity=".85"/>
 <ellipse cx="160" cy="118" rx="62" ry="17" fill="#E8B86B"/>
 <ellipse cx="142" cy="114" rx="14" ry="7" fill="#fff" opacity=".4"/>
-<path d="M132 86q-8-14 0-26M160 82q-8-14 0-26M188 86q-8-14 0-26" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" opacity=".7"/></svg><img class="real" src="images/style_24.jpg" alt="食譜俯拍" loading="lazy" onerror="this.remove()"></div>
+<path d="M132 86q-8-14 0-26M160 82q-8-14 0-26M188 86q-8-14 0-26" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" opacity=".7"/></svg><img class="real" src="../images/style_24.jpg" alt="食譜俯拍" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--mint)">社群短片</span>
 <h4><span class="sn">#24</span> 食譜俯拍</h4><p class="desc">正上方俯拍,平鋪構圖,明亮均勻。</p>
 <div class="sp zh"><span class="zh-pill">中</span>正上方俯拍平鋪,食譜構圖,明亮均勻光,整齊有序,乾淨</div>
@@ -1092,7 +1849,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#9AA8C0"/>
 <circle cx="148" cy="70" r="4" fill="#E8E8EC"/>
 <circle cx="172" cy="70" r="4" fill="#E8E8EC"/>
-<path d="M150 86q10 7 20 0" stroke="#E8E8EC" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_25.jpg" alt="專業人像" loading="lazy" onerror="this.remove()"></div>
+<path d="M150 86q10 7 20 0" stroke="#E8E8EC" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="../images/style_25.jpg" alt="專業人像" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--yellow)">人物</span>
 <h4><span class="sn">#25</span> 專業人像</h4><p class="desc">柔光環形燈,乾淨背景,自信專業。</p>
 <div class="sp zh"><span class="zh-pill">中</span>專業形象照,柔和環形燈,乾淨背景,眼神銳利,自信專業</div>
@@ -1106,7 +1863,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#C9B89A"/>
 <circle cx="148" cy="70" r="4" fill="#5B6E5A"/>
 <circle cx="172" cy="70" r="4" fill="#5B6E5A"/>
-<path d="M150 86q10 7 20 0" stroke="#5B6E5A" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_26.jpg" alt="環境人像" loading="lazy" onerror="this.remove()"></div>
+<path d="M150 86q10 7 20 0" stroke="#5B6E5A" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="../images/style_26.jpg" alt="環境人像" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--yellow)">人物</span>
 <h4><span class="sn">#26</span> 環境人像</h4><p class="desc">情境中人物,自然光,故事感氛圍。</p>
 <div class="sp zh"><span class="zh-pill">中</span>環境人像,人物置於工作情境中,自然光,敘事氛圍感</div>
@@ -1120,7 +1877,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#E83F6F"/>
 <circle cx="148" cy="70" r="4" fill="#1A1A1E"/>
 <circle cx="172" cy="70" r="4" fill="#1A1A1E"/>
-<path d="M150 86q10 7 20 0" stroke="#1A1A1E" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_27.jpg" alt="時尚編輯" loading="lazy" onerror="this.remove()"></div>
+<path d="M150 86q10 7 20 0" stroke="#1A1A1E" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="../images/style_27.jpg" alt="時尚編輯" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--yellow)">人物</span>
 <h4><span class="sn">#27</span> 時尚編輯</h4><p class="desc">高級時裝,戲劇造型,雜誌封面感。</p>
 <div class="sp zh"><span class="zh-pill">中</span>高級時裝編輯風,戲劇化造型,雜誌封面質感,大膽姿態,影樓閃燈</div>
@@ -1134,7 +1891,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#6B5E4A"/>
 <circle cx="148" cy="70" r="4" fill="#A89880"/>
 <circle cx="172" cy="70" r="4" fill="#A89880"/>
-<path d="M150 86q10 7 20 0" stroke="#A89880" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_28.jpg" alt="自然紀實" loading="lazy" onerror="this.remove()"></div>
+<path d="M150 86q10 7 20 0" stroke="#A89880" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="../images/style_28.jpg" alt="自然紀實" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--yellow)">人物</span>
 <h4><span class="sn">#28</span> 自然紀實</h4><p class="desc">真實情緒,未擺拍,紀實抓拍。</p>
 <div class="sp zh"><span class="zh-pill">中</span>紀實人像,真實情緒流露,未經擺拍,新聞攝影誠實感</div>
@@ -1148,7 +1905,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#E8B8D0"/>
 <circle cx="148" cy="70" r="4" fill="#F5D9E8"/>
 <circle cx="172" cy="70" r="4" fill="#F5D9E8"/>
-<path d="M150 86q10 7 20 0" stroke="#F5D9E8" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_29.jpg" alt="柔美夢幻" loading="lazy" onerror="this.remove()"></div>
+<path d="M150 86q10 7 20 0" stroke="#F5D9E8" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="../images/style_29.jpg" alt="柔美夢幻" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--yellow)">人物</span>
 <h4><span class="sn">#29</span> 柔美夢幻</h4><p class="desc">柔焦光暈,粉嫩色調,浪漫唯美。</p>
 <div class="sp zh"><span class="zh-pill">中</span>夢幻柔美人像,光暈柔焦,粉嫩色調,浪漫空靈,溫柔</div>
@@ -1162,7 +1919,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <path d="M96 180c0-40 28-62 64-62s64 22 64 62" fill="#C9852E"/>
 <circle cx="148" cy="70" r="4" fill="#1A1208"/>
 <circle cx="172" cy="70" r="4" fill="#1A1208"/>
-<path d="M150 86q10 7 20 0" stroke="#1A1208" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="images/style_30.jpg" alt="戲劇光影" loading="lazy" onerror="this.remove()"></div>
+<path d="M150 86q10 7 20 0" stroke="#1A1208" stroke-width="4" fill="none" stroke-linecap="round"/></svg><img class="real" src="../images/style_30.jpg" alt="戲劇光影" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--yellow)">人物</span>
 <h4><span class="sn">#30</span> 戲劇光影</h4><p class="desc">單側硬光,深陰影,雕塑感立體。</p>
 <div class="sp zh"><span class="zh-pill">中</span>戲劇性人像,單側硬光,深邃陰影,雕塑立體感,倫勃朗光</div>
@@ -1176,7 +1933,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <rect x="128" y="52" width="22" height="84" rx="11" fill="#fff" opacity=".22"/>
 <rect x="142" y="38" width="36" height="20" rx="6" fill="#FF8A5C"/>
 <circle cx="252" cy="40" r="26" fill="#FF8A5C" opacity=".35"/>
-<circle cx="48" cy="120" r="14" fill="#FFF5EC" opacity=".3"/></svg><img class="real" src="images/style_31.jpg" alt="懸浮產品" loading="lazy" onerror="this.remove()"></div>
+<circle cx="48" cy="120" r="14" fill="#FFF5EC" opacity=".3"/></svg><img class="real" src="../images/style_31.jpg" alt="懸浮產品" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--violet)">產品・圖象</span>
 <h4><span class="sn">#31</span> 懸浮產品</h4><p class="desc">產品懸空,純色背景,陰影投射。</p>
 <div class="sp zh"><span class="zh-pill">中</span>懸浮產品,純色背景,漂浮失重感,投影陰影,乾淨影樓</div>
@@ -1190,7 +1947,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <rect x="128" y="52" width="22" height="84" rx="11" fill="#fff" opacity=".22"/>
 <rect x="142" y="38" width="36" height="20" rx="6" fill="#3FA8E8"/>
 <circle cx="252" cy="40" r="26" fill="#3FA8E8" opacity=".35"/>
-<circle cx="48" cy="120" r="14" fill="#D0ECFF" opacity=".3"/></svg><img class="real" src="images/style_32.jpg" alt="水花飛濺" loading="lazy" onerror="this.remove()"></div>
+<circle cx="48" cy="120" r="14" fill="#D0ECFF" opacity=".3"/></svg><img class="real" src="../images/style_32.jpg" alt="水花飛濺" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--violet)">產品・圖象</span>
 <h4><span class="sn">#32</span> 水花飛濺</h4><p class="desc">高速凝結水花,動感,清涼質感。</p>
 <div class="sp zh"><span class="zh-pill">中</span>高速水花攝影,凝結液體瞬間,動感飛濺,清涼水珠</div>
@@ -1202,7 +1959,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <circle cx="218" cy="110" r="58" fill="#5BC8A8" opacity=".8"/>
 <rect x="150" y="28" width="56" height="56" rx="16" fill="#5BC8A8" opacity=".5" transform="rotate(18 178 56)"/>
 <path d="M30 150q44-34 88 0t88 0" stroke="#fff" stroke-width="7" fill="none" opacity=".55" stroke-linecap="round"/>
-<circle cx="58" cy="140" r="10" fill="#fff" opacity=".5"/></svg><img class="real" src="images/style_33.jpg" alt="等距插畫" loading="lazy" onerror="this.remove()"></div>
+<circle cx="58" cy="140" r="10" fill="#fff" opacity=".5"/></svg><img class="real" src="../images/style_33.jpg" alt="等距插畫" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--violet)">產品・圖象</span>
 <h4><span class="sn">#33</span> 等距插畫</h4><p class="desc">等距 3D 風,柔色,可愛幾何。</p>
 <div class="sp zh"><span class="zh-pill">中</span>等距 3D 插畫,柔和配色,可愛幾何造型,乾淨俏皮</div>
@@ -1214,7 +1971,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <circle cx="218" cy="110" r="58" fill="#5BE8D8" opacity=".8"/>
 <rect x="150" y="28" width="56" height="56" rx="16" fill="#5BE8D8" opacity=".5" transform="rotate(18 178 56)"/>
 <path d="M30 150q44-34 88 0t88 0" stroke="#fff" stroke-width="7" fill="none" opacity=".55" stroke-linecap="round"/>
-<circle cx="58" cy="140" r="10" fill="#fff" opacity=".5"/></svg><img class="real" src="images/style_34.jpg" alt="漸變抽象" loading="lazy" onerror="this.remove()"></div>
+<circle cx="58" cy="140" r="10" fill="#fff" opacity=".5"/></svg><img class="real" src="../images/style_34.jpg" alt="漸變抽象" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--violet)">產品・圖象</span>
 <h4><span class="sn">#34</span> 漸變抽象</h4><p class="desc">柔順漸變,流體形狀,現代抽象。</p>
 <div class="sp zh"><span class="zh-pill">中</span>柔順網格漸變,流體有機形狀,現代抽象,柔和光暈</div>
@@ -1226,7 +1983,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <circle cx="218" cy="110" r="58" fill="#D9E8B8" opacity=".8"/>
 <rect x="150" y="28" width="56" height="56" rx="16" fill="#D9E8B8" opacity=".5" transform="rotate(18 178 56)"/>
 <path d="M30 150q44-34 88 0t88 0" stroke="#fff" stroke-width="7" fill="none" opacity=".55" stroke-linecap="round"/>
-<circle cx="58" cy="140" r="10" fill="#fff" opacity=".5"/></svg><img class="real" src="images/style_35.jpg" alt="微距細節" loading="lazy" onerror="this.remove()"></div>
+<circle cx="58" cy="140" r="10" fill="#fff" opacity=".5"/></svg><img class="real" src="../images/style_35.jpg" alt="微距細節" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--violet)">產品・圖象</span>
 <h4><span class="sn">#35</span> 微距細節</h4><p class="desc">極微距,紋理放大,抽象質感。</p>
 <div class="sp zh"><span class="zh-pill">中</span>極限微距,紋理放大,抽象質感細節,精緻複雜</div>
@@ -1238,7 +1995,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <circle cx="232" cy="52" r="38" fill="#FF8A9A" opacity=".25"/>
 <path d="M-10 180L84 64l74 116z" fill="#F5F0E8"/>
 <path d="M120 180l92-94 118 94z" fill="#F5F0E8" opacity=".75"/>
-<path d="M-10 180h340v-26q-90-18-170 0t-170 0z" fill="#FF8A9A" opacity=".3"/></svg><img class="real" src="images/style_36.jpg" alt="日系動畫" loading="lazy" onerror="this.remove()"></div>
+<path d="M-10 180h340v-26q-90-18-170 0t-170 0z" fill="#FF8A9A" opacity=".3"/></svg><img class="real" src="../images/style_36.jpg" alt="日系動畫" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--pink)">動畫・風格化</span>
 <h4><span class="sn">#36</span> 日系動畫</h4><p class="desc">賽璐璐動畫,鮮明線條,動漫天空。</p>
 <div class="sp zh"><span class="zh-pill">中</span>日系賽璐璐動畫,鮮明乾淨線條,戲劇性動漫天空,富有表現力</div>
@@ -1256,7 +2013,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <circle cx="124" cy="114" r="8" fill="#FF9A6B" opacity=".7"/>
 <circle cx="200" cy="114" r="8" fill="#FF9A6B" opacity=".7"/>
 <path d="M132 60q-6-18 12-22M190 60q6-18-12-22" stroke="#7AC9E8" stroke-width="9" fill="none" stroke-linecap="round"/>
-<circle cx="236" cy="44" r="18" fill="#FF9A6B" opacity=".4"/></svg><img class="real" src="images/style_37.jpg" alt="3D 皮克斯" loading="lazy" onerror="this.remove()"></div>
+<circle cx="236" cy="44" r="18" fill="#FF9A6B" opacity=".4"/></svg><img class="real" src="../images/style_37.jpg" alt="3D 皮克斯" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--pink)">動畫・風格化</span>
 <h4><span class="sn">#37</span> 3D 皮克斯</h4><p class="desc">圓潤可愛 3D,柔光,溫暖角色感。</p>
 <div class="sp zh"><span class="zh-pill">中</span>皮克斯風 3D,圓潤可愛,柔和全局光照,溫暖討喜角色感</div>
@@ -1268,7 +2025,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <circle cx="232" cy="52" r="38" fill="#E8C9D0" opacity=".25"/>
 <path d="M-10 180L84 64l74 116z" fill="#A8C9D8"/>
 <path d="M120 180l92-94 118 94z" fill="#A8C9D8" opacity=".75"/>
-<path d="M-10 180h340v-26q-90-18-170 0t-170 0z" fill="#E8C9D0" opacity=".3"/></svg><img class="real" src="images/style_38.jpg" alt="手繪水彩" loading="lazy" onerror="this.remove()"></div>
+<path d="M-10 180h340v-26q-90-18-170 0t-170 0z" fill="#E8C9D0" opacity=".3"/></svg><img class="real" src="../images/style_38.jpg" alt="手繪水彩" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--pink)">動畫・風格化</span>
 <h4><span class="sn">#38</span> 手繪水彩</h4><p class="desc">水彩暈染,柔邊紙質,溫柔藝術感。</p>
 <div class="sp zh"><span class="zh-pill">中</span>手繪水彩插畫,柔邊暈染,紙張紋理,溫柔藝術氣息</div>
@@ -1286,7 +2043,7 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <circle cx="124" cy="114" r="8" fill="#E89A7A" opacity=".7"/>
 <circle cx="200" cy="114" r="8" fill="#E89A7A" opacity=".7"/>
 <path d="M132 60q-6-18 12-22M190 60q6-18-12-22" stroke="#8FB57E" stroke-width="9" fill="none" stroke-linecap="round"/>
-<circle cx="236" cy="44" r="18" fill="#E89A7A" opacity=".4"/></svg><img class="real" src="images/style_39.jpg" alt="黏土定格" loading="lazy" onerror="this.remove()"></div>
+<circle cx="236" cy="44" r="18" fill="#E89A7A" opacity=".4"/></svg><img class="real" src="../images/style_39.jpg" alt="黏土定格" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--pink)">動畫・風格化</span>
 <h4><span class="sn">#39</span> 黏土定格</h4><p class="desc">黏土定格動畫,手作質感,溫馨童趣。</p>
 <div class="sp zh"><span class="zh-pill">中</span>黏土定格動畫,手作質感,溫馨童趣,觸感可愛</div>
@@ -1298,36 +2055,52 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <circle cx="218" cy="110" r="58" fill="#1E2A44" opacity=".8"/>
 <rect x="150" y="28" width="56" height="56" rx="16" fill="#1E2A44" opacity=".5" transform="rotate(18 178 56)"/>
 <path d="M30 150q44-34 88 0t88 0" stroke="#fff" stroke-width="7" fill="none" opacity=".55" stroke-linecap="round"/>
-<circle cx="58" cy="140" r="10" fill="#fff" opacity=".5"/></svg><img class="real" src="images/style_40.jpg" alt="扁平向量" loading="lazy" onerror="this.remove()"></div>
+<circle cx="58" cy="140" r="10" fill="#fff" opacity=".5"/></svg><img class="real" src="../images/style_40.jpg" alt="扁平向量" loading="lazy" onerror="this.remove()"></div>
 <div class="style-body"><span class="cat-pill" style="background:var(--pink)">動畫・風格化</span>
 <h4><span class="sn">#40</span> 扁平向量</h4><p class="desc">扁平設計,大色塊,簡潔現代圖形。</p>
 <div class="sp zh"><span class="zh-pill">中</span>扁平向量設計,大膽色塊,極簡現代幾何,乾淨俐落</div>
 <div class="sp en"><span class="en-pill">EN</span>flat vector design, bold color blocks, minimal, modern, clean geometric</div></div></div></div>
 </section>
 
+<section id="skills" class="reveal">
+<div class="sec-head"><span class="sec-num">·</span><h2>Skill 工作流庫</h2></div>
+<p class="sec-sub">把常用生成、剪片、檢查流程整理成工具卡；開始製作時選一張，按照步驟執行。</p>
+<div class="skill-section-hero">
+<div class="skill-section-panel">
+<div><h3>由參考圖到完整影片，每步有路線。</h3><p>從一張參考圖入手，拆出首格、運鏡、角色、色調、QC 與交付。每張工具卡都是一條可重用工作線，方便團隊按照畫面流程開始製作。</p></div>
+<div class="skill-section-actions"><a class="primary" href="skills.html">完整 Skill 頁</a><a href="#visual-library">返回 Prompt 庫</a></div>
+</div>
+<div class="skill-section-meter" aria-label="Skill library stats">
+<div class="skill-section-stat"><b id="homeSkillCount">16</b><span>技能卡</span></div>
+<div class="skill-section-stat"><b>4</b><span>工作流類型</span></div>
+<div class="skill-section-stat"><b>1</b><span>一鍵複製</span></div>
+<div class="skill-section-stat"><b>∞</b><span>可持續擴充</span></div>
+</div>
+</div>
+<div class="skill-section-grid" id="homeSkillGrid"></div>
+</section>
+
 <section id="visual-library" class="reveal">
 <div class="sec-head"><span class="sec-num">·</span><h2>Visual Prompt Library</h2></div>
-<p class="sec-sub">將可落地嘅 visual prompt 變成可查、可 copy、可按「相 / 片 / Skill」分類嘅內部資料庫。</p>
+<p class="sec-sub">集中瀏覽相片與影片 prompt：先看畫面，再查看比例、來源與完整 prompt。</p>
 <div class="vl-hero">
-<div><h3>相 / 片 / Skill 分類整理</h3><p>保留 reference 圖、正確比例、完整 prompt、來源連結同 skill 用法。適合開會選方向、生成前 copy prompt、或者做新 project 時快速搵 reference。</p></div>
+<div><h3>相 / 片分格瀏覽</h3><p>每張卡保留主圖、比例、來源與完整 prompt。開會選方向時先看畫面；生成前再打開 prompt 細節。</p></div>
 <div class="vl-stats">
 <div class="vl-stat"><b id="vlVideoCount">21</b><span>片 / Video</span></div>
 <div class="vl-stat"><b id="vlImageCount">8</b><span>相 / Image</span></div>
-<div class="vl-stat"><b id="vlSkillCount">16</b><span>Skill</span></div>
 </div>
 </div>
 <div class="vl-tabs" aria-label="Visual prompt library filters">
 <button class="vl-tab" data-vl-filter="all" aria-pressed="true">全部</button>
 <button class="vl-tab" data-vl-filter="image" aria-pressed="false">相 / Image</button>
 <button class="vl-tab" data-vl-filter="video" aria-pressed="false">片 / Video</button>
-<button class="vl-tab" data-vl-filter="skill" aria-pressed="false">Skill</button>
 </div>
 <div class="vl-grid" id="visualPromptGrid"></div>
 </section>
 
 <section id="emotion" class="reveal">
 <div class="sec-head"><span class="sec-num">09</span><h2>情緒 · 畫面背景建構</h2></div>
-<p class="sec-sub">情緒 = 光 × 色 × 構圖一齊講。背景分三層起,層層有嘢。</p>
+<p class="sec-sub">情緒 = 光 × 色 × 構圖，需要一起描述。背景以三層建構，每一層都要有明確內容。</p>
 <div class="grid2">
 <div class="card"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><path d="M32 50c-12-8-22-16-22-28C10 14 18 10 24 14c4 2 6 6 8 8 2-2 4-6 8-8 6-4 14 0 14 8 0 12-10 20-22 28z" fill="var(--c1)"/><circle cx="26" cy="24" r="2" fill="#fff"/><circle cx="38" cy="24" r="2" fill="#fff"/></svg></span>情緒詞庫(中英對照)</h3>
 <div class="chips">
@@ -1337,112 +2110,112 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <span class="chip">懷舊 nostalgic</span><span class="chip">高級 luxurious</span>
 <span class="chip">夢幻 dreamy</span><span class="chip">憂鬱 melancholic</span>
 <span class="chip">希望 hopeful</span><span class="chip">史詩 epic</span></div>
-<p style="margin-top:12px"><b>情緒公式</b>:暖光 + 淺景深 = 親密;冷藍 + 大留白 = 孤獨;逆光 + 霧 = 夢幻;硬光 + 深影 = 戲劇。寫 prompt 時光同色一齊寫,情緒先入到肉。</p></div>
+<p style="margin-top:12px"><b>情緒公式</b>:暖光 + 淺景深 = 親密;冷藍 + 大留白 = 孤獨;逆光 + 霧 = 夢幻;硬光 + 深影 = 戲劇。撰寫 prompt 時同時描述光線與色彩，情緒才會更明確。</p></div>
 <div class="card"><h3><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="8" y="14" width="48" height="36" rx="5" fill="var(--c1)"/><circle cx="22" cy="26" r="5" fill="var(--yellow)"/><path d="M8 44l14-14 10 9 8-7 16 14v4H8z" fill="var(--c2)"/></svg></span>背景三層建構法</h3><ul>
-<li><b>前景</b> foreground:加植物/窗框/虛化物件,即刻有景深</li>
-<li><b>中景</b> mid-ground:主體企嘅位,光打喺度</li>
+<li><b>前景</b> foreground:加植物/窗框/虛化物件,立即有景深</li>
+<li><b>中景</b> mid-ground：主體所在位置，光線落點</li>
 <li><b>後景</b> background:交代環境,虛化突出主體</li>
-<li><b>材質寫出嚟</b>:木、麻布、霧、霓虹、濕地面——材質詞 AI 食得好深</li>
-<li><b>留白</b>:商業圖喺 prompt 寫「negative space on left for text」預位放字</li>
-<li><b>跨鏡一致</b>:同場景嘅光向、色調描述原句照抄</li></ul></div></div>
+<li><b>寫明材質</b>:木、麻布、霧、霓虹、濕地面——材質詞能強烈影響模型輸出</li>
+<li><b>留白</b>:商業圖在 prompt 中寫「negative space on left for text」，預留文字位置</li>
+<li><b>跨鏡一致</b>：同場景的光向、色調描述應逐字沿用</li></ul></div></div>
 <div class="promptbox"><span class="tag">情緒 + 背景完整範例</span>
-<span class="zh-line"><span class="zh-pill">中</span>溫馨寧靜情緒,咖啡店室內,前景虛化綠植,中景主體企喺吧台,後景柔焦書架,黃金窗光由左入,畫面左側留白俾標題</span>
+<span class="zh-line"><span class="zh-pill">中</span>溫馨寧靜情緒,咖啡店室內,前景虛化綠植,中景主體站在吧台旁,後景柔焦書架,黃金窗光由左入,畫面左側留白給標題</span>
 <span class="en-pill">EN</span><span class="en"><span class="hl">cozy calm mood</span>, cafe interior, <span class="hl">blurred plants in foreground</span>, subject at counter mid-ground, soft bookshelf background, golden window light from left, <span class="hl">negative space on left for headline</span></span></div>
 </section>
 
 <section id="type" class="reveal">
 <div class="sec-head"><span class="sec-num">10</span><h2>字體 Typography</h2></div>
-<p class="sec-sub">字體決定氣質。一張畫面最多兩隻字,字唔好叫 AI 生——後加先清晰可改。</p>
+<p class="sec-sub">字體決定氣質。一張畫面最多使用兩款字體，文字不要交給 AI 生成，後製加入才清晰且可修改。</p>
 <div class="card">
 <div class="fontrow"><div class="spec" style="font-family:Poppins;font-weight:800">Aa 標</div>
-<div class="meta"><b>粗黑圓體 — 標題</b><p>活潑、年輕、商業廣告、社群封面。例:Poppins / 思源黑體 Heavy。用大,用粗,用喺重點。</p></div></div>
+<div class="meta"><b>粗黑圓體 — 標題</b><p>活潑、年輕、商業廣告、社群封面。例:Poppins / 思源黑體 Heavy。適合放大、加粗，並用於重點位置。</p></div></div>
 <div class="fontrow"><div class="spec" style="font-family:Georgia,serif">Aa 雅</div>
 <div class="meta"><b>襯線體 — 高級/編輯</b><p>優雅、奢華、時尚雜誌。例:Playfair Display / 思源宋體。配黑金、北歐、編輯風。</p></div></div>
 <div class="fontrow"><div class="spec" style="font-family:'Roboto Mono',monospace">Aa 技</div>
 <div class="meta"><b>等寬體 — 科技/數據</b><p>未來、精準、tech 感。例:Roboto Mono / JetBrains Mono。配科技未來、賽博風。</p></div></div>
 <div class="fontrow"><div class="spec" style="font-family:'Brush Script MT',cursive;font-size:34px">Aa 手</div>
-<div class="meta"><b>手寫體 — 親切/生活</b><p>溫暖、手作、隨性。配生活風格、療癒清新。只做點綴,唔好成段。</p></div></div></div>
+<div class="meta"><b>手寫體 — 親切/生活</b><p>溫暖、手作、隨性。配生活風格、療癒清新。只作點綴，不要用於整段文字。</p></div></div></div>
 <div class="dodont">
 <div class="dobox"><h4>配字原則</h4><ul>
-<li>標題揀有個性嘅,內文揀易讀嘅,最多兩隻</li>
+<li>標題選有個性的字體，內文選易讀的字體，最多使用兩款</li>
 <li>建立階級:標題 &gt; 副題 &gt; 內文,大小要拉得開</li>
-<li>字同背景對比要夠(淺底深字/深底淺字)</li>
+<li>文字與背景對比要足夠（淺底深字／深底淺字）</li>
 <li>生成時 prompt 預留白位,字後加</li></ul></div>
 <div class="dontbox"><h4>避免</h4><ul>
-<li>一張畫面三隻或以上字體</li>
-<li>幼字放雜亂背景上,睇唔到</li>
+<li>一張畫面使用三款或以上字體</li>
+<li>小字放在雜亂背景上會難以閱讀</li>
 <li>字壓住人面或產品重點</li>
 <li>叫 AI 直接生成中文字——大概率亂碼變形</li></ul></div></div>
 </section>
 
 <section id="design" class="reveal">
 <div class="sec-head"><span class="sec-num">11</span><h2>圖像轉可編輯設計</h2></div>
-<p class="sec-sub">AI 出嚟係一張死圖。要變成可改字、可換色嘅活設計稿,行呢四步:</p>
+<p class="sec-sub">AI 生成的是一張靜態圖。若要變成可改文字、可換色的可編輯設計稿，請按照以下四步：</p>
 <div class="steps" style="grid-template-columns:repeat(4,1fr)">
-<div class="step"><span class="n">1</span><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="14" width="20" height="20" rx="4" fill="var(--c1)"/><rect x="34" y="30" width="20" height="20" rx="4" fill="var(--c2)"/><path d="M30 24h6v6" stroke="var(--c2)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h4>分層生成</h4><p>背景、主體、裝飾分開三條 prompt 出,後製自由度大好多</p></div>
-<div class="step"><span class="n">2</span><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><path d="M24 16l-8 8 6 6 8-8z" fill="var(--c1)"/><rect x="30" y="30" width="20" height="6" rx="3" transform="rotate(45 40 33)" fill="var(--c2)"/><circle cx="44" cy="20" r="8" fill="var(--c1)"/></svg></span><h4>去背切件</h4><p>主體去背出透明 PNG,邊緣執乾淨</p></div>
-<div class="step"><span class="n">3</span><span class="ic" style="--c1:var(--violet);--c2:var(--navy)"><svg viewBox="0 0 64 64"><path d="M16 48L28 16h6l12 32h-7l-2.5-7H25l-2.5 7zM27 35h10l-5-14z" fill="var(--c1)"/><rect x="44" y="20" width="6" height="28" rx="3" fill="var(--c2)"/></svg></span><h4>入設計工具</h4><p>Figma / Canva 砌返埋,加真字體、品牌色、logo</p></div>
-<div class="step"><span class="n">4</span><span class="ic" style="--c1:var(--yellow);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="22" cy="32" r="13" fill="var(--c1)"/><circle cx="42" cy="32" r="13" fill="var(--c2)" opacity=".85"/><path d="M32 24v16" stroke="#fff" stroke-width="2" stroke-dasharray="3 3"/></svg></span><h4>向量化</h4><p>圖形元素轉 vector,無限縮放唔起格</p></div></div>
+<div class="step"><span class="n">1</span><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="14" width="20" height="20" rx="4" fill="var(--c1)"/><rect x="34" y="30" width="20" height="20" rx="4" fill="var(--c2)"/><path d="M30 24h6v6" stroke="var(--c2)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h4>分層生成</h4><p>背景、主體、裝飾分成三條 prompt 生成，後製自由度會更高</p></div>
+<div class="step"><span class="n">2</span><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><path d="M24 16l-8 8 6 6 8-8z" fill="var(--c1)"/><rect x="30" y="30" width="20" height="6" rx="3" transform="rotate(45 40 33)" fill="var(--c2)"/><circle cx="44" cy="20" r="8" fill="var(--c1)"/></svg></span><h4>去背切件</h4><p>主體去背為透明 PNG，並修整乾淨邊緣</p></div>
+<div class="step"><span class="n">3</span><span class="ic" style="--c1:var(--violet);--c2:var(--navy)"><svg viewBox="0 0 64 64"><path d="M16 48L28 16h6l12 32h-7l-2.5-7H25l-2.5 7zM27 35h10l-5-14z" fill="var(--c1)"/><rect x="44" y="20" width="6" height="28" rx="3" fill="var(--c2)"/></svg></span><h4>入設計工具</h4><p>在 Figma / Canva 中重新組合，加入真實字體、品牌色與 logo</p></div>
+<div class="step"><span class="n">4</span><span class="ic" style="--c1:var(--yellow);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="22" cy="32" r="13" fill="var(--c1)"/><circle cx="42" cy="32" r="13" fill="var(--c2)" opacity=".85"/><path d="M32 24v16" stroke="#fff" stroke-width="2" stroke-dasharray="3 3"/></svg></span><h4>向量化</h4><p>圖形元素轉為 vector，放大縮小都不會起格</p></div></div>
 <div class="card" style="margin-top:18px"><h3><span class="ic" style="--c1:var(--pink);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="14" width="44" height="32" rx="6" fill="var(--c1)"/><path d="M24 46l-4 8 12-8z" fill="var(--c1)"/><rect x="18" y="24" width="16" height="3" rx="1.5" fill="#fff"/><rect x="18" y="32" width="24" height="3" rx="1.5" fill="#fff"/><circle cx="46" cy="18" r="7" fill="var(--c2)"/><path d="M46 15v6M43 18h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>實戰技巧</h3><ul>
-<li>生成時寫埋「<b>flat colors, clean shapes</b> / 平面色塊、乾淨形狀」——扁平風最易後改色</li>
-<li>要放字嘅圖,prompt 寫「<b>negative space for text</b> / 留白位俾文字」</li>
-<li>叫 Claude/GPT 把張圖<b>描述返做 design brief</b>(色值、構圖、層次),再喺 Figma 重建可編輯版</li>
-<li>品牌色要準 → 唔好靠 AI 撞,後製先填正確 hex 色值</li>
-<li>同一張圖要多個比例(16:9 + 9:16 + 1:1)→ 生成時主體放中間,後製裁切</li></ul></div>
+<li>生成時加入「<b>flat colors, clean shapes</b> / 平面色塊、乾淨形狀」，扁平風格最容易在後期改色</li>
+<li>需要放文字的圖片，prompt 寫「<b>negative space for text</b> / 留白位給文字」</li>
+<li>請 Claude/GPT 把圖片<b>反向描述成 design brief</b>（色值、構圖、層次），再在 Figma 重建可編輯版本</li>
+<li>品牌色需要準確 → 不要依賴 AI 猜測，應在後期填入正確 hex 色值</li>
+<li>同一張圖需要多個比例（16:9 + 9:16 + 1:1）→ 生成時主體置中，再由後製裁切</li></ul></div>
 </section>
 
 <section id="cost" class="reveal">
 <div class="sec-head"><span class="sec-num">·</span><h2>成本控制 · Credit 預算</h2></div>
-<p class="sec-sub">Credit 係彈藥。三條規則守住,生成成本可控、可預算、可報價俾客。</p>
+<p class="sec-sub">Credit 是製作成本。守住三條規則，生成成本才可控、可預算，亦可向客戶報價。</p>
 <div class="grid3">
 <div class="card"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="14" y="8" width="36" height="48" rx="6" fill="var(--c1)"/><rect x="20" y="18" width="24" height="4" rx="2" fill="#fff"/><rect x="20" y="28" width="24" height="4" rx="2" fill="#fff"/><rect x="20" y="38" width="16" height="4" rx="2" fill="#fff"/><circle cx="46" cy="46" r="12" fill="var(--c2)"/><path d="M41 46l3 3 6-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>價目感(實測量級)</h3><ul>
 <li>相片級圖:<b>~0.1</b> credit/張</li>
 <li>插畫/向量圖:<b>~1.3</b> credit/張</li>
 <li>5 秒標準片:<b>~7.5</b> credit/條</li>
-<li>4K / pro 模式、加聲、加長秒數都會貴一截;唇形同步等後製功能另計</li>
+<li>4K / pro 模式、加聲音、加長秒數都會提高成本；唇形同步等後製功能另計</li>
 <li>各模型價錢隨時變——以工具內即時報價為準</li></ul></div>
-<div class="card"><h3><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="14" cy="32" r="9" fill="var(--c1)"/><circle cx="50" cy="32" r="9" fill="var(--c2)"/><rect x="28" y="28" width="8" height="8" rx="2" fill="var(--c1)"/><path d="M23 32h5M36 32h5" stroke="var(--c2)" stroke-width="3" stroke-linecap="round"/></svg></span>三條慳錢規則</h3><ul>
-<li><b>① 問價先</b>:批量之前先查單價(好多工具有 cost 預覽),預咗先開波</li>
-<li><b>② 圖度迭代,片度收貨</b>:所有試錯喺平嘅圖階段做,片只生成已確認嘅畫面</li>
-<li><b>③ 低 spec 試版</b>:標準模式/低解析度試,客戶簽咗先升 4K/pro 重出</li></ul></div>
+<div class="card"><h3><span class="ic" style="--c1:var(--mint);--c2:var(--navy)"><svg viewBox="0 0 64 64"><circle cx="14" cy="32" r="9" fill="var(--c1)"/><circle cx="50" cy="32" r="9" fill="var(--c2)"/><rect x="28" y="28" width="8" height="8" rx="2" fill="var(--c1)"/><path d="M23 32h5M36 32h5" stroke="var(--c2)" stroke-width="3" stroke-linecap="round"/></svg></span>三條節省成本規則</h3><ul>
+<li><b>① 先查價</b>：批量生成之前先查單價（很多工具有 cost 預覽），完成預算後才開始</li>
+<li><b>② 圖像階段迭代，影片階段確認</b>：所有試錯都在成本較低的圖像階段完成，影片只生成已確認的畫面</li>
+<li><b>③ 低 spec 試版</b>:先用標準模式或低解析度測試，客戶確認後才升級至 4K/pro 重新輸出</li></ul></div>
 <div class="card"><h3><span class="ic" style="--c1:var(--violet);--c2:var(--navy)"><svg viewBox="0 0 64 64"><rect x="10" y="14" width="44" height="32" rx="6" fill="var(--c1)"/><path d="M24 46l-4 8 12-8z" fill="var(--c1)"/><rect x="18" y="24" width="16" height="3" rx="1.5" fill="#fff"/><rect x="18" y="32" width="24" height="3" rx="1.5" fill="#fff"/><circle cx="46" cy="18" r="7" fill="var(--c2)"/><path d="M46 15v6M43 18h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>預算示範:30 秒廣告</h3><ul>
 <li>概念試圖 10 張 ≈ 1–2 credits</li>
 <li>定裝圖 + 角色庫 ≈ 0.2</li>
 <li>正式 6 個 shot × 7.5 ≈ 45</li>
-<li>重做 buffer(預 1/3 唔合格)≈ 15</li>
-<li><b>合計 ≈ 60–65 credits</b> — 報價時可以照呢條公式估</li></ul></div></div>
-<p style="margin-top:14px;font-size:13px;color:#6a7388">公司守則:每單 job 開波前用上面公式估一次 credit 預算,寫入製作文件;收工後記低實際用量,慢慢就有自己嘅準確價目表。</p>
+<li>重做 buffer（預估 1/3 不合格）≈ 15</li>
+<li><b>合計 ≈ 60–65 credits</b> — 報價時可依照此公式估算</li></ul></div></div>
+<p style="margin-top:14px;font-size:13px;color:#6a7388">公司守則：每個項目開始前，用上方公式估算一次 credit 預算，並寫入製作文件；完成後記錄實際用量，逐步建立自己的準確價目表。</p>
 </section>
 
 <section id="warn" class="reveal">
 <div class="sec-head"><span class="sec-num">12</span><h2>注意事項</h2></div>
-<p class="sec-sub">交付前最後一關。逐項剔,剔唔晒唔好出街。</p>
+<p class="sec-sub">交付前最後一關。逐項檢查；未完成全部項目之前，不要對外發布。</p>
 <div class="dodont">
 <div class="dobox"><h4><span class="ic" style="--c1:var(--mint);--c2:var(--mint)"><svg viewBox="0 0 64 64"><rect x="14" y="8" width="36" height="48" rx="6" fill="var(--c1)"/><rect x="20" y="18" width="24" height="4" rx="2" fill="#fff"/><rect x="20" y="28" width="24" height="4" rx="2" fill="#fff"/><rect x="20" y="38" width="16" height="4" rx="2" fill="#fff"/><circle cx="46" cy="46" r="12" fill="var(--c2)"/><path d="M41 46l3 3 6-6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 交付前 Checklist</h4><ul>
-<li>人樣一致、膚色自然、五官冇變形</li>
+<li>面容一致、膚色自然、五官沒有變形</li>
 <li>放大 200% 檢查手指、耳朵、牙齒、配飾</li>
-<li>動作自然、冇詭異過渡幀(影片逐格掃一次)</li>
+<li>動作自然、沒有詭異過渡幀（影片逐格檢查一次）</li>
 <li>顏色、光向、色溫跨鏡頭一致</li>
 <li>解析度達規格、無 AI 工具浮水印</li>
-<li>背景冇亂碼文字、冇鬼影物件</li>
-<li>工具 + prompt + seed 已入檔案庫</li></ul></div>
+<li>背景沒有亂碼文字、沒有殘影物件</li>
+<li>工具 + prompt + seed 已存入檔案庫</li></ul></div>
 <div class="dontbox"><h4><span class="ic" style="--c1:var(--coral);--c2:var(--coral)"><svg viewBox="0 0 64 64"><path d="M32 10l24 42H8z" fill="var(--c1)"/><rect x="29" y="26" width="6" height="14" rx="3" fill="#fff"/><circle cx="32" cy="45" r="3.5" fill="#fff"/></svg></span> 合規與風險</h4><ul>
-<li>未授權真人肖像、名人面孔——絕對唔生成</li>
-<li>有版權角色、品牌 logo、藝術作品——唔複製</li>
+<li>未授權真人肖像、名人面孔：絕對不生成</li>
+<li>有版權角色、品牌 logo、藝術作品：不複製</li>
 <li>AI 生成內容按客戶合約要求標示</li>
-<li>客戶機密素材唔上載去未簽保密嘅第三方工具</li>
-<li>敏感題材、誤導內容、新聞造假——唔接唔做</li></ul></div></div>
-<div class="card" style="margin-top:18px"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><path d="M32 10l24 42H8z" fill="var(--c1)"/><rect x="29" y="26" width="6" height="14" rx="3" fill="#fff"/><circle cx="32" cy="45" r="3.5" fill="#fff"/></svg></span>AI 瑕疵圖鑑(QC 時逐樣搵)</h3>
+<li>客戶機密素材不得上載至未簽保密協議的第三方工具</li>
+<li>敏感題材、誤導內容、新聞造假：不承接、不製作</li></ul></div></div>
+<div class="card" style="margin-top:18px"><h3><span class="ic" style="--c1:var(--coral);--c2:var(--navy)"><svg viewBox="0 0 64 64"><path d="M32 10l24 42H8z" fill="var(--c1)"/><rect x="29" y="26" width="6" height="14" rx="3" fill="#fff"/><circle cx="32" cy="45" r="3.5" fill="#fff"/></svg></span>AI 瑕疵圖鑑（QC 時逐項檢查）</h3>
 <div class="chips">
 <span class="chip"><b>手指</b> 第六隻指/黏連——放大手部逐隻數</span>
 <span class="chip"><b>牙齒耳朵</b> 數量形狀怪——特寫位必檢</span>
-<span class="chip"><b>文字亂碼</b> 背景招牌/標籤出怪字——有字位都要睇</span>
-<span class="chip"><b>物理穿幫</b> 影子方向錯/倒影唔對/物件懸空</span>
+<span class="chip"><b>文字亂碼</b> 背景招牌／標籤出現怪字：有文字的位置都要檢查</span>
+<span class="chip"><b>物理穿幫</b> 影子方向錯誤／倒影不一致／物件懸空</span>
 <span class="chip"><b>閃爍 flicker</b> 影片光暗跳動——全片播一次留意背景</span>
-<span class="chip"><b>溶接 morphing</b> 物件邊緣溶化變形——動作大嘅幀逐格睇</span>
-<span class="chip"><b>配飾漂移</b> 耳環眼鏡袖口前後幀唔同——連戲位必檢</span>
+<span class="chip"><b>溶接 morphing</b> 物件邊緣溶化變形：動作幅度大的幀需要逐格檢查</span>
+<span class="chip"><b>配飾漂移</b> 耳環、眼鏡、袖口前後幀不一致：連戲位置必須檢查</span>
 </div>
-<p style="margin-top:10px;font-size:13px;color:#5a647a">QC 口訣:<b>放大 200%、影片逐格、有字必查、影子必對。</b>唔合格唔好慳——重出一張圖係零頭錢,出咗街先發現就係公司聲譽。</p></div>
+<p style="margin-top:10px;font-size:13px;color:#5a647a">QC 口訣：<b>放大 200%、影片逐格、有字必查、影子必對。</b>不合格就不要節省；重新生成一張圖只是小成本，發布後才發現問題，損失的是公司聲譽。</p></div>
 </section>
 
 </main>
@@ -1467,9 +2240,11 @@ footer b{color:#fff;font-family:'Poppins',sans-serif}
 <script src="visual-library-data.js"></script>
 <script>
 const vlData=window.VISUAL_PROMPT_LIBRARY||{cards:[],skills:[],intro:{counts:{video:0,image:0,skill:0}}};
-const visualItems=[...(vlData.cards||[]),...(vlData.skills||[])];
+const visualItems=[...(vlData.cards||[])];
+const skillItems=[...(vlData.skills||[])];
 const typeName={video:'片 / Video',image:'相 / Image',skill:'Skill'};
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const setText=(id,value)=>{const el=document.getElementById(id);if(el)el.textContent=value};
 const plainFor=item=>{
   if(item.type==='skill') return `${item.title}\n${item.summary}\n\n用法：${item.usage}\n\nSource: ${item.url}`;
   return `${item.title}\n${item.prompt}\n\nSource: ${item.url||item.source||''}`;
@@ -1482,7 +2257,7 @@ function visualCard(item){
       <div class="vl-meta"><span class="vl-pill">${esc(item.subtitle||'Workflow')}</span>${tags}</div>
       <p>${esc(item.summary)}</p>
       <div class="vl-usage"><b>用法：</b>${esc(item.usage)}</div>
-      <div class="vl-actions"><button class="vl-copy" type="button" data-vl-copy="${esc(item.id)}">Copy 用法</button><a class="vl-link" href="${esc(item.url)}" target="_blank" rel="noopener">Source</a></div>
+      <div class="vl-actions"><a class="vl-link" href="skills.html#${esc(item.id)}">詳情</a><button class="vl-copy" type="button" data-vl-copy="${esc(item.id)}">複製用法</button><a class="vl-link" href="${esc(item.url)}" target="_blank" rel="noopener">來源</a></div>
     </article>`;
   }
   return `<article class="vl-card" data-type="${esc(item.type)}" data-vl-id="${esc(item.id)}">
@@ -1491,7 +2266,7 @@ function visualCard(item){
       <div class="vl-meta"><span class="vl-pill">#${String(item.no||'').padStart(2,'0')}</span><span class="vl-pill">${esc(item.ratio||'ratio')}</span>${tags}</div>
       <h4>${esc(item.title)}</h4>
       <p>${esc(item.source||'Visual source')}</p>
-      <div class="vl-actions"><button class="vl-copy" type="button" data-vl-copy="${esc(item.id)}">Copy prompt</button>${item.url?`<a class="vl-link" href="${esc(item.url)}" target="_blank" rel="noopener">Source</a>`:''}</div>
+      <div class="vl-actions"><button class="vl-copy" type="button" data-vl-copy="${esc(item.id)}">複製 prompt</button>${item.url?`<a class="vl-link" href="${esc(item.url)}" target="_blank" rel="noopener">來源</a>`:''}</div>
       <details><summary>Prompt 全文</summary><pre>${esc(item.prompt)}</pre></details>
     </div>
   </article>`;
@@ -1502,19 +2277,30 @@ function renderVisualLibrary(filter='all'){
   const items=visualItems.filter(item=>filter==='all'||item.type===filter);
   grid.innerHTML=items.map(visualCard).join('');
 }
+function skillMiniCard(item){
+  const tags=(item.tags||[]).slice(0,3).map(t=>`<span class="vl-pill">${esc(t)}</span>`).join('');
+  return `<article class="skill-mini-card" id="home-${esc(item.id)}">
+    <div class="vl-meta"><span class="vl-pill">${esc(item.subtitle||'Workflow')}</span>${tags}</div>
+    <h3>${esc(item.title)}</h3>
+    <p>${esc(item.summary)}</p>
+    <div class="vl-usage"><b>用法：</b>${esc(item.usage)}</div>
+    <div class="vl-actions"><a class="vl-link" href="skills.html#${esc(item.id)}">詳情</a><button class="vl-copy" type="button" data-vl-copy="${esc(item.id)}">複製用法</button></div>
+  </article>`;
+}
+function renderHomeSkills(){
+  const grid=document.getElementById('homeSkillGrid');
+  if(!grid) return;
+  grid.innerHTML=skillItems.slice(0,6).map(skillMiniCard).join('');
+}
 function scrollToHashTarget(){
   const id=decodeURIComponent((location.hash||'').slice(1));
   if(!id) return;
   const el=document.getElementById(id);
   if(!el) return;
-  const html=document.documentElement;
-  const previous=html.style.scrollBehavior;
-  html.style.scrollBehavior='auto';
-  window.scrollTo(0, el.getBoundingClientRect().top + window.pageYOffset - 78);
-  requestAnimationFrame(()=>{html.style.scrollBehavior=previous});
+  requestAnimationFrame(()=>el.scrollIntoView({block:'start'}));
 }
 function copyText(text,btn){
-  const done=()=>{btn.classList.add('copied');btn.textContent='Copied';setTimeout(()=>{btn.classList.remove('copied');btn.textContent=btn.dataset.original||'Copy';},1200)};
+  const done=()=>{btn.classList.add('copied');btn.textContent='已複製';setTimeout(()=>{btn.classList.remove('copied');btn.textContent=btn.dataset.original||'複製';},1200)};
   if(navigator.clipboard&&window.isSecureContext){
     navigator.clipboard.writeText(text).then(done).catch(()=>fallbackCopy(text,done));
   }else{
@@ -1526,9 +2312,9 @@ function fallbackCopy(text,done){
   ta.value=text;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.left='-9999px';
   document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();done();
 }
-document.getElementById('vlVideoCount').textContent=vlData.intro?.counts?.video??0;
-document.getElementById('vlImageCount').textContent=vlData.intro?.counts?.image??0;
-document.getElementById('vlSkillCount').textContent=vlData.intro?.counts?.skill??0;
+setText('vlVideoCount',vlData.intro?.counts?.video??0);
+setText('vlImageCount',vlData.intro?.counts?.image??0);
+setText('homeSkillCount',skillItems.length);
 document.querySelectorAll('.vl-tab').forEach(tab=>tab.addEventListener('click',()=>{
   const filter=tab.dataset.vlFilter;
   document.querySelectorAll('.vl-tab').forEach(t=>t.setAttribute('aria-pressed','false'));
@@ -1538,14 +2324,15 @@ document.querySelectorAll('.vl-tab').forEach(tab=>tab.addEventListener('click',(
 document.addEventListener('click',e=>{
   const btn=e.target.closest('[data-vl-copy]');
   if(!btn) return;
-  const item=visualItems.find(x=>x.id===btn.dataset.vlCopy);
+  const item=[...visualItems,...skillItems].find(x=>x.id===btn.dataset.vlCopy);
   if(!item) return;
   btn.dataset.original=btn.textContent;
   copyText(plainFor(item),btn);
 });
 renderVisualLibrary('all');
+renderHomeSkills();
 scrollToHashTarget();
-window.addEventListener('load',()=>{setTimeout(scrollToHashTarget,80);setTimeout(scrollToHashTarget,700)});
+window.addEventListener('load',()=>{setTimeout(scrollToHashTarget,80);setTimeout(scrollToHashTarget,700);setTimeout(scrollToHashTarget,1800)});
 window.addEventListener('hashchange',()=>setTimeout(scrollToHashTarget,0));
 
 const nums=document.querySelectorAll('main .sec-num');
